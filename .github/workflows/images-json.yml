@@ -18,13 +18,13 @@ jobs:
         id: list
         run: |
           images=$(find images/blog/previews -type f -name '*.jpg' -o -name '*.png')
-          echo "IMAGES=$images" >> $GITHUB_ENV
+          echo "::set-output name=images::$images"
 
       - name: Create JSON
         run: |
           images_json="{
             \"images\": [
-            $(echo $IMAGES | sed 's/\s/","/g')
+            $(echo "${{ steps.list.outputs.images }}" | sed 's/\s/","/g')
             ]
           }"
           echo $images_json > images/bgimages.json
