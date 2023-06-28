@@ -1,10 +1,11 @@
 # Simple workflow for generating an array of images in a specific folder
-
 name: Generate Images JSON
 on:
   push:
     branches:
       - main
+# Allows you to run this workflow manually from the Actions tab
+workflow_dispatch:
 
 jobs:
   generate-json:
