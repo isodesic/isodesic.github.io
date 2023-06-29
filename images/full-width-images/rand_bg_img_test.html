@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      min-height: 100vh;
+    }
+  </style>
+</head>
+<body>
+  <script>
+    // Fetch the images.json file
+    fetch('images.json')
+      .then(response => response.json())
+      .then(data => {
+        // Get the array of image URLs
+        const imageUrls = data.images;
+
+        // Pick a random image URL from the array
+        const randomImageUrl = imageUrls[Math.floor(Math.random() * imageUrls.length)];
+
+        // Set the random image as the background image
+        document.body.style.backgroundImage = `url('${randomImageUrl}')`;
+      })
+      .catch(error => {
+        console.error('Error fetching images.json:', error);
+      });
+  </script>
+</body>
+</html>
