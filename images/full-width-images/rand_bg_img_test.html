@@ -3,14 +3,24 @@
 <head>
   <style>
     body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       background-repeat: no-repeat;
       background-position: center;
       background-size: cover;
       min-height: 100vh;
     }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+    }
   </style>
 </head>
 <body>
+  <button id="changeButton">Change Background</button>
   <script>
     // Fetch the images.json file
     fetch('images.json')
@@ -28,6 +38,29 @@
       .catch(error => {
         console.error('Error fetching images.json:', error);
       });
+
+      // Function to change the background image
+      function changeBackground() {
+        fetch('images.json')
+          .then(response => response.json())
+          .then(data => {
+            // Get the array of image URLs
+            const imageUrls = data.images;
+
+            // Pick a random image URL from the array
+            const randomImageUrl = imageUrls[Math.floor(Math.random() * imageUrls.length)];
+
+            // Set the random image as the background image
+            document.body.style.backgroundImage = `url('${randomImageUrl}')`;
+          })
+          .catch(error => {
+            console.error('Error fetching images.json:', error);
+          });
+      }
+
+      // Event listener for the button click
+      var changeButton = document.getElementById('changeButton');
+      changeButton.addEventListener('click', changeBackground);
   </script>
 </body>
 </html>
