@@ -33,11 +33,9 @@
 
   <script>
     // Fetch the images.json file
-    const portrait = window.matchMedia("(orientation: portrait)").matches;
-    if (portrait) {
-      const ijson = 'portrait_images.json';
-    } else {
-      const ijson = 'landscape_images.json';
+    const ijson = 'landscape_images.json';
+    if (window.matchMedia("(orientation: portrait)").matches) {
+      ijson = 'portrait_images.json';
     }
     fetch(ijson)
       .then(response => response.json())
@@ -57,11 +55,9 @@
 
       // Function to change the background image
       function changeBackground() {
-        const portrait = window.matchMedia("(orientation: portrait)").matches;
-        if (portrait) {
-          const ijson = 'portrait_images.json';
-        } else {
-          const ijson = 'landscape_images.json';
+        const ijson = 'landscape_images.json';
+        if (window.matchMedia("(orientation: portrait)").matches) {
+          ijson = 'portrait_images.json';
         }
         fetch(ijson)
           .then(response => response.json())
