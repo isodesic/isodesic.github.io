@@ -14,13 +14,23 @@
       min-height: 100vh;
     }
     button {
+      display: block;
+      clear: both;
       padding: 10px 20px;
-      font-size: 16px;
+      font-size: 1.5em;
+    }
+    p {
+      display: block;
+      clear: both;
+      padding: 10px 20px;
+      font-size: 1.5em;
     }
   </style>
 </head>
 <body>
   <button id="changeButton">Change Background</button>
+  <p id="viewportSize"></p>
+
   <script>
     // Fetch the images.json file
     fetch('images.json')
@@ -61,6 +71,19 @@
       // Event listener for the button click
       var changeButton = document.getElementById('changeButton');
       changeButton.addEventListener('click', changeBackground);
+
+      function displayViewportSize() {
+          var viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+          var viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+          var viewportSizeElement = document.getElementById('viewportSize');
+          viewportSizeElement.textContent = 'Viewport Size: ' + viewportWidth + 'x' + viewportHeight;
+      }
+
+      // Call the function initially
+      displayViewportSize();
+
+      // Event listener for window resize
+      window.addEventListener('resize', displayViewportSize);
   </script>
 </body>
 </html>
