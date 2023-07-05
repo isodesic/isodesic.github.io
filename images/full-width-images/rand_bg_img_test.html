@@ -33,7 +33,13 @@
 
   <script>
     // Fetch the images.json file
-    fetch('images.json')
+    const portrait = window.matchMedia("(orientation: portrait)").matches;
+    if (portrait) {
+      const ijson = 'portrait_images.json';
+    } else {
+      const ijson = 'landscape_images.json';
+    }
+    fetch(ijson)
       .then(response => response.json())
       .then(data => {
         // Get the array of image URLs
@@ -46,12 +52,18 @@
         document.body.style.backgroundImage = `url('${randomImageUrl}')`;
       })
       .catch(error => {
-        console.error('Error fetching images.json:', error);
+        console.error('Error fetching \'' + ijson + '\'', error);
       });
 
       // Function to change the background image
       function changeBackground() {
-        fetch('images.json')
+        const portrait = window.matchMedia("(orientation: portrait)").matches;
+        if (portrait) {
+          const ijson = 'portrait_images.json';
+        } else {
+          const ijson = 'landscape_images.json';
+        }
+        fetch(ijson)
           .then(response => response.json())
           .then(data => {
             // Get the array of image URLs
@@ -64,7 +76,7 @@
             document.body.style.backgroundImage = `url('${randomImageUrl}')`;
           })
           .catch(error => {
-            console.error('Error fetching images.json:', error);
+            console.error('Error fetching \'' + ijson + '\'', error);
           });
       }
 
