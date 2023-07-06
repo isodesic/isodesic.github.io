@@ -13,8 +13,9 @@ const fs = require('fs');
 const path = require('path');
 const probe = require('probe-image-size'); // Requires the 'probe-image-size' package (npm install probe-image-size)
 
-const folderPath = './'; // Replace with the actual folder path
-const jsonFilePath = './images.json'; // Replace with the desired JSON file path
+const folderPath = './';
+const landscapeImagesJsonFilePath = './landscape_images.json';
+const portraitImagesJsonFilePath = './portrait_images.json';
 
 fs.readdir(folderPath, (err, files) => {
   if (err) {
@@ -28,38 +29,50 @@ fs.readdir(folderPath, (err, files) => {
   });
 
   const landscapeImagePaths = [];
+  const portraitImagePaths = [];
 
   imageFiles.forEach(file => {
     const filePath = path.join(folderPath, file);
     const dimensions = probe.sync(fs.readFileSync(filePath));
-    landscapeImagePaths.push(filePath);
-    /*
-    if (dimensions.width > 1279) {
-      if (dimensions.orientation) {
-        if (dimensions.orientation < 5) {
-          //console.log(filePath + ': width = ' + dimensions.width + ', height = ' + dimensions.height + ', orientation = ' + dimensions.orientation + '\n');
-          landscapeImagePaths.push(filePath);
-        }
+    
+    if (dimensions.orientation) {
+      if (dimensions.orientation < 5) {
+        //console.log(filePath + ': width = ' + dimensions.width + ', height = ' + dimensions.height + ', orientation = ' + dimensions.orientation + '\n');
+        landscapeImagePaths.push(filePath);
       } else {
-        if (dimensions.width > dimensions.height) {
-          //console.log(filePath + ': width = ' + dimensions.width + ', height = ' + dimensions.height + ', orientation = ' + dimensions.orientation + '\n');
-          landscapeImagePaths.push(filePath);
-        }
+        portraitImagePaths.push(filePath);
+      }
+    } else {
+      if (dimensions.width >= dimensions.height) {
+        //console.log(filePath + ': width = ' + dimensions.width + ', height = ' + dimensions.height + ', orientation = ' + dimensions.orientation + '\n');
+        landscapeImagePaths.push(filePath);
+      } else {
+        portraitImagePaths.push(filePath);
       }
     }
-    */
   });
 
-  const imagesJson = {
+  const landscapeImagesJson = {
     images: landscapeImagePaths
   };
+  const portraitImagesJson = {
+    images: portraitImagePaths
+  };
 
-  fs.writeFile(jsonFilePath, JSON.stringify(imagesJson), err => {
+  fs.writeFile(landscapeImagesJsonFilePath, JSON.stringify(landscapeImagesJson), err => {
     if (err) {
-      console.error('Error writing JSON file:', err);
+      console.error('Error writing Landscape Images JSON file:', err);
       return;
     }
-    console.log('JSON file generated successfully.');
+    console.log('Landscape Images JSON file generated successfully.');
+  });
+
+  fs.writeFile(portraitImagesJsonFilePath, JSON.stringify(portraitImagesJson), err => {
+    if (err) {
+      console.error('Error writing Portrait Images JSON file:', err);
+      return;
+    }
+    console.log('Portrait Images JSON file generated successfully.');
   });
 });
 
