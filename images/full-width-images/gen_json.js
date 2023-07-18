@@ -1,5 +1,5 @@
 //Generate JSON array of images in the specified folder (courtesey of ChatGPT)
-//run with node.js in PowerShell: "node gen_json.js"
+//run with node.js in PowerShell: "node gen_json.js" and delete any sample images afterwards
 /*
 Ideal ratio for desktop: 128:67 (16:8.375, 3840x2010 OR 4126x2160)
 Ideal ratio for mobile: 19:32 (9.5:16, 1280x2160)

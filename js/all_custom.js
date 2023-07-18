@@ -12,6 +12,7 @@
         $(".page-loader div").fadeOut();
         $(".page-loader").delay(200).fadeOut("slow");
         
+        changeBackground();
         init_text_rotator();
         initWorkFilter();
         init_scroll_navigate();
@@ -670,6 +671,37 @@
     
     
 })(jQuery); // End of use strict
+
+
+function changeBackground() {
+    (function($){
+        "use strict";
+        let ijson = 'images/full-width-images/landscape_images.json';
+        let home_bg = $(".home-section");
+        //console.log('Cannot find \'' + home_bg + '\'');
+
+        if (window.matchMedia("(orientation: portrait)").matches) {
+          ijson = 'images/full-width-images/portrait_images.json';
+        }
+
+        fetch(ijson)
+          .then(response => response.json())
+          .then(data => {
+            // Get the array of image URLs
+            const imageUrls = data.images;
+
+            // Pick a random image URL from the array
+            const randomImageUrl = imageUrls[Math.floor(Math.random() * imageUrls.length)];
+
+            // Set the random image as the background image
+            //$(".home-section").setAttribute('data-background', 'url(images/full-width-images/' + randomImageUrl + ')');  //'url('${randomImageUrl}')';
+            document.querySelector("#home").style.backgroundImage = 'url(images/full-width-images/' + randomImageUrl + ')';
+        })
+          .catch(error => {
+            console.error('Error fetching \'' + ijson + '\'', error);
+        });
+    })(jQuery);
+}
 
 
 /* ---------------------------------------------
