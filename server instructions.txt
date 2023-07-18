@@ -1,0 +1,10 @@
+For a simple web server, in PowerShell:
+py -m http.server 6471
+
+then access it with:
+http://localhost:6471/index.html
+http://localhost:6471/my-mp-index-01.html
+http://localhost:6471/images/full-width-images/rand_bg_img_test.html
+
+https://isodesic.github.io/index.html
+https://isodesic.github.io/images/full-width-images/rand_bg_img_test.html
