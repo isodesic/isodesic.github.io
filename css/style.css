@@ -164,6 +164,7 @@ Section Text:       15px/1.7 "Open Sans", arial, sans-serif;
     padding: 0;
     margin: 0;
     background: none;
+    /** background-color: rgba(255, 255, 255, .9); **/
 }
 
 .full-wrapper {
@@ -1564,7 +1565,7 @@ a.logo:hover{
     top: 0;
     left: 0;
     text-align: left;
-    background: rgba(255,255,255, .85);
+    background: rgba(255,255,255, .9);
     
     -webkit-box-shadow: 0 1px 0 rgba(0,0,0,.05);
     -moz-box-shadow: 0 1px 0 rgba(0,0,0,.05);
@@ -1785,7 +1786,8 @@ a.logo:hover{
 .mobile-on .desktop-nav ul{
     width: 100%;
     float: none;
-    background: rgba(18,18,18, .97);
+    /** background: rgba(18,18,18, .97); **/
+    background: rgba(255,255,255, .95);  /** changed from template **/
     position: relative;
     overflow-x: hidden;
 }
@@ -1908,7 +1910,8 @@ a.logo:hover{
 }
 .mobile-nav:hover,
 .mobile-nav.active{
-    background: #fff;
+    /** background: #fff; **/
+    background: rgba(255,255,255, .95);  /** changed from template **/
     color: #777;
 }
 .mobile-nav:active{
