@@ -81,29 +81,44 @@
                     <!-- Fullwidth Slider -->
                     <div class="fullwidth-gallery">
                         
-                        <!-- Slide Item  : use 'bg-light-alfa-30' for overexposed background (semi-transparent)  -->
+                        <!-- Slide Items auto-generated using Javascript (fillFullwidthGallery() in all_custom.js) -->
+                        <!-- Note: use 'bg-light-alfa-30' for overexposed background (semi-transparent)  -->
+                        <!-- Slide Item -->
                         <section class="home-section bg-scroll bg-light" data-background="images/full-width-images/DSC00980_d2010p.jpg">
                             <div class="js-height-full">
                             </div>
                         </section>
-                        <!-- End Slide Item -->
-                        
-                        <!-- Slide Item -->
-                        <section class="home-section bg-scroll bg-light" data-background="images/full-width-images/DSC05103_d2010p.jpg">
-                            <div class="js-height-full">
-                            </div>
-                        </section>
-                        <!-- End Slide Item -->
-                        
-                        <!-- Slide Item -->
-                        <section class="home-section bg-scroll bg-light" data-background="images/full-width-images/DSC05533_d2010p.jpg">
-                            <div class="js-height-full">
-                            </div>
-                        </section>
-                        <!-- End Slide Item -->
-                        
+                        <!-- End Slide Item -->                      
                     </div>
                     <!-- End Fullwidth Slider -->
+
+                    <script type="text/javascript">
+                        const parentDiv = document.querySelector('.fullwidth-gallery');
+                        var ijson = 'images/full-width-images/landscape_images.json';
+
+                        if (window.matchMedia("(orientation: portrait)").matches) {
+                          ijson = 'images/full-width-images/portrait_images.json';
+                        }
+
+                        fetch(ijson)
+                          .then(response => response.json())
+                          .then(data => {
+                            var imageNames = data.images;
+                            for (var i = 0; i < imageNames.length; i++) {
+                                var section = document.createElement('section');
+                                section.classList.add('home-section', 'bg-scroll', 'bg-light');
+                                //section.setAttribute('data-background', 'images/full-width-images/' + imageNames[i]);
+                                section.style.backgroundImage = 'url(images/full-width-images/' + imageNames[i] + ')';
+                                var div = document.createElement('div');
+                                div.classList.add('js-height-full');
+                                section.appendChild(div);
+                                parentDiv.appendChild(section);
+                            }
+                        })
+                          .catch(error => {
+                            console.error('Error fetching \'' + ijson + '\'', error);
+                        });
+                    </script>
                     
                     <!-- Header Content -->
                     <div class="js-height-full fullwidth-galley-content">
@@ -537,40 +552,6 @@
                 <!-- End Services Section -->
                 
                 
-                <!-- Call Action Section -->
-                <section class="page-section pt-0 pb-0 banner-section bg-dark" data-background="images/full-width-images/section-bg-2.jpg">
-                    <div class="container relative">
-                        
-                        <div class="row">
-                            
-                            <div class="col-sm-6">
-                                
-                                <div class="mt-140 mt-lg-80 mb-140 mb-lg-80">
-                                    <div class="banner-content">
-                                        <h3 class="banner-heading font-alt">Looking for exclusive digital services?</h3>
-                                        <div class="banner-decription">
-                                            Proin fringilla augue at maximus vestibulum. Nam pulvinar vitae neque et porttitor. 
-                                            Integer non dapibus diam, ac eleifend lectus.
-                                        </div>
-                                        <div class="local-scroll">
-                                            <a href="#contact" class="btn btn-mod btn-w btn-medium btn-round">Lets talk</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                            
-                            <div class="col-sm-6 banner-image wow fadeInUp" data-wow-duration="1.2s">
-                                <img src="images/promo-1.png" alt="" />
-                            </div>
-                            
-                        </div>
-                        
-                    </div>
-                </section>
-                <!-- End Call Action Section -->
-                
-                
                 <!-- Portfolio Section -->
                 <section class="page-section pb-0" id="portfolio">
                     <div class="relative">
@@ -708,139 +689,8 @@
                     </div>
                 </section>
                 <!-- End Portfolio Section -->
-                
-                
-                <!-- Call Action Section -->
-                <section class="small-section bg-dark">
-                    <div class="container relative">
-                        
-                        <div class="align-center">
-                            <h3 class="banner-heading font-alt">Like Our Creative Works?</h3>
-                            <div class="local-scroll">
-                                <a href="#contact" class="btn btn-mod btn-w btn-medium btn-round">Start Project</a>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </section>
-                <!-- End Call Action Section -->
-                
-                
-                <!-- Features Section -->
-                <section class="page-section">
-                    <div class="container relative">
-                        
-                        <h2 class="section-title font-alt mb-70 mb-sm-40">
-                            Why Choose Us?
-                        </h2>
-                        
-                        <!-- Features Grid -->
-                        <div class="row multi-columns-row alt-features-grid">
-                            
-                            <!-- Features Item -->
-                            <div class="col-sm-6 col-md-4 col-lg-4">
-                                <div class="alt-features-item align-center">
-                                    <div class="alt-features-icon">
-                                        <span class="icon-flag"></span>
-                                    </div>
-                                    <h3 class="alt-features-title font-alt">We’re Creative</h3>
-                                    <div class="alt-features-descr align-left">
-                                        Lorem ipsum dolor sit amet, c-r adipiscing elit. 
-                                        In maximus ligula semper metus pellentesque mattis. 
-                                        Maecenas  volutpat, diam enim.
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Features Item -->
-                            
-                            <!-- Features Item -->
-                            <div class="col-sm-6 col-md-4 col-lg-4">
-                                <div class="alt-features-item align-center">
-                                    <div class="alt-features-icon">
-                                        <span class="icon-clock"></span>
-                                    </div>
-                                    <h3 class="alt-features-title font-alt">We’re Punctual</h3>
-                                    <div class="alt-features-descr align-left">
-                                        Proin fringilla augue at maximus vestibulum. 
-                                        Nam pulvinar vitae neque et porttitor. Praesent sed 
-                                        nisi eleifend, lorem fermentum orci sit amet, iaculis libero.
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Features Item -->
-                            
-                            <!-- Features Item -->
-                            <div class="col-sm-6 col-md-4 col-lg-4">
-                                <div class="alt-features-item align-center">
-                                    <div class="alt-features-icon">
-                                        <span class="icon-hotairballoon"></span>
-                                    </div>
-                                    <h3 class="alt-features-title font-alt">We have magic</h3>
-                                    <div class="alt-features-descr align-left">
-                                        Curabitur iaculis accumsan augue, nec finibus mauris pretium eu. 
-                                        Duis placerat ex gravida nibh tristique porta. Nulla facilisi. 
-                                        Suspendisse ultricies eros blandit.
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Features Item -->
-                            
-                            <!-- Features Item -->
-                            <div class="col-sm-6 col-md-4 col-lg-4">
-                                <div class="alt-features-item align-center">
-                                    <div class="alt-features-icon">
-                                        <span class="icon-heart"></span>
-                                    </div>
-                                    <h3 class="alt-features-title font-alt">We love minimalism</h3>
-                                    <div class="alt-features-descr align-left">
-                                        Cras luctus interdum sodales. Quisque quis odio dui. Sedes sit 
-                                        amet neque malesuada, lobortis  commodo magna ntesque pharetra 
-                                        metus vivera sagittis.
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Features Item -->
-                            
-                            <!-- Features Item -->
-                            <div class="col-sm-6 col-md-4 col-lg-4">
-                                <div class="alt-features-item align-center">
-                                    <div class="alt-features-icon">
-                                        <span class="icon-linegraph"></span>
-                                    </div>
-                                    <h3 class="alt-features-title font-alt">We’re responsible</h3>
-                                    <div class="alt-features-descr align-left">
-                                        Fusce aliquet quam eget neque ultrices elementum. Nulla posuere 
-                                        felis id arcu blandit sagittis. Eleifender vestibulum purus, sit 
-                                        amet vulputate risus.
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Features Item -->
-                            
-                            <!-- Features Item -->
-                            <div class="col-sm-6 col-md-4 col-lg-4">
-                                <div class="alt-features-item align-center">
-                                    <div class="alt-features-icon">
-                                        <span class="icon-chat"></span>
-                                    </div>
-                                    <h3 class="alt-features-title font-alt">We're Friendly</h3>
-                                    <div class="alt-features-descr align-left">
-                                        Pulvinar vitae neque et porttitor. Integer non dapibus diam, ac 
-                                        eleifend lectus. Praesent sed nisi eleifend, fermentum orci sit 
-                                        amet, iaculis libero interdum.
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Features Item -->
-                            
-                        </div>
-                        <!-- End Features Grid -->
-                    
-                    </div>
-                </section>
-                <!-- End Features Section -->
-                
-                
+
+
                 <!-- Testimonials Section -->
                 <section class="page-section bg-dark bg-dark-alfa-90 fullwidth-slider" data-background="images/full-width-images/section-bg-3.jpg">
                     
@@ -921,144 +771,8 @@
                     
                 </section>
                 <!-- End Testimonials Section -->
-                
-                
-                <!-- Blog Section -->
-                <section class="page-section" id="news">
-                    <div class="container relative">
-                        
-                        <h2 class="section-title font-alt align-left mb-70 mb-sm-40">
-                            Latest News
-                            
-                            <a href="blog-classic-sidebar-right.html" class="section-more right">All News in our blog <i class="fa fa-angle-right"></i></a>
-                            
-                        </h2>
-                        
-                        <div class="row multi-columns-row">
-                            
-                            <!-- Post Item -->
-                            <div class="col-sm-6 col-md-4 col-lg-4 mb-md-50 wow fadeIn" data-wow-delay="0.1s" data-wow-duration="2s">
-                                
-                                <div class="post-prev-img">
-                                    <a href="blog-single-sidebar-right.html"><img src="images/blog/post-prev-1.jpg" alt="" /></a>
-                                </div>
-                                
-                                <div class="post-prev-title font-alt">
-                                    <a href="">New Web Design Trends</a>
-                                </div>
-                                
-                                <div class="post-prev-info font-alt">
-                                    <a href="">John Doe</a> | 10 December
-                                </div>
-                                
-                                <div class="post-prev-text">
-                                    Maecenas  volutpat, diam enim sagittis quam, id porta quam. Sed id dolor 
-                                    consectetur fermentum nibh volutpat, accumsan purus. 
-                                </div>
-                                
-                                <div class="post-prev-more">
-                                    <a href="" class="btn btn-mod btn-gray btn-round">Read More <i class="fa fa-angle-right"></i></a>
-                                </div>
-                                
-                            </div>
-                            <!-- End Post Item -->
-                            
-                            <!-- Post Item -->
-                            <div class="col-sm-6 col-md-4 col-lg-4 mb-md-50 wow fadeIn" data-wow-delay="0.2s" data-wow-duration="2s">
-                                
-                                <div class="post-prev-img">
-                                    <a href="blog-single-sidebar-right.html"><img src="images/blog/post-prev-2.jpg" alt="" /></a>
-                                </div>
-                                
-                                <div class="post-prev-title font-alt">
-                                    <a href="">Minimalistic Design Forever</a>
-                                </div>
-                                
-                                <div class="post-prev-info font-alt">
-                                    <a href="">John Doe</a> | 9 December
-                                </div>
-                                
-                                <div class="post-prev-text">
-                                    Maecenas  volutpat, diam enim sagittis quam, id porta quam. Sed id dolor 
-                                    consectetur fermentum nibh volutpat, accumsan purus. 
-                                </div>
-                                
-                                <div class="post-prev-more">
-                                    <a href="" class="btn btn-mod btn-gray btn-round">Read More <i class="fa fa-angle-right"></i></a>
-                                </div>
-                                
-                            </div>
-                            <!-- End Post Item -->
-                            
-                            <!-- Post Item -->
-                            <div class="col-sm-6 col-md-4 col-lg-4 mb-md-50 wow fadeIn" data-wow-delay="0.3s" data-wow-duration="2s">
-                                
-                                <div class="post-prev-img">
-                                    <a href="blog-single-sidebar-right.html"><img src="images/blog/post-prev-3.jpg" alt="" /></a>
-                                </div>
-                                
-                                <div class="post-prev-title font-alt">
-                                    <a href="">Hipster&rsquo;s Style in&nbsp;Web</a>
-                                </div>
-                                
-                                <div class="post-prev-info font-alt">
-                                    <a href="">John Doe</a> | 7 December
-                                </div>
-                                
-                                <div class="post-prev-text">
-                                    Maecenas  volutpat, diam enim sagittis quam, id porta quam. Sed id dolor 
-                                    consectetur fermentum nibh volutpat, accumsan purus. 
-                                </div>
-                                
-                                <div class="post-prev-more">
-                                    <a href="" class="btn btn-mod btn-gray btn-round">Read More <i class="fa fa-angle-right"></i></a>
-                                </div>
-                                
-                            </div>
-                            <!-- End Post Item -->
-                            
-                        </div>
-                        
-                    </div>
-                </section>
-                <!-- End Blog Section -->
-                
-                
-                <!-- Newsletter Section -->
-                <section class="small-section bg-gray-lighter">
-                    <div class="container relative">
-                        
-                        <form class="form align-center" id="mailchimp">
-                            <div class="row">
-                                <div class="col-lg-10 offset-lg-1 col-xl-8 offset-xl-2">
-                                    
-                                    <div class="newsletter-label font-alt">
-                                        Stay informed with our newsletter
-                                    </div>
-                                    
-                                    <div class="mb-20">
-                                        <input placeholder="Enter Your Email" class="newsletter-field form-control input-md round mb-xs-10" type="email" pattern=".{5,100}" required aria-required="true">
-                                        
-                                        <button type="submit" aria-controls="subscribe-result" class="btn btn-mod btn-medium btn-round mb-xs-10">
-                                            Subscribe
-                                        </button>
-                                    </div>
-                                    
-                                    <div class="form-tip">
-                                        <i class="fa fa-info-circle"></i> Please trust us, we will never send you spam
-                                    </div>
-                                    
-                                    <div id="subscribe-result" role="region" aria-live="polite" aria-atomic="true"></div>
-                                    
-                                </div>
-                            </div>
-                        </form>
-                        
-                    </div>
-                </section>
-                <!-- End Newsletter Section -->
-                
-                
+
+
                 <!-- Contact Section -->
                 <section class="page-section" id="contact">
                     <div class="container relative">
@@ -1079,10 +793,10 @@
                                                 <i class="fa fa-phone"></i>
                                             </div>
                                             <div class="ci-title font-alt">
-                                                Call Us
+                                                Call Me
                                             </div>
                                             <div class="ci-text">
-                                                +61 3 8376 6284
+                                                +1 (970) 875-4792
                                             </div>
                                         </div>
                                     </div>
@@ -1098,7 +812,7 @@
                                                 Address
                                             </div>
                                             <div class="ci-text">
-                                                245 Quigley Blvd, Ste K
+                                                410 N Montana Ave<br />Bozeman, MT 59715
                                             </div>
                                         </div>
                                     </div>
@@ -1113,8 +827,7 @@
                                             <div class="ci-title font-alt">
                                                 Email
                                             </div>
-                                            <div class="ci-text">
-                                                <a href="mailto:support@bestlooker.pro">support@bestlooker.pro</a>
+                                            <div class="ci-text" id="emailaddy">
                                             </div>
                                         </div>
                                     </div>
@@ -1191,29 +904,7 @@
                     </div>
                 </section>
                 <!-- End Contact Section -->
-                
-                
-                <!-- Google Map -->
-                <div class="google-map">
-                    
-                    <a href="#" class="map-section">
-                        
-                        <div class="map-toggle">
-                            <div class="mt-icon">
-                                <i class="fa fa-map-marker"></i>
-                            </div>
-                            <div class="mt-text font-alt">
-                                <div class="mt-open">Open the map <i class="fa fa-angle-down"></i></div>
-                                <div class="mt-close">Close the map <i class="fa fa-angle-up"></i></div>
-                            </div>
-                        </div>
-                        
-                    </a>
-                    
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d24572.368311964965!2d-75.602613!3d39.65993!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c703f3d191cf13%3A0xf4674106f987fe3a!2zMjQ1IFF1aWdsZXkgQmx2ZCBTdGUgSywgTmV3IENhc3RsZSwgREUgMTk3MjAsINCh0L_QvtC70YPRh9C10L3RliDQqNGC0LDRgtC4INCQ0LzQtdGA0LjQutC4!5e0!3m2!1suk!2sua!4v1584450290276!5m2!1suk!2sua" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0" loading="lazy"></iframe>
-                </div>
-                <!-- End Google Map -->
-            
+
             </main>
             
             <!-- Footer -->
@@ -1230,7 +921,7 @@
                     <div class="footer-text">
                         
                         <!-- Copyright -->
-                        <div class="footer-copy font-alt">
+                        <div class="footer-copy">
                             © Isodesic <script>document.write( new Date().getFullYear() );</script>
                         </div>
                         <!-- End Copyright -->                        
@@ -1276,6 +967,15 @@
         <script type="text/javascript" src="js/contact-form.js"></script>
         <script type="text/javascript" src="js/jquery.ajaxchimp.min.js"></script>        
         <!--[if lt IE 10]><script type="text/javascript" src="js/placeholder.js"></script><![endif]-->
+
+        <script type="text/javascript">
+            var user = 'will';
+            var domain = 'isodesic.com';
+            var element = document.createElement('a');
+            element.href = 'mailto:' + user + '@' + domain;
+            element.innerHTML = user + '@' + domain;
+            document.getElementById('emailaddy').appendChild(element);
+        </script>
         
     </body>
 </html>

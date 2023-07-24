@@ -22,7 +22,7 @@
             $(".page-loader").delay(200).fadeOut("slow");
         });        
         
-        changeBackground();
+        //fillFullwidthGallery();
         initWorkFilter();
         init_scroll_navigate();
         
@@ -645,14 +645,12 @@
 
 
 /* ---------------------------------------------
- Custom Hero Background Changer
+ Custom Hero Background Changer (not used anymore)
  --------------------------------------------- */
 function changeBackground() {
     (function($){
         "use strict";
         let ijson = 'images/full-width-images/landscape_images.json';
-        let home_bg = $(".home-section");
-        //console.log('Cannot find \'' + home_bg + '\'');
 
         if (window.matchMedia("(orientation: portrait)").matches) {
           ijson = 'images/full-width-images/portrait_images.json';
@@ -662,10 +660,10 @@ function changeBackground() {
           .then(response => response.json())
           .then(data => {
             // Get the array of image URLs
-            const imageUrls = data.images;
+            const imageNames = data.images;
 
             // Pick a random image URL from the array
-            const randomImageUrl = imageUrls[Math.floor(Math.random() * imageUrls.length)];
+            const randomImageUrl = imageNames[Math.floor(Math.random() * imageNames.length)];
 
             // Set the random image as the background image
             //$(".home-section").setAttribute('data-background', 'url(images/full-width-images/' + randomImageUrl + ')');  //'url('${randomImageUrl}')';
