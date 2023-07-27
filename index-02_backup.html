@@ -24,7 +24,6 @@
         <link rel="stylesheet" href="css/vertical-rhythm.min.css">
         <link rel="stylesheet" href="css/owl.carousel.css">
         <link rel="stylesheet" href="css/magnific-popup.css">
-        <link rel="stylesheet" href="css/swiffy-slider.min.css">
     </head>
     <body class="appear-animate">
         
@@ -79,60 +78,33 @@
             
                 <!-- Home Section -->
                 <div class="bg-light relative" id="home">
-
-                    <!-- Fullwidth Swiffy Slider -->
-                    <div class="swiffy-slider slider-item-nogap slider-nav-nodelay slider-nav-autoplay slider-nav-animation slider-nav-animation-fadein slider-nav-animation-fast" data-slider-nav-autoplay-interval="7500">
-                        <ul class="slider-container">
-                        </ul>
-                        <script type="text/javascript">
-                            var ijson = 'images/full-width-images/landscape_images.json';
-
-                            // if on mobile (vertical orientation), use a different set of background images
-                            if (window.matchMedia("(orientation: portrait)").matches) {
-                              ijson = 'images/full-width-images/portrait_images.json';
-                            }
-
-                            fetch(ijson)
-                              .then(response => response.json())
-                              .then(data => {
-                                var imageNames = data.images;
-
-                                // Randomize array so image gallery is different every time the page is loaded
-                                for(let i = imageNames.length - 1; i > 0; i--){
-                                  var j = Math.floor(Math.random() * i);
-                                  var temp = imageNames[i];
-                                  imageNames[i] = imageNames[j];
-                                  imageNames[j] = temp;
-                                }
-
-                                // find Swiffy Slider container
-                                const parentDiv = document.querySelector('.slider-container');
-
-                                // Generate image elements for Swiffy Slider
-                                for (var i = 0; i < imageNames.length; i++) {
-                                    var li = document.createElement('li');
-                                    var section = document.createElement('section');
-                                    section.classList.add('home-section', 'bg-scroll', 'bg-light');  // section.classList.add('home-section', 'bg-scroll', 'bg-light');
-                                    var div = document.createElement('div');
-                                    div.classList.add('js-height-full');
-                                    var img = document.createElement('img');
-                                    img.src = "images/full-width-images/" + imageNames[i];
-                                    img.loading = "lazy";
-                                    img.style.maxWidth = "100%";
-                                    img.style.height = "auto";
-                                    div.appendChild(img);
-                                    section.appendChild(div);
-                                    li.appendChild(section);
-                                    parentDiv.appendChild(li);
-                                }
-                            })
-                              .catch(error => {
-                                console.error('Error fetching \'' + ijson + '\'', error);
-                            });
-                        </script>
+                    <!-- Fullwidth Slider -->
+                    <div class="fullwidth-gallery">
+                        
+                        <!-- Note: use 'bg-light-alfa-30' for overexposed background (semi-transparent)  -->
+                        <!-- Slide Item -->
+                        <section class="home-section bg-scroll bg-light" data-background="images/full-width-images/DSC00980_d2010p.jpg">
+                            <div class="js-height-full">
+                            </div>
+                        </section>
+                        <!-- End Slide Item -->
+                        
+                        <!-- Slide Item -->
+                        <section class="home-section bg-scroll bg-light" data-background="images/full-width-images/DSC05103_d2010p.jpg">
+                            <div class="js-height-full">
+                            </div>
+                        </section>
+                        <!-- End Slide Item -->
+                        
+                        <!-- Slide Item -->
+                        <section class="home-section bg-scroll bg-light" data-background="images/full-width-images/DSC05533_d2010p.jpg">
+                            <div class="js-height-full">
+                            </div>
+                        </section>
+                        <!-- End Slide Item -->
+                        
                     </div>
-                    <!-- End Fullwidth Swiffy Slider -->
-
+                    <!-- End Fullwidth Slider -->
                     
                     <!-- Header Content -->
                     <div class="js-height-full fullwidth-galley-content">
@@ -153,7 +125,7 @@
                         
                         <!-- Scroll Down -->
                         <div class="local-scroll">
-                            <a href="#about" class="scroll-down"><i class="fa fa-angle-double-down scroll-down-icon"></i><span class="sr-only">Scroll to the next section</span></a>
+                            <a href="#about" class="scroll-down"><i class="fa fa-angle-down scroll-down-icon"></i><span class="sr-only">Scroll to the next section</span></a>
                         </div>
                         <!-- End Scroll Down -->
                         
@@ -969,7 +941,7 @@
         <script type="text/javascript" src="js/jquery.sticky.js"></script>
         <script type="text/javascript" src="js/jquery.parallax-1.1.3.js"></script>
         <script type="text/javascript" src="js/jquery.fitvids.js"></script>
-        <script type="text/javascript" src="js/owl.carousel.min.js" defer></script>
+        <script type="text/javascript" src="js/owl.carousel.min.js"></script>
         <script type="text/javascript" src="js/isotope.pkgd.min.js"></script>
         <script type="text/javascript" src="js/imagesloaded.pkgd.min.js"></script>
         <script type="text/javascript" src="js/jquery.magnific-popup.min.js"></script>
@@ -979,8 +951,7 @@
         <script type="text/javascript" src="js/jquery.lazyload.min.js"></script>
         <script type="text/javascript" src="js/all_custom.js"></script>
         <script type="text/javascript" src="js/contact-form.js"></script>
-        <script type="text/javascript" src="js/jquery.ajaxchimp.min.js"></script>
-        <script type="text/javascript" src="js/swiffy-slider.min.js" defer></script>
+        <script type="text/javascript" src="js/jquery.ajaxchimp.min.js"></script>        
         <!--[if lt IE 10]><script type="text/javascript" src="js/placeholder.js"></script><![endif]-->
 
         <script type="text/javascript">

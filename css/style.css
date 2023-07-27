@@ -1172,10 +1172,10 @@ a.btn-mod:focus{
     color: #111;
     font-size: 15px;
 
-    -webkit-animation: scroll-down-anim 1s infinite;
-    -moz-animation: scroll-down-anim 1s infinite;
-    -o-animation: scroll-down-anim 1s infinite;
-    animation: scroll-down-anim 1s infinite; 
+    -webkit-animation: scroll-down-anim 2s infinite;
+    -moz-animation: scroll-down-anim 2s infinite;
+    -o-animation: scroll-down-anim 2s infinite;
+    animation: scroll-down-anim 2s infinite; 
     
    
    z-index: 2;

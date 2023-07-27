@@ -1,6 +1,6 @@
 /* ---------------------------------------------
     Isodesic changes vs. original Rhythm all.js:
-    1) Added changeBackground() function for randomly cycling through hero images (and called under Scripts initialization below)
+    1) Added createFullwidthGallery() function for randomly cycling through hero images (and called under Scripts initialization below)
     2) Changed the autoPlay value in the OwlCarousel Fullwidth Gallery from 5s to 10s
 --------------------------------------------- */
 
@@ -22,7 +22,7 @@
             $(".page-loader").delay(200).fadeOut("slow");
         });        
         
-        //fillFullwidthGallery();
+        //createFullwidthGallery();
         initWorkFilter();
         init_scroll_navigate();
         
@@ -40,7 +40,7 @@
     });
     
     $(document).ready(function(){
-        $(window).trigger("resize");            
+        $(window).trigger("resize");
         init_classic_menu();
         init_fullscreen_menu();
         init_side_panel();
@@ -644,37 +644,57 @@
 })(jQuery); // End of use strict
 
 
-/* ---------------------------------------------
- Custom Hero Background Changer (not used anymore)
- --------------------------------------------- */
-function changeBackground() {
-    (function($){
-        "use strict";
-        let ijson = 'images/full-width-images/landscape_images.json';
 
-        if (window.matchMedia("(orientation: portrait)").matches) {
-          ijson = 'images/full-width-images/portrait_images.json';
+/* ---------------------------------------------
+ Custom Hero Background Generator
+ --------------------------------------------- */
+function createFullwidthGallery() {
+    //"use strict";
+    var ijson = 'images/full-width-images/landscape_images.json';
+
+    // if on mobile (vertical orientation), use a different set of background images
+    if (window.matchMedia("(orientation: portrait)").matches) {
+      ijson = 'images/full-width-images/portrait_images.json';
+    }
+
+    fetch(ijson)
+      .then(response => response.json())
+      .then(data => {
+        var imageNames = data.images;
+
+        // Randomize array so image gallery is different every time the page is loaded
+        for(let i = imageNames.length - 1; i > 0; i--){
+          var j = Math.floor(Math.random() * i);
+          var temp = imageNames[i];
+          imageNames[i] = imageNames[j];
+          imageNames[j] = temp;
         }
 
-        fetch(ijson)
-          .then(response => response.json())
-          .then(data => {
-            // Get the array of image URLs
-            const imageNames = data.images;
+        // find Swiffy Slider container
+        const parentDiv = document.querySelector('.slider-container');
 
-            // Pick a random image URL from the array
-            const randomImageUrl = imageNames[Math.floor(Math.random() * imageNames.length)];
-
-            // Set the random image as the background image
-            //$(".home-section").setAttribute('data-background', 'url(images/full-width-images/' + randomImageUrl + ')');  //'url('${randomImageUrl}')';
-            document.querySelector("#home").style.backgroundImage = 'url(images/full-width-images/' + randomImageUrl + ')';
-        })
-          .catch(error => {
-            console.error('Error fetching \'' + ijson + '\'', error);
-        });
-    })(jQuery);
+        // Generate image elements for Swiffy Slider
+        for (var i = 0; i < imageNames.length; i++) {
+            var li = document.createElement('li');
+            var section = document.createElement('section');
+            //section.classList.add('home-section', 'bg-scroll', 'bg-light');
+            var div = document.createElement('div');
+            div.classList.add('js-height-full');
+            var img = document.createElement('img');
+            img.src = "images/full-width-images/" + imageNames[i];
+            img.loading = "lazy";
+            img.style.maxWidth = "100%";
+            img.style.height = "auto";
+            div.appendChild(img);
+            section.appendChild(div);
+            li.appendChild(section);
+            parentDiv.appendChild(li);
+        }
+    })
+      .catch(error => {
+        console.error('Error fetching \'' + ijson + '\'', error);
+    });
 }
-
 
 
 /* ---------------------------------------------
