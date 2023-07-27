@@ -66,7 +66,7 @@
 
                             <!-- Social Links -->
                             <li>
-                                <a href="https://www.linkedin.com/in/willmcelwain/"><span class="mn-soc-link tooltip-bot" title="LinkedIn"><i class="fa fa-linkedin"></i></span></a>
+                                <a href="https://www.linkedin.com/in/willmcelwain/"><span class="mn-soc-link tooltip-bot" title="LinkedIn"><i class="fa fa-linkedin-square"></i></span></a>
                             </li>
                             <!-- End Social Links  -->
                         </ul>
@@ -78,10 +78,12 @@
             <main id="main">
             
                 <!-- Home Section -->
-                <div class="bg-light relative" id="home">
+                <div class="relative" id="home">
 
+                    <!-- Note: with Swiffy, bg image is immediately switched and fadeIn is ~400ms (opacity looks to start at ~0.5?) -->
+                    <!-- Note: with Owl, new image is there underneath, and old bg image fades out (to opacity 0.0?), blending/crossfading with new image. Total swap is ~700ms -->
                     <!-- Fullwidth Swiffy Slider -->
-                    <div class="swiffy-slider slider-item-nogap slider-nav-nodelay slider-nav-autoplay slider-nav-animation slider-nav-animation-fadein slider-nav-animation-fast" data-slider-nav-autoplay-interval="7500">
+                    <div class="swiffy-slider slider-item-nogap slider-nav-nodelay slider-nav-autoplay slider-nav-animation slider-nav-animation-fadein" data-slider-nav-autoplay-interval="7500">
                         <ul class="slider-container">
                         </ul>
                         <script type="text/javascript">
@@ -112,7 +114,7 @@
                                 for (var i = 0; i < imageNames.length; i++) {
                                     var li = document.createElement('li');
                                     var section = document.createElement('section');
-                                    section.classList.add('home-section', 'bg-scroll', 'bg-light');  // section.classList.add('home-section', 'bg-scroll', 'bg-light');
+                                    section.classList.add('bg-gallery');  // section.classList.add('home-section', 'bg-scroll', 'bg-light');
                                     var div = document.createElement('div');
                                     div.classList.add('js-height-full');
                                     var img = document.createElement('img');

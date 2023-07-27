@@ -1054,6 +1054,27 @@ a.btn-mod:focus{
  * Header common styles
  */
 
+.bg-gallery{
+    width: 100%;
+    display: block;    
+    position: relative;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    /* background-attachment: fixed; */
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-attachment: scroll !important;
+    content: " ";
+    height: 100%;
+    /* position: absolute; */
+    top: 0;
+    left: 0;
+    background: rgba(252,252,252, .97);
+}
+
 .home-section{
     width: 100%;
     display: block;    
@@ -2080,7 +2101,7 @@ a.logo:hover{
     height: 34px;
     line-height: 33px;
     text-align: center;
-    font-size: 12px;
+    font-size: 16px;
     
     display: inline-block;
     border: 1px solid rgba(0,0,0, .1);
