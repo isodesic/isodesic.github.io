@@ -1685,7 +1685,7 @@
           this.multipointEnd.dispatch(evt, this.element);
           this.sx2 = this.sy2 = null;
         }
-        if (this.x2 && Math.abs(this.x1 - this.x2) > 30 || this.y2 && Math.abs(this.y1 - this.y2) > 30) {
+        if (this.x2 && Math.abs(this.x1 - this.x2) > 30 || this.y2 && Math.abs(this.y1 - this.y2) > 15) {
           evt.direction = this._swipeDirection(this.x1, this.x2, this.y1, this.y2);
           this.swipeTimeout = setTimeout(function () {
             self.swipe.dispatch(evt, self.element);
