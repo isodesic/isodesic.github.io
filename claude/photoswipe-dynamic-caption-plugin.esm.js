@@ -196,9 +196,18 @@ class PhotoSwipeDynamicCaption {
         slide.dynamicCaption.type
       );
       
-      slide.dynamicCaption.element.style.removeProperty('left');
-      slide.dynamicCaption.element.style.removeProperty('top');
-      this.setCaptionWidth(slide.dynamicCaption.element, false);
+      // Instead of removing positioning, set it like 'below' type
+      const zoomLevel = slide.zoomLevels.initial;
+      const imageWidth = Math.round(slide.width * zoomLevel * 10) / 10;
+      const imageHeight = Math.round(slide.height * zoomLevel * 10) / 10;
+      
+      this.setCaptionPosition(
+        slide.dynamicCaption.element,
+        slide.bounds.center.x,
+        slide.bounds.center.y + imageHeight
+      );
+      this.setCaptionWidth(slide.dynamicCaption.element, imageWidth);
+      
       return;
     }
 
@@ -301,9 +310,12 @@ class PhotoSwipeDynamicCaption {
         // do nothing, caption will fit aside without any adjustments
       }
     } else if (slide.dynamicCaption.type === 'below' || useMobileVersion) {
+      // Use the screen width for mobile but image width for desktop
+      const captionWidth = useMobileVersion ? imageWidth : imageWidth;
+      
       this.setCaptionWidth(
         slide.dynamicCaption.element, 
-        useMobileVersion ? this.pswp.viewportSize.x : imageWidth
+        captionWidth
       );
 
       captionSize = this.measureCaptionSize(slide.dynamicCaption.element, e.slide);

@@ -46,12 +46,16 @@
   background: rgba(255,255,255,0.9);
   color: #000;
   padding: 10px 15px;
-
-  right: 0;
-  bottom: 0;
-
-  /* override styles that were set via JS.
-    as they interfere with size measurement */
-  top: auto !important; 
-  left: 0 !important;
+  box-sizing: border-box;
+  
+  /* Remove fixed positioning at screen bottom */
+  /* right: 0; */
+  /* bottom: 0; */
+  
+  /* DO NOT override positioning, allow caption to be positioned by JS */
+  /* top: auto !important; */
+  /* left: 0 !important; */
+  
+  /* Add a negative margin to ensure connection with image */
+  margin-top: -1px;
 }
