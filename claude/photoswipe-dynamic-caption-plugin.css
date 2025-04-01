@@ -32,6 +32,9 @@
   color: #000;
   /* max-width: 700px; */
   padding: 15px;
+  /* Fix for gap and alignment issues */
+  margin-top: -1px; /* Eliminate any potential gap */
+  box-sizing: border-box;
 }
 
 .pswp__dynamic-caption--on-hor-edge {

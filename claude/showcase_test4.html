@@ -310,15 +310,36 @@
                 mobileLayoutBreakpoint: 700, // Adjust for mobile layout
                 mobileCaptionOverlapRatio: 1, // Full width on mobile
                 maxCaptionWidth: '100%',     // Caption width matches image
+                // Add alignToImage property to better match image width
+                alignToImage: true
             });
             
             // Initialize the lightbox
             lightbox.init();
             
+            /* Add slide change listener for caption adjustment
+            lightbox.on('change', () => {
+                // Small delay to ensure DOM is updated
+                setTimeout(() => {
+                    const captionEl = document.querySelector('.pswp__dynamic-caption--below');
+                    const currentSlide = lightbox.pswp.currSlide;
+                    
+                    if (captionEl && currentSlide && currentSlide.container) {
+                        // Force caption width to exactly match the image width
+                        const imageWidth = currentSlide.width;
+                        captionEl.style.width = `${imageWidth}px`;
+                        
+                        // Ensure the caption is flush with the image bottom
+                        captionEl.style.transform = 'translateY(-1px)';
+                    }
+                }, 50);
+            });
+            */
+            
             // Listen for resize events
             window.addEventListener('resize', adjustImageRowHeights);
             
-            // Add event to update image dimensions after load
+            /* Add event to update image dimensions after load
             const updatePswpDimensions = function() {
                 const links = document.querySelectorAll('.gallery a');
                 links.forEach(link => {
@@ -332,6 +353,7 @@
             
             // Run dimension update after images load
             window.addEventListener('load', updatePswpDimensions);
+            */
         });
     </script>
 </body>
