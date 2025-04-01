@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Showcase</title>
+    <style>
+        /* Base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        /* Main content container */
+        .container {
+            max-width: 1200px;
+            width: 90%;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+
+        /* Typography */
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #222;
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Images */
+        .full-width-image {
+            width: 100%;
+            height: auto;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        /* Image row */
+        .image-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 2rem;
+            width: 100%;
+            overflow-x: auto; /* For mobile scrolling if needed */
+        }
+
+        .image-row img {
+            height: 200px; /* Default height, will be adjusted by JS */
+            width: auto; /* Auto width based on aspect ratio */
+            object-fit: contain; /* Preserve aspect ratio without cropping */
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .image-row {
+                /* Maintain the row on mobile but allow scrolling if needed */
+                flex-wrap: nowrap;
+            }
+
+            .image-row img {
+                height: 120px; /* Default height for mobile, will be adjusted by JS */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Project Title</h1>
+        
+        <p>First paragraph describing the project. This is a brief overview of what the project is about, its goals, and your role in it. Keep it concise but informative to give visitors an immediate understanding of what they're looking at.</p>
+        
+        <img src="test_img/DSC03035.JPG" alt="Project overview" class="full-width-image">
+        
+        <p>Second paragraph with more details about the project. This could include information about challenges faced, technologies used, or interesting aspects of the implementation process.</p>
+        
+        <img src="test_img/DSC03871(1200px).jpg" alt="Project details" class="full-width-image">
+        
+        <!-- First row of mixed images -->
+        <div class="image-row">
+            <img src="test_img/Tiger Wall UL 2 01.jpg" alt="Detail 1">
+            <img src="test_img/IMG_4550.JPG" alt="Detail 2">
+            <img src="test_img/IMG_5054.JPG" alt="Detail 3">
+            <img src="test_img/DSC03871(1200px).jpg" alt="Detail 4">
+            <!-- Add as many images as needed -->
+        </div>
+        
+        <p>Third paragraph discussing further aspects of the project. You might want to highlight outcomes, user feedback, or lessons learned from the project experience.</p>
+        
+        <!-- Second row of mixed images -->
+        <div class="image-row">
+            <img src="test_img/IMG_4624.JPG" alt="Additional detail 1">
+            <img src="test_img/DSC03035.JPG" alt="Additional detail 2">
+            <img src="test_img/Tiger Wall UL 2 01.jpg" alt="Additional detail 3">
+            <!-- Add as many images as needed -->
+        </div>
+        
+        <p>Final thoughts or conclusion about the project. This could include information about future plans, improvements, or reflections on the project's impact.</p>
+    </div>
+
+    <script>
+        // Function to adjust image heights to fill row width
+        function adjustImageRowHeights() {
+            const imageRows = document.querySelectorAll('.image-row');
+            const isMobile = window.innerWidth <= 768;
+            const containerWidth = document.querySelector('.container').offsetWidth;
+            const gap = 10; // Gap between images in pixels
+            
+            imageRows.forEach(row => {
+                const images = Array.from(row.querySelectorAll('img'));
+                
+                // Wait for all images to load
+                Promise.all(images.map(img => {
+                    if (img.complete) return Promise.resolve();
+                    return new Promise(resolve => {
+                        img.onload = resolve;
+                    });
+                })).then(() => {
+                    // Get natural aspect ratios of all images
+                    const aspectRatios = images.map(img => img.naturalWidth / img.naturalHeight);
+                    
+                    // Calculate total width if all images had height=1px
+                    const totalWidthAtUnitHeight = aspectRatios.reduce((sum, ratio) => sum + ratio, 0);
+                    
+                    // Calculate target height to fill container width (accounting for gaps)
+                    const gapsWidth = (images.length - 1) * gap;
+                    const targetHeight = (containerWidth - gapsWidth) / totalWidthAtUnitHeight;
+                    
+                    // Set heights of all images
+                    images.forEach(img => {
+                        img.style.height = `${targetHeight}px`;
+                    });
+                });
+            });
+        }
+
+        // Run on load and window resize
+        window.addEventListener('load', adjustImageRowHeights);
+        window.addEventListener('resize', adjustImageRowHeights);
+    </script>
+</body>
+</html>

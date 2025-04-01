@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Showcase</title>
+    <!-- PhotoSwipe CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/photoswipe.css">
+    <!-- PhotoSwipe Caption Plugin CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe-dynamic-caption-plugin@1.2.7/photoswipe-dynamic-caption-plugin.css">
+    <style>
+        /* Base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        /* Main content container */
+        .container {
+            max-width: 1200px;
+            width: 90%;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+
+        /* Typography */
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #222;
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Images */
+        .full-width-image {
+            width: 100%;
+            height: auto;
+            margin-bottom: 2rem;
+            display: block;
+            cursor: pointer;
+        }
+
+        /* Image row */
+        .image-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 2rem;
+            width: 100%;
+            overflow-x: auto; /* For mobile scrolling if needed */
+        }
+
+        .image-row img {
+            height: 200px; /* Default height, will be adjusted by JS */
+            width: auto; /* Auto width based on aspect ratio */
+            object-fit: contain; /* Preserve aspect ratio without cropping */
+            cursor: pointer;
+        }
+
+        /* Gallery wrapper for PhotoSwipe */
+        .gallery {
+            display: contents;
+        }
+
+        /* Hidden links for PhotoSwipe */
+        .hidden-gallery-item {
+            display: none;
+        }
+
+        /* Custom styling for the caption plugin */
+        .pswp-caption-content {
+            font-size: 16px;
+            max-width: 100%;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.75);
+            color: #fff;
+            text-align: left;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .image-row {
+                /* Maintain the row on mobile but allow scrolling if needed */
+                flex-wrap: nowrap;
+            }
+
+            .image-row img {
+                height: 120px; /* Default height for mobile, will be adjusted by JS */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Project Title</h1>
+        
+        <p>First paragraph describing the project. This is a brief overview of what the project is about, its goals, and your role in it. Keep it concise but informative to give visitors an immediate understanding of what they're looking at.</p>
+        
+        <!-- Gallery wrapper -->
+        <div class="gallery" id="my-gallery">
+            <!-- Full-width images -->
+            <a href="test_img/DSC03035.JPG" 
+               data-pswp-width="6000" 
+               data-pswp-height="4000" 
+               data-caption="Project overview - This is the caption for the first full-width image.">
+                <img src="test_img/DSC03035.JPG" alt="Project overview" class="full-width-image">
+            </a>
+            
+            <p>Second paragraph with more details about the project. This could include information about challenges faced, technologies used, or interesting aspects of the implementation process.</p>
+            
+            <a href="test_img/DSC03871(1200px).jpg" 
+               data-pswp-width="1672" 
+               data-pswp-height="1115" 
+               data-caption="Project details - This is the caption for the second full-width image showing more details.">
+                <img src="test_img/DSC03871(1200px).jpg" alt="Project details" class="full-width-image">
+            </a>
+            
+            <!-- First row of mixed images -->
+            <div class="image-row">
+                <a href="test_img/Tiger Wall UL 2 01.jpg" 
+                   data-pswp-width="5760" 
+                   data-pswp-height="3840"
+                   data-caption="Detail 1 - Caption for the first image in the first row.">
+                    <img src="test_img/Tiger Wall UL 2 01.jpg" alt="Detail 1">
+                </a>
+                <a href="test_img/IMG_4550.JPG" 
+                   data-pswp-width="3024" 
+                   data-pswp-height="4032"
+                   data-caption="Detail 2 - Caption for the second image in the first row.">
+                    <img src="test_img/IMG_4550.JPG" alt="Detail 2">
+                </a>
+                <a href="test_img/IMG_5054.JPG" 
+                   data-pswp-width="4032" 
+                   data-pswp-height="3024"
+                   data-caption="Detail 3 - Caption for the third image in the first row.">
+                    <img src="test_img/IMG_5054.JPG" alt="Detail 3">
+                </a>
+                <a href="test_img/DSC03871(1200px).jpg" 
+                   data-pswp-width="1672" 
+                   data-pswp-height="1115"
+                   data-caption="Detail 4 - Caption for the fourth image in the first row.">
+                    <img src="test_img/DSC03871(1200px).jpg" alt="Detail 4">
+                </a>
+            </div>
+            
+            <p>Third paragraph discussing further aspects of the project. You might want to highlight outcomes, user feedback, or lessons learned from the project experience.</p>
+            
+            <!-- Second row of mixed images -->
+            <div class="image-row">
+                <a href="test_img/IMG_4624.JPG" 
+                   data-pswp-width="4032" 
+                   data-pswp-height="3024"
+                   data-caption="Additional detail 1 - Caption for the first image in the second row.">
+                    <img src="test_img/IMG_4624.JPG" alt="Additional detail 1">
+                </a>
+                <a href="test_img/DSC03035.JPG" 
+                   data-pswp-width="6000" 
+                   data-pswp-height="4000"
+                   data-caption="Additional detail 2 - Caption for the second image in the second row.">
+                    <img src="test_img/DSC03035.JPG" alt="Additional detail 2">
+                </a>
+                <a href="test_img/Tiger Wall UL 2 01.jpg" 
+                   data-pswp-width="5760" 
+                   data-pswp-height="3840"
+                   data-caption="Additional detail 3 - Caption for the third image in the second row.">
+                    <img src="test_img/Tiger Wall UL 2 01.jpg" alt="Additional detail 3">
+                </a>
+            </div>
+        </div>
+        
+        <p>Final thoughts or conclusion about the project. This could include information about future plans, improvements, or reflections on the project's impact.</p>
+    </div>
+
+    <!-- PhotoSwipe div element template (required) -->
+    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="pswp__bg"></div>
+        <div class="pswp__scroll-wrap">
+            <div class="pswp__container">
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+            </div>
+            <div class="pswp__ui pswp__ui--hidden">
+                <div class="pswp__top-bar">
+                    <div class="pswp__counter"></div>
+                    <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                    <button class="pswp__button pswp__button--share" title="Share"></button>
+                    <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                    <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                    <div class="pswp__preloader">
+                        <div class="pswp__preloader__icn">
+                            <div class="pswp__preloader__cut">
+                                <div class="pswp__preloader__donut"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                    <div class="pswp__share-tooltip"></div>
+                </div>
+                <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+                <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+                <div class="pswp__caption">
+                    <div class="pswp__caption__center"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        // Import modules from CDN
+        import PhotoSwipeLightbox from 'https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/photoswipe-lightbox.esm.min.js';
+        import PhotoSwipe from 'https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/photoswipe.esm.min.js';
+        import PhotoSwipeDynamicCaption from 'https://cdn.jsdelivr.net/npm/photoswipe-dynamic-caption-plugin@1.2.7/photoswipe-dynamic-caption-plugin.esm.js';
+
+        // Function to adjust image heights to fill row width
+        function adjustImageRowHeights() {
+            const imageRows = document.querySelectorAll('.image-row');
+            const containerWidth = document.querySelector('.container').offsetWidth;
+            const gap = 10; // Gap between images in pixels
+            
+            imageRows.forEach(row => {
+                const images = Array.from(row.querySelectorAll('img'));
+                
+                // Wait for all images to load
+                Promise.all(images.map(img => {
+                    if (img.complete) return Promise.resolve();
+                    return new Promise(resolve => {
+                        img.onload = resolve;
+                    });
+                })).then(() => {
+                    // Get natural aspect ratios of all images
+                    const aspectRatios = images.map(img => img.naturalWidth / img.naturalHeight);
+                    
+                    // Calculate total width if all images had height=1px
+                    const totalWidthAtUnitHeight = aspectRatios.reduce((sum, ratio) => sum + ratio, 0);
+                    
+                    // Calculate target height to fill container width (accounting for gaps)
+                    const gapsWidth = (images.length - 1) * gap;
+                    const targetHeight = (containerWidth - gapsWidth) / totalWidthAtUnitHeight;
+                    
+                    // Set heights of all images
+                    images.forEach(img => {
+                        img.style.height = `${targetHeight}px`;
+                    });
+                });
+            });
+        }
+
+        // Initialize PhotoSwipe with caption plugin
+        document.addEventListener('DOMContentLoaded', function() {
+            // Run row height adjustment
+            adjustImageRowHeights();
+            
+            // Initialize PhotoSwipe Lightbox
+            const lightbox = new PhotoSwipeLightbox({
+                gallery: '#my-gallery',
+                children: 'a',
+                pswpModule: PhotoSwipe,
+                
+                // Basic options
+                showHideAnimationType: 'fade',
+                bgOpacity: 0.85,
+                
+                // Important UI options
+                arrowPrev: true,
+                arrowNext: true,
+                closeTitle: 'Close',
+                zoomTitle: 'Zoom',
+                arrowPrevTitle: 'Previous',
+                arrowNextTitle: 'Next',
+                errorMsg: 'The image cannot be loaded',
+                
+                // Disable default caption to use dynamic caption plugin
+                captionEl: false,
+                
+                // Adjust padding to ensure image fits with caption
+                paddingFn: () => {
+                    return {
+                        top: 30,    // For top bar
+                        bottom: 70, // Reserve space for caption
+                        left: 0,
+                        right: 0
+                    };
+                }
+            });
+            
+            // Initialize the dynamic caption plugin
+            const dynamicCaption = new PhotoSwipeDynamicCaption(lightbox, {
+                type: 'below',         // Position caption below the image
+                captionContent: (slide) => {
+                    // Get caption from data-caption attribute
+                    return slide.data.element.dataset.caption || '';
+                },
+                mobileLayoutBreakpoint: 700, // Adjust for mobile layout
+                mobileCaptionOverlapRatio: 1, // Full width on mobile
+                maxCaptionWidth: '100%',     // Caption width matches image
+            });
+            
+            // Initialize the lightbox
+            lightbox.init();
+            
+            // Listen for resize events
+            window.addEventListener('resize', adjustImageRowHeights);
+            
+            // Add event to update image dimensions after load
+            const updatePswpDimensions = function() {
+                const links = document.querySelectorAll('.gallery a');
+                links.forEach(link => {
+                    const img = link.querySelector('img');
+                    if (img && img.complete) {
+                        link.dataset.pswpWidth = img.naturalWidth;
+                        link.dataset.pswpHeight = img.naturalHeight;
+                    }
+                });
+            };
+            
+            // Run dimension update after images load
+            window.addEventListener('load', updatePswpDimensions);
+        });
+    </script>
+</body>
+</html>
