@@ -30,9 +30,7 @@
   width: 100%;
   background: rgba(255,255,255,0.88);
   color: #333;
-  /* max-width: 700px; */
   padding: 15px;
-  /* margin-top: -1px; /* Eliminate any potential gap */
   box-sizing: border-box;
 }
 
@@ -47,15 +45,4 @@
   color: #333;
   padding: 10px 15px;
   box-sizing: border-box;
-  
-  /* Remove fixed positioning at screen bottom */
-  /* right: 0; */
-  /* bottom: 0; */
-  
-  /* DO NOT override positioning, allow caption to be positioned by JS */
-  /* top: auto !important; */
-  /* left: 0 !important; */
-  
-  /* Add a negative margin to ensure connection with image */
-  /* margin-top: -1px; */
 }

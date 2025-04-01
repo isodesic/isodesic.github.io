@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Showcase</title>
     <!-- PhotoSwipe CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/photoswipe.css">
+    <link rel="stylesheet" href="./photoswipe.css">
     <!-- PhotoSwipe Caption Plugin CSS -->
-    <link rel="stylesheet" href="photoswipe-dynamic-caption-plugin.css">
+    <link rel="stylesheet" href="./photoswipe-dynamic-caption-plugin.css">
     <style>
         /* Base styles */
         * {
@@ -227,12 +227,12 @@
     </div>
 
     <script type="module">
-        // Import modules from CDN
+        // Import modules
         import PhotoSwipeLightbox from './photoswipe-lightbox.esm.min.js';
         import PhotoSwipe from './photoswipe.esm.min.js';
         import PhotoSwipeDynamicCaption from './photoswipe-dynamic-caption-plugin.esm.js';
 
-        // Function to adjust image heights to fill row width using data attributes
+        // Function to adjust image heights in the gallery to fill row width using data attributes
         function adjustImageRowHeights() {
             const imageRows = document.querySelectorAll('.image-row');
             const containerWidth = document.querySelector('.container').offsetWidth;
@@ -324,7 +324,6 @@
                 mobileLayoutBreakpoint: 700, // Adjust for mobile layout
                 mobileCaptionOverlapRatio: 1, // Full width on mobile
                 maxCaptionWidth: '100%',     // Caption width matches image
-                // Add alignToImage property to better match image width
                 alignToImage: true
             });
             
