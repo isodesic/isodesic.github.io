@@ -16,6 +16,10 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --gallery-gap: 10px; /* Default value, will be updated by JS */
+        }
+
         body {
             font-family: 'Arial', sans-serif;
             line-height: 1.6;
@@ -47,7 +51,7 @@
         .full-width-image {
             width: 100%;
             height: auto;
-            margin-bottom: 2rem;
+            margin-bottom: var(--gallery-gap);
             display: block;
             cursor: pointer;
         }
@@ -55,8 +59,8 @@
         /* Image row */
         .image-row {
             display: flex;
-            gap: 10px;
-            margin-bottom: 2rem;
+            gap: var(--gallery-gap);
+            margin-bottom: var(--gallery-gap);
             width: 100%;
             overflow-x: auto; /* For mobile scrolling if needed */
         }
@@ -228,36 +232,46 @@
         import PhotoSwipe from './photoswipe.esm.min.js';
         import PhotoSwipeDynamicCaption from './photoswipe-dynamic-caption-plugin.esm.js';
 
-        // Function to adjust image heights to fill row width
+        // Function to adjust image heights to fill row width using data attributes
         function adjustImageRowHeights() {
             const imageRows = document.querySelectorAll('.image-row');
             const containerWidth = document.querySelector('.container').offsetWidth;
-            const gap = 10; // Gap between images in pixels
+            
+            // Responsive gap sizing
+            const isMobile = window.innerWidth <= 768;
+            const gap = isMobile ? 4 : 10; // 4px on mobile, 10px on desktop
+            
+            // Set CSS variable for consistent spacing throughout layout
+            document.documentElement.style.setProperty('--gallery-gap', gap + 'px');
             
             imageRows.forEach(row => {
-                const images = Array.from(row.querySelectorAll('img'));
+                const links = Array.from(row.querySelectorAll('a'));
                 
-                // Wait for all images to load
-                Promise.all(images.map(img => {
-                    if (img.complete) return Promise.resolve();
-                    return new Promise(resolve => {
-                        img.onload = resolve;
-                    });
-                })).then(() => {
-                    // Get natural aspect ratios of all images
-                    const aspectRatios = images.map(img => img.naturalWidth / img.naturalHeight);
+                // Get aspect ratios from data attributes
+                const aspectRatios = links.map(link => {
+                    const width = parseFloat(link.getAttribute('data-pswp-width'));
+                    const height = parseFloat(link.getAttribute('data-pswp-height'));
                     
-                    // Calculate total width if all images had height=1px
-                    const totalWidthAtUnitHeight = aspectRatios.reduce((sum, ratio) => sum + ratio, 0);
+                    // Fallback in case attributes are missing
+                    if (!width || !height) {
+                        const img = link.querySelector('img');
+                        return img.naturalWidth / img.naturalHeight || 1.5; // default to 1.5 if all else fails
+                    }
                     
-                    // Calculate target height to fill container width (accounting for gaps)
-                    const gapsWidth = (images.length - 1) * gap;
-                    const targetHeight = (containerWidth - gapsWidth) / totalWidthAtUnitHeight;
-                    
-                    // Set heights of all images
-                    images.forEach(img => {
-                        img.style.height = `${targetHeight}px`;
-                    });
+                    return width / height;
+                });
+                
+                // Calculate total width if all images had height=1px
+                const totalWidthAtUnitHeight = aspectRatios.reduce((sum, ratio) => sum + ratio, 0);
+                
+                // Calculate target height to fill container width (accounting for gaps)
+                const gapsWidth = (links.length - 1) * gap;
+                const targetHeight = (containerWidth - gapsWidth) / totalWidthAtUnitHeight;
+                
+                // Set heights of all images
+                links.forEach((link, index) => {
+                    const img = link.querySelector('img');
+                    img.style.height = `${targetHeight}px`;
                 });
             });
         }
@@ -317,43 +331,8 @@
             // Initialize the lightbox
             lightbox.init();
             
-            /* Add slide change listener for caption adjustment
-            lightbox.on('change', () => {
-                // Small delay to ensure DOM is updated
-                setTimeout(() => {
-                    const captionEl = document.querySelector('.pswp__dynamic-caption--below');
-                    const currentSlide = lightbox.pswp.currSlide;
-                    
-                    if (captionEl && currentSlide && currentSlide.container) {
-                        // Force caption width to exactly match the image width
-                        const imageWidth = currentSlide.width;
-                        captionEl.style.width = `${imageWidth}px`;
-                        
-                        // Ensure the caption is flush with the image bottom
-                        captionEl.style.transform = 'translateY(-1px)';
-                    }
-                }, 50);
-            });
-            */
-            
             // Listen for resize events
             window.addEventListener('resize', adjustImageRowHeights);
-            
-            /* Add event to update image dimensions after load
-            const updatePswpDimensions = function() {
-                const links = document.querySelectorAll('.gallery a');
-                links.forEach(link => {
-                    const img = link.querySelector('img');
-                    if (img && img.complete) {
-                        link.dataset.pswpWidth = img.naturalWidth;
-                        link.dataset.pswpHeight = img.naturalHeight;
-                    }
-                });
-            };
-            
-            // Run dimension update after images load
-            window.addEventListener('load', updatePswpDimensions);
-            */
         });
     </script>
 </body>
