@@ -27,9 +27,11 @@
 }
 
 .pswp__dynamic-caption--below {
-  width: auto;
-  max-width: 700px;
-  padding: 15px 0 0;
+  width: 100%;
+  background: rgba(255,255,255,0.9);
+  color: #000;
+  /* max-width: 700px; */
+  padding: 15px;
 }
 
 .pswp__dynamic-caption--on-hor-edge {
