@@ -203,8 +203,8 @@ class PhotoSwipeDynamicCaption {
     }
 
     const zoomLevel = slide.zoomLevels.initial;
-    const imageWidth = Math.ceil(slide.width * zoomLevel);
-    const imageHeight = Math.ceil(slide.height * zoomLevel);
+    const imageWidth = Math.round(slide.width * zoomLevel * 10) / 10;
+    const imageHeight = Math.round(slide.height * zoomLevel * 10) / 10;
     
     this.setCaptionType(slide.dynamicCaption.element, slide.dynamicCaption.type);
     if (slide.dynamicCaption.type === 'aside') {
