@@ -28,11 +28,11 @@
 
 .pswp__dynamic-caption--below {
   width: 100%;
-  background: rgba(255,255,255,0.9);
-  color: #000;
+  background: rgba(255,255,255,0.88);
+  color: #333;
   /* max-width: 700px; */
   padding: 15px;
-  margin-top: -1px; /* Eliminate any potential gap */
+  /* margin-top: -1px; /* Eliminate any potential gap */
   box-sizing: border-box;
 }
 
@@ -43,8 +43,8 @@
 
 .pswp__dynamic-caption--mobile {
   width: 100%;
-  background: rgba(255,255,255,0.9);
-  color: #000;
+  background: rgba(255,255,255,0.88);
+  color: #333;
   padding: 10px 15px;
   box-sizing: border-box;
   
@@ -57,5 +57,5 @@
   /* left: 0 !important; */
   
   /* Add a negative margin to ensure connection with image */
-  margin-top: -1px;
+  /* margin-top: -1px; */
 }
