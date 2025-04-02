@@ -147,14 +147,14 @@
             overflow-x: hidden; /* Ensure no horizontal overflow */
         }
 
-        /* Project metadata section - now in a single row with dividers */
+        /* Project metadata section */
         .project-metadata {
-            max-width: 100%;
-            margin: 0 auto 60px auto;
+            max-width: 1200px;
+            margin: 0 auto;
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
-            padding: 30px 0;
+            padding: 20px 0;
             border-top: 1px solid #eee;
             border-bottom: 1px solid #eee;
         }
@@ -201,12 +201,45 @@
             border-color: #333;
         }
 
+        /* Brand logo in metadata styling */
+        .metadata-item-brand {
+            position: relative;
+            padding-right: 60px; /* Make space for the logo */
+        }
+
+        .brand-logo {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 48px;
+            width: auto;
+            display: block;
+        }
+
+        .brand-logo img {
+            height: 100%;
+            width: auto;
+            /* max-width: 48px; */
+            object-fit: contain;
+        }
+
+        /* Mobile adjustments for the logo */
+        @media (max-width: 767px) {
+            .metadata-item-brand {
+                padding-right: 50px;
+            }
+            
+            .brand-logo {
+                right: 0;
+                height: 48px;  /* same as desktop */
+            }
+        }
+
         /* Project sections */
         .project-section {
-            margin-bottom: 50px;
             max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
+            margin: 50px auto 30px;
         }
         
         .section-heading {
@@ -269,6 +302,24 @@
             background: rgba(0, 0, 0, 0.75);
             color: #fff;
             text-align: left;
+        }
+
+        /* Responsive video container */
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            margin-bottom: var(--gallery-gap);
+            overflow: hidden;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
         }
 
         /* Portfolio navigation */
@@ -418,11 +469,11 @@
         
         @media (min-width: 1440px) {
             .content-container {
-                width: 1410px;
+                width: 1170px; /* was 1410px */
             }
             
             .footer-container {
-                width: 1410px;
+                width: 1170px; /* was 1410px */
             }
         }
 
@@ -536,25 +587,24 @@
         <div class="project-content">
             <!-- Project Metadata Section - Now a single row with dividers -->
             <div class="project-metadata">
-                <div class="metadata-item">
-                    <span class="metadata-label">Client</span>
-                    <div class="metadata-value">OutdoorTech Gear</div>
+                <div class="metadata-item metadata-item-brand">
+                    <span class="metadata-label">Brand</span>
+                    <div class="metadata-value"><a href="https://www.bigagnes.com/">Big Agnes</a></div>
+                    <a href="https://www.bigagnes.com/" class="brand-logo">
+                        <img src="test_img/big_agnes_logo_96x96.png" alt="Big Agnes Logo">
+                    </a>
                 </div>
                 <div class="metadata-item">
-                    <span class="metadata-label">Industry</span>
-                    <div class="metadata-value">Outdoor Equipment</div>
+                    <span class="metadata-label">Category</span>
+                    <div class="metadata-value">Ultralight Backpacking Tents</div>
                 </div>
                 <div class="metadata-item">
                     <span class="metadata-label">Services</span>
-                    <div class="metadata-value">Product Design, Prototyping</div>
+                    <div class="metadata-value">Product Design & Development</div>
                 </div>
                 <div class="metadata-item">
-                    <span class="metadata-label">Date</span>
-                    <div class="metadata-value">March 2025</div>
-                </div>
-                <div class="metadata-item">
-                    <span class="metadata-label">Website</span>
-                    <div class="metadata-value"><a href="#">outdoortechgear.com</a></div>
+                    <span class="metadata-label">Release Date</span>
+                    <div class="metadata-value">Spring 2018</div>
                 </div>
             </div>
 
@@ -661,12 +711,16 @@
                     </div>
                 </div>
                 
-                <a href="test_img/IMG_5054.JPG" 
-                    data-pswp-width="4032" 
-                    data-pswp-height="3024"
-                    data-caption="A wall of Tiger Walls">
-                    <img src="test_img/IMG_5054.JPG" alt="A wall of Tiger Walls" class="full-width-image">
-                </a>
+                <!-- Video Container -->
+                <div class="video-container">
+                    <iframe 
+                        src="https://www.youtube.com/embed/f0BXPBiZY3Y?si=Cn23Z23QigK1WDMi" 
+                        title="Tiger Wall UL2 & 3" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        referrerpolicy="strict-origin-when-cross-origin" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
             </div>
             
             <!-- Portfolio Navigation -->
@@ -781,7 +835,7 @@
             
             // Responsive gap sizing
             const isMobile = window.innerWidth <= 767;
-            const gap = isMobile ? 4 : 10; // 4px on mobile, 10px on desktop
+            const gap = isMobile ? 5 : 10; // 5px on mobile, 10px on desktop
             
             // Set CSS variable for consistent spacing throughout layout
             document.documentElement.style.setProperty('--gallery-gap', gap + 'px');
