@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Design Portfolio - Project Showcase</title>
+    <!-- PhotoSwipe & Caption Plugin CSS -->
+    <link rel="stylesheet" href="./photoswipe.css">
+    <link rel="stylesheet" href="./photoswipe-dynamic-caption-plugin.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        body {
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header & Navigation - Removed box shadow */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: white;
+            z-index: 100;
+            padding: 5px 5%;
+            box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1410px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .logo img {
+            height: 52.5px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+        }
+
+        /* Consolidate repeated styles */
+        .nav-links a, .portfolio-nav-btn, .footer-links a {
+            text-decoration: none;
+            color: #333;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover, .portfolio-nav-btn:hover, .footer-links a:hover {
+            color: #777;
+        }
+
+        /* Hero Section - Now butts up directly against header */
+        .hero-section {
+            position: relative;
+            width: 100%;
+            height: 80vh;
+            overflow: hidden;
+            margin-top: 62px; /* Exact height of header */
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: fixed; /* Change from default to fixed */
+            top: 62px; /* Match the margin-top of hero-section */
+            left: 0;
+            right: 0;
+            z-index: -1; /* Place it behind the content */
+            width: 100vw;
+            object-position: center 20%;
+        }
+
+        .hero-overlay {
+            position: relative;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 20px;
+            z-index: 1; /* Ensure it's above the hero image */
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-description {
+            max-width: 700px;
+            font-size: 1.1rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Main Content Area */
+        .content-container {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            padding-top: 60px;
+            z-index: 2; /* Higher than the hero image */
+            background: white; /* so it covers the hero image */
+            box-sizing: border-box;
+            max-width: 100vw;
+            position: relative;
+            left: 0;
+            right: 0;
+            min-width: 100%;
+            margin: 0;
+        }
+
+        /* Update the content wrapper to maintain your desired widths */
+        .content-wrapper {
+            width: 100%;
+            max-width: 1170px;
+            margin: 0 auto;
+            padding: 0 5%; /* Move padding from project-content to wrapper */
+            box-sizing: border-box;
+        }
+
+        /* Remove padding from project-content */
+        .project-content {
+            width: 100%;
+            padding: 0; /* Remove padding since it's now on the wrapper */
+            overflow-x: hidden;
+        }
+
+        /* Project metadata section */
+        .project-metadata {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+        }
+
+        .metadata-item {
+            flex: 1;
+            padding: 0 20px;
+            position: relative;
+            min-width: 160px;
+        }
+        
+        .metadata-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+            width: 1px;
+            background-color: #e0e0e0;
+        }
+
+        .metadata-label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            color: #777;
+        }
+
+        .metadata-value {
+            font-size: 0.9rem;
+        }
+
+        .metadata-value a {
+            color: #333;
+            text-decoration: none;
+            border-bottom: 1px solid #ddd;
+            transition: border-color 0.3s;
+        }
+
+        .metadata-value a:hover {
+            border-color: #333;
+        }
+
+        /* Brand logo in metadata styling */
+        .metadata-item-brand {
+            position: relative;
+            padding-right: 60px; /* Make space for the logo */
+        }
+
+        .brand-logo {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 48px;
+            width: auto;
+            display: block;
+        }
+
+        .brand-logo img {
+            height: 100%;
+            width: auto;
+            /* max-width: 48px; */
+            object-fit: contain;
+        }
+
+        /* Mobile adjustments for the logo */
+        @media (max-width: 767px) {
+            .metadata-item-brand {
+                padding-right: 50px;
+            }
+            
+            .brand-logo {
+                right: 0;
+                height: 48px;  /* same as desktop */
+            }
+        }
+
+        /* Project sections */
+        .project-section {
+            max-width: 900px;
+            margin: 50px auto 30px;
+        }
+        
+        .section-heading {
+            font-size: 1.4rem;
+            font-weight: 500;
+            margin-bottom: 20px;
+            color: #222;
+        }
+        
+        .section-content p {
+            margin-bottom: 15px;
+        }
+
+        /* PhotoSwipe Gallery Styles */
+        :root {
+            --gallery-gap: 10px; /* Default value, will be updated by JS */
+        }
+
+        /* Full width images */
+        .full-width-image {
+            width: 100%;
+            height: auto;
+            margin-bottom: var(--gallery-gap);
+            display: block;
+            cursor: pointer;
+        }
+
+        /* Remove redundant declarations */
+        .image-row {
+            display: flex;
+            gap: var(--gallery-gap);
+            margin-bottom: var(--gallery-gap);
+            width: 100%;
+            overflow: hidden;
+            align-items: center;
+            height: auto;
+        }
+
+        /* Add this new rule to ensure proper image row anchor height */
+        .image-row a {
+            flex-shrink: 1;
+            min-width: 0;
+            display: block; /* Make sure it's a block element */
+            height: auto; /* Ensure height is based on content */
+            align-self: flex-start; /* Align to the top */
+            overflow: hidden; /* Hide overflow */
+        }
+
+        /* Update the image styles in rows */
+        .image-row a img {
+            object-fit: contain;
+            max-height: 100%;
+            display: block; /* Make images blocks to prevent extra space */
+            height: auto; /* Let height be determined by JS */
+            width: auto;
+        }
+
+        /* Gallery wrapper for PhotoSwipe */
+        .gallery {
+            display: contents;
+        }
+
+        /* Reset for gallery images */
+        .gallery img {
+            object-fit: contain;
+            max-width: 100%;
+            width: auto;
+            height: auto;
+        }
+
+        /* Custom styling for the caption plugin */
+        .pswp-caption-content {
+            font-size: 16px;
+            max-width: 100%;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.75);
+            color: #fff;
+            text-align: left;
+        }
+
+        /* Responsive video container */
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Portfolio navigation */
+        .portfolio-nav {
+            width: 100%;
+            max-width: 900px;
+            margin: 40px auto 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 30px;
+            /* border-top: 1px solid #eee; */
+        }
+        
+        .portfolio-nav-btn {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #333;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+        
+        .portfolio-nav-btn:hover {
+            color: #777;
+        }
+        
+        .portfolio-nav-btn svg {
+            width: 18px;
+            height: 18px;
+            margin: 0 8px;
+        }
+        
+        .portfolio-nav-center {
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 5%;
+            background: #f9f9f9;
+            border-top: 1px solid #eee;
+            width: 100%;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%;
+        }
+
+        .footer-col {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 30px;
+            padding: 0 10px;
+        }
+        
+        .footer-col:first-child {
+            padding-left: 0;
+            padding-right: 20px;
+        }
+        
+        .footer-col:last-child {
+            padding-right: 0;
+            padding-left: 20px;
+        }
+
+        .footer-heading {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        /* Consolidate responsive widths */
+        @media (min-width: 768px) {
+            .content-wrapper, .footer-container {
+                max-width: 750px;
+                width: 750px;
+            }
+        }
+        
+        @media (min-width: 992px) {
+            .content-wrapper, .footer-container {
+                max-width: 970px;
+                width: 970px;
+            }
+        }
+        
+        @media (min-width: 1200px) {
+            .content-wrapper, .footer-container {
+                max-width: 1170px;
+                width: 1170px;
+            }
+        }
+        
+        @media (min-width: 1440px) {
+            .content-container, .footer-container {
+                width: 1170px;
+            }
+        }
+
+        /* Responsive layout */        
+        @media (min-width: 768px) {
+            .content-wrapper {
+                max-width: 750px;
+            }
+            
+            .footer-container {
+                width: 750px;
+            }
+        }
+        
+        @media (min-width: 992px) {
+            .content-wrapper {
+                max-width: 970px;
+            }
+            
+            .footer-container {
+                width: 970px;
+            }
+        }
+        
+        @media (min-width: 1200px) {
+            .content-wrapper {
+                max-width: 1170px;
+            }
+            
+            .footer-container {
+                width: 1170px;
+            }
+        }
+        
+        @media (min-width: 1440px) {
+            .content-container {
+                width: 1170px; /* was 1410px */
+            }
+            
+            .footer-container {
+                width: 1170px; /* was 1410px */
+            }
+        }
+
+        /* Mobile adjustments */
+        @media (max-width: 767px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .mobile-menu-active .nav-links {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background: white;
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+
+            .mobile-menu-active .nav-links li {
+                margin: 10px 0;
+            }
+            
+            /* Calculate header height for mobile */
+            .hero-section {
+                margin-top: 62px;
+            }
+
+            .hero-image {
+                object-position: 35% 20%;
+                position: fixed;
+                top: 62px;
+                width: 100vw;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+    
+            .content-container {
+                width: 100%;
+                max-width: 100%;
+            }
+            
+            .project-metadata {
+                flex-direction: column;
+            }
+            
+            .metadata-item {
+                padding: 15px 0;
+                width: 100%;
+            }
+            
+            .metadata-item:not(:last-child)::after {
+                width: 100%;
+                height: 1px;
+                bottom: 0;
+                top: auto;
+                left: 0;
+                right: 0;
+            }
+            
+            .footer-col {
+                padding: 0 !important;
+            }
+            
+            /* Portfolio navigation mobile adjustments */
+            .portfolio-nav {
+                padding: 20px 0;
+            }
+            
+            .portfolio-nav-label {
+                display: none;
+            }
+            
+            /* Responsive adjustments for gallery */
+            .image-row {
+                /* Maintain the row on mobile but allow scrolling if needed */
+                flex-wrap: nowrap;
+            }
+
+            .image-row img {
+                height: 120px; /* Default height for mobile, will be adjusted by JS */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Navigation -->
+    <header>
+        <nav>
+            <a href="#" class="logo">
+                <img src="test_img/isodesic_logo.png" alt="Isodesic Logo">
+            </a>
+            <ul class="nav-links">
+                <li><a href="#">Portfolio</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn">☰</button>
+        </nav>
+    </header>
+
+    <!-- Hero Section - Now outside content container -->
+    <div class="hero-section">
+        <img src="test_img/DSC09705.webp" loading="eager" alt="Tiger Wall UL3 in the desert" class="hero-image project-image">
+        <div class="hero-overlay">
+            <h1 class="hero-title">Tiger Wall</h1>
+            <p class="hero-description">This ultralight backpacking tent design balances minimal weight with durability and weather protection. Designed for solo trekkers who need reliable shelter in varied conditions.</p>
+        </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="content-container">
+        <div class="content-wrapper">
+            <!-- Project Content -->
+            <div class="project-content">
+                <!-- Project Metadata Section - Now a single row with dividers -->
+                <div class="project-metadata">
+                    <div class="metadata-item metadata-item-brand">
+                        <span class="metadata-label">Brand</span>
+                        <div class="metadata-value"><a href="https://www.bigagnes.com/">Big Agnes</a></div>
+                        <a href="https://www.bigagnes.com/" class="brand-logo">
+                            <img src="test_img/big_agnes_logo_96x96.png" alt="Big Agnes Logo">
+                        </a>
+                    </div>
+                    <div class="metadata-item">
+                        <span class="metadata-label">Category</span>
+                        <div class="metadata-value">Ultralight Backpacking Tents</div>
+                    </div>
+                    <div class="metadata-item">
+                        <span class="metadata-label">Services</span>
+                        <div class="metadata-value">Product Design & Development</div>
+                    </div>
+                    <div class="metadata-item">
+                        <span class="metadata-label">Release Date</span>
+                        <div class="metadata-value">Spring 2018</div>
+                    </div>
+                </div>
+
+                <!-- Gallery begins - wrapping all image content -->
+                <div id="my-gallery" class="gallery">
+                    <!-- The Brief Section -->
+                    <div class="project-section">
+                        <h2 class="section-heading">The Brief</h2>
+                        <div class="section-content">
+                            <p>OutdoorTech Gear approached us with a challenge: create a sub-2-pound solo backpacking tent that could withstand three-season conditions without compromising on interior space or durability. Their target market was the growing ultralight hiking community that values minimalist gear without sacrificing functionality.</p>
+                            <p>The tent needed to satisfy several key requirements: setup time under 3 minutes, ability to withstand 30mph winds, and a packed size small enough to fit comfortably in a 45L backpack. Additionally, the client requested thoughtful ventilation to address the condensation issues common in lightweight tents.</p>
+                        </div>
+                    </div>
+                    
+                    <a href="test_img/DSC03035.webp" 
+                    data-pswp-width="3840" 
+                    data-pswp-height="2560" 
+                    data-caption="Building the first Tiger Wall UL2 pole set">
+                        <img src="test_img/DSC03035.webp" loading="lazy" alt="Building the first Tiger Wall UL2 pole set" class="full-width-image">
+                    </a>
+                    
+                    <div class="image-row">
+                        <a href="test_img/DSC03902.webp" 
+                        data-pswp-width="3840" 
+                        data-pswp-height="2560" 
+                        data-caption="Comments on the first Tiger Wall UL2 sample">
+                            <img src="test_img/DSC03902.webp" loading="lazy" alt="Comments on the first Tiger Wall UL2 sample">
+                        </a>
+                        <a href="test_img/TW_pipe-cleaner_crop.webp"  
+                        data-pswp-width="985" 
+                        data-pswp-height="1342" 
+                        data-caption="The initial pipe cleaner model">
+                            <img src="test_img/TW_pipe-cleaner_crop.webp" loading="lazy" alt="The initial pipe cleaner model">
+                        </a>
+                    </div>
+                    
+                    <!-- The Design Section -->
+                    <div class="project-section">
+                        <h2 class="section-heading">The Design</h2>
+                        <div class="section-content">
+                            <p>The final design features a semi-freestanding structure using a unique Y-shaped pole configuration that maximizes headroom while minimizing weight. The tent body uses 10D ripstop nylon with strategic silicone-impregnated panels for enhanced water resistance in high-stress areas. We incorporated two-way zippers for versatile ventilation options and designed the vestibule to create 8 sq ft of protected storage space.</p>
+                            <p>Careful consideration was given to the stake points, with reinforced anchor loops and adjustable guy lines that allow for adaptation to various ground conditions. The tent floor employs a 20D bathtub design that extends 5 inches up the sides to prevent water ingress during heavy rain.</p>
+                        </div>
+                    </div>
+                    
+                    <a href="test_img/IMG_4624.webp" 
+                    data-pswp-width="3840" 
+                    data-pswp-height="2880" 
+                        data-caption="Testing the Tiger Wall UL2 in the Flat Tops">
+                        <img src="test_img/IMG_4624.webp" loading="lazy" alt="Testing the Tiger Wall UL2 in the Flat Tops" class="full-width-image">
+                    </a>
+                    
+                    <div class="image-row">
+                        <a href="test_img/IMG_4550.webp" 
+                        data-pswp-width="2880" 
+                        data-pswp-height="3840" 
+                        data-caption="Final Tiger Wall UL3 comments">
+                            <img src="test_img/IMG_4550.webp" loading="lazy" alt="Final Tiger Wall UL3 comments">
+                        </a>
+                        <a href="test_img/IMG_5054.webp" 
+                        data-pswp-width="3840" 
+                        data-pswp-height="2880" 
+                            data-caption="A wall of Tiger Walls">
+                            <img src="test_img/IMG_5054.webp" loading="lazy" alt="A wall of Tiger Walls">
+                        </a>
+                        <a href="test_img/DSC03902.webp" 
+                        data-pswp-width="3840" 
+                        data-pswp-height="2560" 
+                        data-caption="Comments on the first Tiger Wall UL2 sample">
+                            <img src="test_img/DSC03902.webp" loading="lazy" alt="Comments on the first Tiger Wall UL2 sample">
+                        </a>
+                    </div>
+                    
+                    <!-- The Process Section -->
+                    <div class="project-section">
+                        <h2 class="section-heading">The Process</h2>
+                        <div class="section-content">
+                            <p>Development began with extensive market research and field interviews with long-distance hikers. We created sketches and 3D models of several concepts before narrowing to two prototypes for field testing. The first iteration revealed issues with condensation in humid environments, leading to a redesign of the ventilation system.</p>
+                            <p>Material testing was critical to balance durability and weight. We conducted abrasion resistance tests on twelve fabric combinations before selecting the final materials. Wind tunnel testing validated the structural integrity of our pole design, and controlled environment testing confirmed the waterproofing effectiveness. After four iterations and 35 nights of field testing across various climates, we finalized the design for production.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="image-row">
+                        <a href="test_img/Tiger Wall UL 2 01.webp"
+                        data-pswp-width="3840" 
+                        data-pswp-height="2560" 
+                        data-caption="Tiger Wall UL2 official product photo">
+                            <img src="test_img/Tiger Wall UL 2 01.webp" loading="lazy" alt="Tiger Wall UL2 official product photo">
+                        </a>
+                        <a href="test_img/Tiger Wall UL 2 04.webp"
+                        data-pswp-width="3840" 
+                        data-pswp-height="2560" 
+                        data-caption="Tiger Wall UL2 official product photo">
+                            <img src="test_img/Tiger Wall UL 2 04.webp" loading="lazy" alt="Tiger Wall UL2 official product photo">
+                        </a>
+                    </div>
+                    
+                    <!-- The Result Section -->
+                    <div class="project-section">
+                        <h2 class="section-heading">The Result</h2>
+                        <div class="section-content">
+                            <p>The completed tent weighs just 1.8 pounds and packs down to the size of a 1-liter water bottle. Field testers reported exceptional stability in winds up to 35mph, and condensation was reduced by 60% compared to competing models in similar conditions. The innovative pole structure created 25% more headroom than competitors in the same weight class.</p>
+                            <p>OutdoorTech Gear launched the tent to critical acclaim, winning "Editor's Choice" from Backpacker Magazine and "Innovation Award" at the Outdoor Retailer show. First production run sold out within two weeks, and the design has since become the company's flagship product with over 15,000 units sold in the first year.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Video Container -->
+                    <div class="video-container">
+                        <iframe 
+                            src="https://www.youtube.com/embed/f0BXPBiZY3Y?si=Cn23Z23QigK1WDMi" 
+                            title="Tiger Wall UL2 & 3"
+                            loading="lazy" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                            referrerpolicy="strict-origin-when-cross-origin" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    
+                    <!-- Video Container -->
+                    <div class="video-container">
+                        <iframe
+                            src="https://www.youtube.com/embed/rYQ9UA5Wxtk?si=B0obOShlxdMEZcbI"
+                            title="Tiger Wall UL & mtnGLO SDF Tent"
+                            loading="lazy"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+                
+                <!-- Portfolio Navigation -->
+                <div class="portfolio-nav">
+                    <a href="#" class="portfolio-nav-btn">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15,6 L9,12 L15,18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span class="portfolio-nav-label">Previous Project</span>
+                    </a>
+                    <a href="#" class="portfolio-nav-btn portfolio-nav-center">Back to Portfolio</a>
+                    <a href="#" class="portfolio-nav-btn">
+                        <span class="portfolio-nav-label">Next Project</span>
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9,6 L15,12 L9,18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- PhotoSwipe div element template -->
+    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="pswp__bg"></div>
+        <div class="pswp__scroll-wrap">
+            <div class="pswp__container">
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+            </div>
+            <div class="pswp__ui pswp__ui--hidden">
+                <div class="pswp__top-bar">
+                    <div class="pswp__counter"></div>
+                    <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                    <button class="pswp__button pswp__button--share" title="Share"></button>
+                    <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                    <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                    <div class="pswp__preloader">
+                        <div class="pswp__preloader__icn">
+                            <div class="pswp__preloader__cut">
+                                <div class="pswp__preloader__donut"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                    <div class="pswp__share-tooltip"></div>
+                </div>
+                <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+                <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+                <div class="pswp__caption">
+                    <div class="pswp__caption__center"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3 class="footer-heading">Portfolio</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Tents</a></li>
+                    <li><a href="#">Backpacks</a></li>
+                    <li><a href="#">Hiking Gear</a></li>
+                    <li><a href="#">Camp Equipment</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3 class="footer-heading">About</h3>
+                <ul class="footer-links">
+                    <li><a href="#">My Story</a></li>
+                    <li><a href="#">Design Process</a></li>
+                    <li><a href="#">Client Testimonials</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3 class="footer-heading">Services</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Product Design</a></li>
+                    <li><a href="#">Prototyping</a></li>
+                    <li><a href="#">Consultation</a></li>
+                    <li><a href="#">Technical Documentation</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3 class="footer-heading">Contact</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Email</a></li>
+                    <li><a href="#">Phone</a></li>
+                    <li><a href="#">LinkedIn</a></li>
+                    <li><a href="#">Instagram</a></li>
+                </ul>
+            </div>
+            <div class="copyright">
+                © 2025 Outdoor Product Design Portfolio. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script type="module">
+        // Import modules
+        import PhotoSwipeLightbox from './photoswipe-lightbox.esm.min.js';
+        import PhotoSwipe from './photoswipe.esm.min.js';
+        import PhotoSwipeDynamicCaption from './photoswipe-dynamic-caption-plugin.esm.js';
+
+        // Optimize adjustImageRowHeights function
+        function adjustImageRowHeights() {
+            const imageRows = document.querySelectorAll('.image-row');
+            const contentWrapper = document.querySelector('.content-wrapper');
+            const containerWidth = contentWrapper.offsetWidth;
+            const paddingLeft = parseInt(window.getComputedStyle(contentWrapper).paddingLeft);
+            
+            // Responsive gap sizing
+            const isMobile = window.innerWidth <= 767;
+            const gap = isMobile ? 5 : 10;
+            
+            // Set CSS variable for consistent spacing
+            document.documentElement.style.setProperty('--gallery-gap', gap + 'px');
+            
+            // Calculate available width once (avoiding repetition in loop)
+            const availableWidth = containerWidth - (2 * paddingLeft);
+            
+            imageRows.forEach(row => {
+                const links = Array.from(row.querySelectorAll('a'));
+                
+                // Get aspect ratios from data attributes
+                const aspectRatios = links.map(link => {
+                    const width = parseFloat(link.getAttribute('data-pswp-width'));
+                    const height = parseFloat(link.getAttribute('data-pswp-height'));
+                    
+                    if (!width || !height) {
+                        const img = link.querySelector('img');
+                        return img.naturalWidth / img.naturalHeight || 1.5;
+                    }
+                    
+                    return width / height;
+                });
+                
+                // Calculate total width if all images had height=1px
+                const totalWidthAtUnitHeight = aspectRatios.reduce((sum, ratio) => sum + ratio, 0);
+                
+                // Calculate target height to fill container width
+                const gapsWidth = (links.length - 1) * gap;
+                const targetHeight = (availableWidth - gapsWidth) / totalWidthAtUnitHeight;
+                
+                // Set heights of all images and link containers
+                links.forEach((link, index) => {
+                    const img = link.querySelector('img');
+                    
+                    // Apply styles in batch for better performance
+                    Object.assign(img.style, {
+                        height: `${targetHeight}px`,
+                        maxHeight: `${targetHeight}px`,
+                        width: 'auto',
+                        objectFit: 'contain'
+                    });
+                    
+                    Object.assign(link.style, {
+                        height: `${targetHeight}px`,
+                        lineHeight: '0'
+                    });
+                });
+                
+                // Set the row height explicitly
+                row.style.height = `${targetHeight}px`;
+            });
+        }
+
+        // Initialize PhotoSwipe with caption plugin
+        document.addEventListener('DOMContentLoaded', function() {
+            // Run row height adjustment
+            adjustImageRowHeights();
+            
+            // Initialize PhotoSwipe Lightbox
+            const lightbox = new PhotoSwipeLightbox({
+                gallery: '#my-gallery',
+                children: 'a',
+                pswpModule: PhotoSwipe,
+                
+                // Basic options
+                showHideAnimationType: 'fade',
+                bgOpacity: 0.92,
+                
+                // Important UI options
+                arrowPrev: true,
+                arrowNext: true,
+                closeTitle: 'Close',
+                zoomTitle: 'Zoom',
+                arrowPrevTitle: 'Previous',
+                arrowNextTitle: 'Next',
+                errorMsg: 'The image cannot be loaded',
+                
+                // Disable default caption to use dynamic caption plugin
+                captionEl: false,
+                
+                // Adjust padding to ensure image fits with caption
+                paddingFn: () => {
+                    return {
+                        top: 30,    // For top bar
+                        bottom: 70, // Reserve space for caption
+                        left: 0,
+                        right: 0
+                    };
+                }
+            });
+            
+            // Initialize the dynamic caption plugin
+            const dynamicCaption = new PhotoSwipeDynamicCaption(lightbox, {
+                type: 'below',         // Position caption below the image
+                captionContent: (slide) => {
+                    // Get caption from data-caption attribute
+                    return slide.data.element.dataset.caption || '';
+                },
+                mobileLayoutBreakpoint: 700, // Adjust for mobile layout
+                mobileCaptionOverlapRatio: 1, // Full width on mobile
+                maxCaptionWidth: '100%',     // Caption width matches image
+                alignToImage: true
+            });
+            
+            // Initialize the lightbox
+            lightbox.init();
+            
+            // Listen for resize events
+            window.addEventListener('resize', adjustImageRowHeights);
+        });
+
+        // Handle fixed background positioning
+        window.addEventListener('scroll', function() {
+            const heroSection = document.querySelector('.hero-section');
+            const heroImage = document.querySelector('.hero-image');
+            const contentContainer = document.querySelector('.content-container');
+            const heroRect = heroSection.getBoundingClientRect();
+            
+            // When hero section is scrolled out of view
+            if (heroRect.bottom <= 0) {
+                // Move the hero image out of view
+                heroImage.style.position = 'absolute';
+                heroImage.style.top = heroSection.offsetHeight + 'px';
+                heroImage.style.bottom = 'auto';
+            } else {
+                // Keep hero image fixed
+                heroImage.style.position = 'fixed';
+                heroImage.style.top = '62px';
+                heroImage.style.bottom = 'auto';
+            }
+            
+            // Ensure content container is full width regardless of viewport size
+            contentContainer.style.width = '100%';
+            contentContainer.style.maxWidth = '100vw';
+        });
+        
+        // Basic JavaScript for mobile menu toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.body.classList.toggle('mobile-menu-active');
+        });
+    </script>
+</body>
+</html>
+``` 
