@@ -638,7 +638,7 @@
                 <div class="project-section">
                     <h2 class="section-heading">The Brief</h2>
                     <div class="section-content">
-                        <p>Earlier in its history, Big Agnes created two of the most popular and iconic ultralight tent designs: the minimalist <a href="test_img/2014 Fly Creek UL 2 Tent.jpg" class="image-link" data-image="test_img/2014 Fly Creek UL 2 Tent.jpg">Fly Creek UL</a> with its semi-freestanding single-hubbed pole and one front-entry door, and the full-featured <a href="test_img/2014 Copper Spur UL 2 Tent.jpg" class="image-link" data-image="test_img/2014 Copper Spur UL 2 Tent.jpg">Copper Spur UL</a> with its freestanding dual-hubbed pole and two side-entry doors (for all sizes except the one-person size). The challenge, in the summer of 2016, was to create a hybrid that combines the best of both worlds: the lightest weight architecture that maximizes livable space and has two side-entry doors.</p>
+                        <p>Earlier in its history, Big Agnes created two of the most popular and iconic ultralight tent designs: the minimalist <a href="test_img/2014 Fly Creek UL 2 Tent.jpg" class="image-hover" data-image="test_img/2014 Fly Creek UL 2 Tent.jpg">Fly Creek UL</a> with its semi-freestanding single-hubbed pole and one front-entry door, and the full-featured <a href="test_img/2014 Copper Spur UL 2 Tent.jpg" class="image-hover" data-image="test_img/2014 Copper Spur UL 2 Tent.jpg">Copper Spur UL</a> with its freestanding dual-hubbed pole and two side-entry doors (for all sizes except the one-person size). The challenge, in the summer of 2016, was to create a hybrid that combines the best of both worlds: the lightest weight architecture that maximizes livable space and has two side-entry doors.</p>
                     </div>
                 </div>
                 
@@ -968,6 +968,15 @@
         });
 
         document.addEventListener('DOMContentLoaded', function() {
+            // Check if device is mobile
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) 
+                          || (window.matchMedia && window.matchMedia('(max-width: 767px)').matches);
+            
+            // If mobile, don't set up the preview functionality
+            if (isMobile) {
+                return;
+            }
+            
             // Create a single preview element to reuse
             const previewElement = document.createElement('div');
             previewElement.className = 'hover-preview';
@@ -977,7 +986,7 @@
             document.body.appendChild(previewElement);
             
             // Get all image links
-            const imageLinks = document.querySelectorAll('.image-link');
+            const imageLinks = document.querySelectorAll('.image-hover');
             
             // Add hover functionality for desktop
             imageLinks.forEach(link => {
