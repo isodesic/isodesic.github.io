@@ -85,6 +85,26 @@
             font-size: 1.5rem;
         }
 
+        .hover-preview {
+            position: absolute;
+            display: none;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            padding: 5px;
+            z-index: 100;
+            pointer-events: none; /* Ensures hover works properly */
+            width: 200px; /* Adjust the preview size as needed */
+            height: auto;
+        }
+
+        .hover-preview img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
         /* Hero Section - Now butts up directly against header */
         .hero-section {
             position: relative;
@@ -581,7 +601,7 @@
         <img src="test_img/DSC09705.webp" loading="eager" alt="Tiger Wall UL3 in the desert" class="hero-image project-image">
         <div class="hero-overlay">
             <h1 class="hero-title">Tiger Wall</h1>
-            <p class="hero-description">This ultralight backpacking tent design balances minimal weight with durability and weather protection. Designed for solo trekkers who need reliable shelter in varied conditions.</p>
+            <p class="hero-description">A family of award-winning, ultralight backpacking tents with the highest space-to-weight ratio for a semi-freestanding architecture</p>
         </div>
     </div>
 
@@ -618,12 +638,11 @@
                 <div class="project-section">
                     <h2 class="section-heading">The Brief</h2>
                     <div class="section-content">
-                        <p>OutdoorTech Gear approached us with a challenge: create a sub-2-pound solo backpacking tent that could withstand three-season conditions without compromising on interior space or durability. Their target market was the growing ultralight hiking community that values minimalist gear without sacrificing functionality.</p>
-                        <p>The tent needed to satisfy several key requirements: setup time under 3 minutes, ability to withstand 30mph winds, and a packed size small enough to fit comfortably in a 45L backpack. Additionally, the client requested thoughtful ventilation to address the condensation issues common in lightweight tents.</p>
+                        <p>Earlier in its history, Big Agnes created two of the most popular and iconic ultralight tent designs: the minimalist <a href="test_img/2014 Fly Creek UL 2 Tent.jpg" class="image-link" data-image="test_img/2014 Fly Creek UL 2 Tent.jpg">Fly Creek UL</a> with its semi-freestanding single-hubbed pole and one front-entry door, and the full-featured <a href="test_img/2014 Copper Spur UL 2 Tent.jpg" class="image-link" data-image="test_img/2014 Copper Spur UL 2 Tent.jpg">Copper Spur UL</a> with its freestanding dual-hubbed pole and two side-entry doors (for all sizes except the one-person size). The challenge, in the summer of 2016, was to create a hybrid that combines the best of both worlds: the lightest weight architecture that maximizes livable space and has two side-entry doors.</p>
                     </div>
                 </div>
                 
-                <a href="test_img/DSC03035.webp" 
+                <a href="test_img/DSC03035.webp" class="gallery-image" 
                    data-pswp-width="3840" 
                    data-pswp-height="2560" 
                    data-caption="Building the first Tiger Wall UL2 pole set">
@@ -631,13 +650,13 @@
                 </a>
                 
                 <div class="image-row">
-                    <a href="test_img/DSC03902.webp" 
+                    <a href="test_img/DSC03902.webp" class="gallery-image"
                     data-pswp-width="3840" 
                     data-pswp-height="2560" 
                        data-caption="Comments on the first Tiger Wall UL2 sample">
                         <img src="test_img/DSC03902.webp" loading="lazy" alt="Comments on the first Tiger Wall UL2 sample">
                     </a>
-                    <a href="test_img/TW_pipe-cleaner_crop.webp"  
+                    <a href="test_img/TW_pipe-cleaner_crop.webp" class="gallery-image"
                     data-pswp-width="985" 
                     data-pswp-height="1342" 
                     data-caption="The initial pipe cleaner model">
@@ -654,7 +673,7 @@
                     </div>
                 </div>
                 
-                <a href="test_img/IMG_4624.webp" 
+                <a href="test_img/IMG_4624.webp" class="gallery-image" 
                 data-pswp-width="3840" 
                 data-pswp-height="2880" 
                     data-caption="Testing the Tiger Wall UL2 in the Flat Tops">
@@ -662,19 +681,19 @@
                 </a>
                 
                 <div class="image-row">
-                    <a href="test_img/IMG_4550.webp" 
+                    <a href="test_img/IMG_4550.webp" class="gallery-image"
                     data-pswp-width="2880" 
                     data-pswp-height="3840" 
                        data-caption="Final Tiger Wall UL3 comments">
                         <img src="test_img/IMG_4550.webp" loading="lazy" alt="Final Tiger Wall UL3 comments">
                     </a>
-                    <a href="test_img/IMG_5054.webp" 
+                    <a href="test_img/IMG_5054.webp" class="gallery-image"
                     data-pswp-width="3840" 
                     data-pswp-height="2880" 
                         data-caption="A wall of Tiger Walls">
                         <img src="test_img/IMG_5054.webp" loading="lazy" alt="A wall of Tiger Walls">
                     </a>
-                    <a href="test_img/DSC03902.webp" 
+                    <a href="test_img/DSC03902.webp"  class="gallery-image"
                     data-pswp-width="3840" 
                     data-pswp-height="2560" 
                        data-caption="Comments on the first Tiger Wall UL2 sample">
@@ -692,13 +711,13 @@
                 </div>
                 
                 <div class="image-row">
-                    <a href="test_img/Tiger Wall UL 2 01.webp"
+                    <a href="test_img/Tiger Wall UL 2 01.webp" class="gallery-image"
                     data-pswp-width="3840" 
                     data-pswp-height="2560" 
                        data-caption="Tiger Wall UL2 official product photo">
                         <img src="test_img/Tiger Wall UL 2 01.webp" loading="lazy" alt="Tiger Wall UL2 official product photo">
                     </a>
-                    <a href="test_img/Tiger Wall UL 2 04.webp"
+                    <a href="test_img/Tiger Wall UL 2 04.webp" class="gallery-image"
                     data-pswp-width="3840" 
                     data-pswp-height="2560" 
                        data-caption="Tiger Wall UL2 official product photo">
@@ -898,7 +917,7 @@
             // Initialize PhotoSwipe Lightbox
             const lightbox = new PhotoSwipeLightbox({
                 gallery: '#my-gallery',
-                children: 'a',
+                children: 'a.gallery-image',
                 pswpModule: PhotoSwipe,
                 
                 // Basic options
@@ -946,6 +965,69 @@
             
             // Listen for resize events
             window.addEventListener('resize', adjustImageRowHeights);
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create a single preview element to reuse
+            const previewElement = document.createElement('div');
+            previewElement.className = 'hover-preview';
+            
+            const previewImage = document.createElement('img');
+            previewElement.appendChild(previewImage);
+            document.body.appendChild(previewElement);
+            
+            // Get all image links
+            const imageLinks = document.querySelectorAll('.image-link');
+            
+            // Add hover functionality for desktop
+            imageLinks.forEach(link => {
+                link.addEventListener('mouseenter', function(e) {
+                    const imageUrl = this.getAttribute('data-image');
+                    if (imageUrl) {
+                        previewImage.src = imageUrl;
+                        previewElement.style.display = 'block';
+                        
+                        // Position the preview near the mouse pointer
+                        updatePreviewPosition(e);
+                    }
+                });
+                
+                link.addEventListener('mouseleave', function() {
+                    previewElement.style.display = 'none';
+                });
+                
+                link.addEventListener('mousemove', updatePreviewPosition);
+            });
+            
+            // Function to update the position of the preview
+            function updatePreviewPosition(e) {
+                // Position the preview near the mouse pointer with a small offset
+                const offset = 15;
+                
+                // Calculate position making sure preview stays within viewport
+                let left = e.pageX + offset;
+                let top = e.pageY + offset;
+                
+                // Get viewport width and height
+                const viewportWidth = window.innerWidth;
+                const viewportHeight = window.innerHeight;
+                
+                // Get preview dimensions
+                const previewWidth = previewElement.offsetWidth;
+                const previewHeight = previewElement.offsetHeight;
+                
+                // Adjust position if preview would go off screen
+                if (left + previewWidth > viewportWidth - 20) {
+                    left = e.pageX - previewWidth - offset;
+                }
+                
+                if (top + previewHeight > viewportHeight - 20) {
+                    top = e.pageY - previewHeight - offset;
+                }
+                
+                previewElement.style.left = left + 'px';
+                previewElement.style.top = top + 'px';
+            }
         });
         
         // Basic JavaScript for mobile menu toggle
