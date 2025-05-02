@@ -176,8 +176,8 @@
             flex-wrap: wrap;
             justify-content: space-between;
             padding: 20px 0;
-            border-top: 1px solid #eee;
-            border-bottom: 1px solid #eee;
+            border-top: 1px dotted #555;
+            border-bottom: 1px dotted #555;
         }
 
         .metadata-item {
@@ -187,14 +187,8 @@
             min-width: 160px;
         }
         
-        .metadata-item:not(:last-child)::after {
-            content: '';
-            position: absolute;
-            right: 0;
-            top: 0;
-            height: 100%;
-            width: 1px;
-            background-color: #e0e0e0;
+        .metadata-item:not(:last-child) {
+            border-right: 1px dotted #555;
         }
 
         .metadata-label {
@@ -247,6 +241,18 @@
 
         /* Mobile adjustments for the logo */
         @media (max-width: 767px) {
+            .project-metadata {
+                padding: 0;
+            }
+
+            .metadata-item:not(:last-child) {
+                border-right: none;
+            }
+
+            .metadata-item:not(:last-child) {
+                border-bottom: 1px dotted #555;
+            }
+
             .metadata-item-brand {
                 padding-right: 50px;
             }
@@ -258,7 +264,9 @@
         }
 
         a.image-hover {
-            text-decoration-style: dashed;
+            color: #000;
+            text-decoration: none;
+            border-bottom: 1px solid #ccc;
         }
 
         /* Project sections */
@@ -353,6 +361,14 @@
             vertical-align: middle;
         }
 
+        .all-projects-table tr {
+            border-bottom: 1px dotted #555;
+        }
+
+        .all-projects-table tr:last-child {
+            border-bottom: none;
+        }
+
         .season-cell {
             font-weight: 600;
             text-align: right;
@@ -360,18 +376,6 @@
             white-space: nowrap;
             color: #555;
             border-right: 1px dotted #555;
-            border-bottom: 1px dotted #555;
-        }
-
-        .project-cell {
-            /* width: 65%;  /* maybe remove this if project name is too long */
-            /* min-width: 240px; */
-            border-bottom: 1px dotted #555;
-        }
-
-        /* Remove bottom border from the last row in each table */
-        .all-projects-table .last-row-cell {
-            border-bottom: none;
         }
 
         /* Mobile responsive adjustments */
@@ -401,7 +405,7 @@
             }
             
             /* On mobile, don't remove bottom border from the last row in left table */
-            .left-table .last-row-cell {
+            .left-table tr:last-child {
                 border-bottom: 1px dotted #555;
             }
         }
@@ -617,9 +621,17 @@
             .hero-title {
                 font-size: 2.5rem;
             }
+
+            .content-container {
+                padding-top: 30px;
+            }
             
             .project-metadata {
                 flex-direction: column;
+            }
+
+            .project-section {
+                margin-top: 30px;
             }
             
             .metadata-item {
@@ -861,7 +873,7 @@
                                     <td class="project-cell">Tiger Wall UL3 EX</td>
                                 </tr>
                                 <tr>
-                                    <td class="season-cell last-row-cell" rowspan="6">Spring 2019</td>
+                                    <td class="season-cell" rowspan="6">Spring 2019</td>
                                     <td class="project-cell">Tiger Wall 2 Platinum</td>
                                 </tr>
                                 <tr>
@@ -877,7 +889,7 @@
                                     <td class="project-cell">Tiger Wall 2 Carbon</td>
                                 </tr>
                                 <tr>
-                                    <td class="project-cell last-row-cell">Tiger Wall 3 Carbon</td>
+                                    <td class="project-cell">Tiger Wall 3 Carbon</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -890,7 +902,7 @@
                                     <td class="project-cell">Tiger Wall UL1</td>
                                 </tr>
                                 <tr>
-                                    <td class="season-cell last-row-cell" rowspan="10">Spring 2021</td>
+                                    <td class="season-cell" rowspan="10">Spring 2021</td>
                                     <td class="project-cell">Tiger Wall UL1 Solution Dye</td>
                                 </tr>
                                 <tr>
@@ -918,7 +930,7 @@
                                     <td class="project-cell">Tiger Wall UL2 EX Solution Dye</td>
                                 </tr>
                                 <tr>
-                                    <td class="project-cell last-row-cell">Tiger Wall UL3 EX Solution Dye</td>
+                                    <td class="project-cell">Tiger Wall UL3 EX Solution Dye</td>
                                 </tr>
                             </tbody>
                         </table>
