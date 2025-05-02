@@ -340,7 +340,7 @@
 
         .all-projects-table {
             border-collapse: collapse;
-            width: 100%;  /* maybe remove this if project name is too long */
+            width: 100%;
             line-height: 1.4 !important;
         }
 
@@ -357,24 +357,16 @@
             font-weight: 600;
             text-align: right;
             width: 35%;  /* maybe remove this if project name is too long */
+            white-space: nowrap;
             color: #555;
             border-right: 1px dotted #555;
             border-bottom: 1px dotted #555;
         }
 
         .project-cell {
-            width: 65%;  /* maybe remove this if project name is too long */
-            min-width: 240px;
+            /* width: 65%;  /* maybe remove this if project name is too long */
+            /* min-width: 240px; */
             border-bottom: 1px dotted #555;
-        }
-
-        /* Ensure both tables use the same widths...maybe remove this if project name is too long */
-        .left-table .season-cell, .right-table .season-cell {
-            width: 35%;
-        }
-
-        .left-table .project-cell, .right-table .project-cell {
-            width: 65%;
         }
 
         /* Remove bottom border from the last row in each table */
@@ -391,12 +383,12 @@
 
             .all-projects-table {
                 width: 100%;
-                table-layout: auto; /* Allow table to size columns based on content */
+                table-layout: auto;
             }
             
             .season-cell {
-                width: auto; /* Remove fixed width */
-                white-space: nowrap; /* Prevent text wrapping */
+                width: 1%; /* Make as narrow as possible while fitting content */
+                white-space: nowrap;
             }
             
             .project-cell {
