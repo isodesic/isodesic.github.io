@@ -365,7 +365,7 @@
         .all-projects-table .last-row-cell {
             border-bottom: none;
         }
-        
+
         .season-cell {
             font-weight: 600;
             text-align: right;
@@ -529,6 +529,14 @@
 
         .footer-links a:hover {
             color: #333;
+        }
+
+        .cryptedmail:after {
+            content: attr(data-name) "@" attr(data-domain) "." attr(data-tld);
+        }
+
+        .cryptedphone:after {
+            content: "(" attr(data-area) ") " attr(data-prefix) "-" attr(data-line);
         }
 
         .copyright {
@@ -1049,14 +1057,14 @@
             <div class="footer-col">
                 <h3 class="footer-heading">Contact</h3>
                 <ul class="footer-links">
-                    <li><a href="#">Email</a></li>
-                    <li><a href="#">Phone</a></li>
+                    <li><a href="#" class="cryptedmail" data-name="will" data-domain="isodesic" data-tld="com" onclick="window.location.href = 'mailto:' + this.dataset.name + '@' + this.dataset.domain + '.' + this.dataset.tld; return false;"></a></li>
+                    <li><a href="#" class="cryptedphone" data-area="970" data-prefix="875" data-line="4792" onclick="window.location.href = 'tel:' + this.dataset.area + '-' + this.dataset.prefix + '-' + this.dataset.line; return false;"></a></li>
                     <li><a href="#">LinkedIn</a></li>
                     <li><a href="#">Instagram</a></li>
                 </ul>
             </div>
             <div class="copyright">
-                © 2025 Outdoor Product Design Portfolio. All rights reserved.
+                © 2025 Isodesic, LLC. All rights reserved.
             </div>
         </div>
     </footer>
