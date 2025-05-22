@@ -1,4 +1,0 @@
-Run in Command Prompt:
-for %f in (*.jpg) do magick "%f" -auto-orient -resize "3840x3840>" -quality 90 "%~nf.webp"
-
-for %f in (*.jpg) do magick "%f" -auto-orient -resize "2560x2560>" -quality 85 "%~nf.webp"
