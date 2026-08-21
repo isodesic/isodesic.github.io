@@ -3,21 +3,117 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Isodesic — Product design for technical outdoor gear</title>
-<meta name="description" content="Isodesic is an independent product design practice: twenty years of ultralight tents, sleeping systems, camp furniture, luggage, and packs.">
+<title>Isodesic — Freelance product design for technical outdoor gear</title>
+<meta name="description" content="Isodesic is the independent product design practice of [YOUR NAME] — nearly 20 years designing ultralight backpacking tents, sleeping pads, camp furniture, luggage, and packs. Available for outdoor and technical hardgoods projects worldwide.">
+<link rel="canonical" href="https://isodesic.com/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="author" content="[YOUR NAME]">
+
+<!-- Link previews (Google, Slack, LinkedIn, iMessage, etc.) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Isodesic">
+<meta property="og:title" content="Isodesic — Product design for technical outdoor gear">
+<meta property="og:description" content="Nearly 20 years designing ultralight tents, sleeping systems, camp furniture, luggage, and packs. Freelance industrial design for the outdoor industry and beyond.">
+<meta property="og:url" content="https://isodesic.com/">
+<meta property="og:image" content="https://isodesic.com/social-preview.jpg">
+<meta property="og:image:alt" content="[PLACEHOLDER: describe the preview image — e.g. an ultralight tent pitched at altitude]">
+<meta name="twitter:card" content="summary_large_image">
+
+<!-- Icons and browser chrome -->
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="icon" href="isodesic-logo.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#1b9ad6">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles-v2.css">
+
+<!-- Structured data: what search engines and AI assistants read to understand
+     who you are, what you do, and what you have worked on. Replace every
+     [PLACEHOLDER] and delete any sameAs line you do not use. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": ["ProfessionalService", "Organization"],
+      "@id": "https://isodesic.com/#business",
+      "name": "Isodesic",
+      "alternateName": "Isodesic Product Design",
+      "url": "https://isodesic.com/",
+      "logo": "https://isodesic.com/isodesic-logo.png",
+      "image": "https://isodesic.com/social-preview.jpg",
+      "email": "hello@isodesic.com",
+      "telephone": "[PLACEHOLDER: +1-555-000-0000]",
+      "description": "Independent product design practice specializing in technical outdoor gear: ultralight backpacking tents, sleeping pads, camp furniture, luggage, and backpacks.",
+      "foundingDate": "[PLACEHOLDER: 2007]",
+      "priceRange": "$",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "[PLACEHOLDER: City]",
+        "addressRegion": "[PLACEHOLDER: State]",
+        "addressCountry": "US"
+      },
+      "areaServed": { "@type": "Place", "name": "Worldwide" },
+      "founder": { "@id": "https://isodesic.com/#designer" },
+      "knowsAbout": [
+        "Industrial design",
+        "Ultralight backpacking tents",
+        "Sleeping pads and sleeping bags",
+        "Camp furniture",
+        "Backpacks and luggage",
+        "Technical hardgoods",
+        "Softgoods pattern development",
+        "Design for manufacturing",
+        "Factory technical packages"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Design services",
+        "itemListElement": [
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Concept and industrial design" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Prototyping and field testing" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Technical packages and design for manufacturing" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Production support" } }
+        ]
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://isodesic.com/#designer",
+      "name": "[YOUR NAME]",
+      "jobTitle": "Product Designer",
+      "email": "hello@isodesic.com",
+      "description": "Product designer with nearly 20 years of experience in the outdoor industry.",
+      "worksFor": { "@id": "https://isodesic.com/#business" },
+      "sameAs": [
+        "https://www.linkedin.com/in/[PLACEHOLDER]",
+        "https://www.instagram.com/[PLACEHOLDER]"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://isodesic.com/#website",
+      "url": "https://isodesic.com/",
+      "name": "Isodesic",
+      "publisher": { "@id": "https://isodesic.com/#business" },
+      "inLanguage": "en-US"
+    }
+  ]
+}
+</script>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 <div class="page">
 
   <!-- nav -->
   <header class="nav">
     <div class="nav-bar">
       <a class="nav-logo" href="#top"><img src="isodesic-logo.png" alt="Isodesic"></a>
-      <nav class="nav-links">
+      <nav class="nav-links" aria-label="Main">
         <a href="#work">Work</a>
         <a href="#services">Services</a>
         <a href="#process">Process</a>
@@ -25,12 +121,12 @@
         <a href="#about">About</a>
         <a class="btn" href="#contact">Get in touch</a>
       </nav>
-      <label class="nav-burger" for="nav-toggle" aria-label="Menu">
+      <label class="nav-burger" for="nav-toggle" role="button" tabindex="0" aria-controls="nav-menu" aria-expanded="false" aria-label="Open menu">
         <span></span><span></span><span></span>
       </label>
     </div>
-    <input class="nav-toggle" type="checkbox" id="nav-toggle">
-    <nav class="nav-menu">
+    <input class="nav-toggle" type="checkbox" id="nav-toggle" tabindex="-1" aria-hidden="true">
+    <nav class="nav-menu" id="nav-menu" aria-label="Main, mobile">
       <a href="#work">Work</a>
       <a href="#services">Services</a>
       <a href="#process">Process</a>
@@ -40,8 +136,10 @@
     </nav>
   </header>
 
+  <main id="main">
+
   <!-- hero -->
-  <section class="hero" id="top">
+  <section class="hero" id="top" aria-label="Introduction">
     <div class="hero-scrim"></div>
     <div class="hero-note">photo: gear in the field, full bleed</div>
     <div class="hero-text">
@@ -52,16 +150,17 @@
   </section>
 
   <!-- work -->
-  <section class="sec" id="work">
+  <section class="sec" id="work" aria-labelledby="work-title">
     <div class="cols">
       <div data-reveal>
         <div class="sec-num">01 / WORK</div>
-        <h2 class="sec-title">Selected work</h2>
-        <a class="sec-link" href="#">All projects →</a>
+        <h2 class="sec-title" id="work-title">Selected work</h2>
+        <a class="sec-link" href="work.html">All projects<span class="sr-only"> — full portfolio</span> →</a>
       </div>
       <div>
-        <a class="card feature" href="#" data-reveal>
-          <div class="ph"><span>photo: tiger wall hero 16:9</span></div>
+        <a class="card feature" href="projects/tiger-wall.html" data-reveal>
+          <!-- swap each .ph block for <img src="..." alt="descriptive alt text" loading="lazy" width="1600" height="900"> -->
+          <div class="ph" role="img" aria-label="[PLACEHOLDER ALT: Big Agnes Tiger Wall tent pitched in the field]"><span aria-hidden="true">photo: tiger wall hero 16:9</span></div>
           <div class="feature-body">
             <div class="feature-kicker">FEATURED · ULTRALIGHT TENTS</div>
             <h3>Big Agnes Tiger Wall Tents</h3>
@@ -69,24 +168,24 @@
           </div>
         </a>
         <div class="grid-3" data-reveal>
-          <a class="card" href="#">
-            <div class="ph"><span>photo</span></div>
+          <a class="card" href="projects/carbon-collection.html">
+            <div class="ph" role="img" aria-label="[PLACEHOLDER ALT: project photo]"><span aria-hidden="true">photo</span></div>
             <div class="card-body">
-              <h4>Big Agnes Carbon Collection</h4>
+              <h3>Big Agnes Carbon Collection</h3>
               <p>Tents made with Dyneema fabric</p>
             </div>
           </a>
-          <a class="card" href="#">
-            <div class="ph"><span>photo</span></div>
+          <a class="card" href="projects/camp-chairs.html">
+            <div class="ph" role="img" aria-label="[PLACEHOLDER ALT: project photo]"><span aria-hidden="true">photo</span></div>
             <div class="card-body">
-              <h4>Big Agnes Camp Chair Collection</h4>
+              <h3>Big Agnes Camp Chair Collection</h3>
               <p>A new line of camp chairs</p>
             </div>
           </a>
-          <a class="card" href="#">
-            <div class="ph"><span>photo</span></div>
+          <a class="card" href="projects/wrovenden.html">
+            <div class="ph" role="img" aria-label="[PLACEHOLDER ALT: project photo]"><span aria-hidden="true">photo</span></div>
             <div class="card-body">
-              <h4>WrovenDen</h4>
+              <h3>WrovenDen</h3>
               <p>A kids travel tent</p>
             </div>
           </a>
@@ -96,11 +195,11 @@
   </section>
 
   <!-- services -->
-  <section class="sec sec-tint" id="services">
+  <section class="sec sec-tint" id="services" aria-labelledby="services-title">
     <div class="cols">
       <div data-reveal>
         <div class="sec-num">02 / SERVICES</div>
-        <h2 class="sec-title">What I can do for you</h2>
+        <h2 class="sec-title" id="services-title">What I can do for you</h2>
       </div>
       <div class="grid-2" data-reveal>
         <div class="tile">
@@ -124,38 +223,38 @@
   </section>
 
   <!-- process -->
-  <section class="sec" id="process">
+  <section class="sec" id="process" aria-labelledby="process-title">
     <div class="cols">
       <div data-reveal>
         <div class="sec-num">03 / PROCESS</div>
-        <h2 class="sec-title">How a project runs</h2>
+        <h2 class="sec-title" id="process-title">How a project runs</h2>
       </div>
       <div>
         <div class="step" data-reveal>
           <div class="step-num">01</div>
           <div>
-            <h4>Frame the problem</h4>
+            <h3>Frame the problem</h3>
             <p>Weight targets, use case, price point, and the gap in your line.</p>
           </div>
         </div>
         <div class="step" data-reveal>
           <div class="step-num">02</div>
           <div>
-            <h4>Explore broadly</h4>
+            <h3>Explore broadly</h3>
             <p>Many directions, quickly, so tradeoffs are visible before you commit.</p>
           </div>
         </div>
         <div class="step" data-reveal>
           <div class="step-num">03</div>
           <div>
-            <h4>Build and test</h4>
+            <h3>Build and test</h3>
             <p>Prototypes in the field, not just on screen. Iterate on what breaks.</p>
           </div>
         </div>
         <div class="step" data-reveal>
           <div class="step-num">04</div>
           <div>
-            <h4>Hand off cleanly</h4>
+            <h3>Hand off cleanly</h3>
             <p>Documentation that answers questions before they get asked.</p>
           </div>
         </div>
@@ -164,11 +263,11 @@
   </section>
 
   <!-- industries -->
-  <section class="sec-blue" id="industries">
+  <section class="sec-blue" id="industries" aria-labelledby="industries-title">
     <div class="cols cols-top">
       <div data-reveal>
         <div class="sec-num">04 / INDUSTRIES</div>
-        <h2 class="sec-title">Where I work</h2>
+        <h2 class="sec-title" id="industries-title">Where I work</h2>
       </div>
       <div>
         <div class="chips" data-reveal>
@@ -180,24 +279,24 @@
           <span class="chip">Technical hardgoods</span>
         </div>
         <div class="logos" data-reveal>
-          <div class="logo-slot">client logo</div>
-          <div class="logo-slot">client logo</div>
-          <div class="logo-slot">client logo</div>
-          <div class="logo-slot">client logo</div>
+          <div class="logo-slot" role="img" aria-label="[PLACEHOLDER: client name]">client logo</div>
+          <div class="logo-slot" role="img" aria-label="[PLACEHOLDER: client name]">client logo</div>
+          <div class="logo-slot" role="img" aria-label="[PLACEHOLDER: client name]">client logo</div>
+          <div class="logo-slot" role="img" aria-label="[PLACEHOLDER: client name]">client logo</div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- about -->
-  <section class="sec sec-tint" id="about">
+  <section class="sec sec-tint" id="about" aria-labelledby="about-title">
     <div class="cols">
       <div data-reveal>
         <div class="sec-num">05 / ABOUT</div>
-        <h2 class="sec-title">Who you'd be working with</h2>
+        <h2 class="sec-title" id="about-title">Who you'd be working with</h2>
       </div>
       <div class="about" data-reveal>
-        <div class="ph about-photo"><span>portrait 4:5</span></div>
+        <div class="ph about-photo" role="img" aria-label="[PLACEHOLDER ALT: portrait of the designer]"><span aria-hidden="true">portrait 4:5</span></div>
         <div>
           <p class="about-lead">Nearly twenty years designing gear people carry up mountains.</p>
           <p>I have spent my career inside the outdoor industry, drawing tents, pads, chairs, and packs that had to hit a weight target, a price, and a ship date at once. That work taught me where the real constraints live and how to talk to a factory.</p>
@@ -214,8 +313,17 @@
     <a class="btn btn-lg" data-reveal href="mailto:hello@isodesic.com">hello@isodesic.com</a>
   </section>
 
+  </main>
+
   <footer class="footer">
-    <span>© 2026 Isodesic</span>
+    <span>© 2026 Isodesic · [YOUR NAME]</span>
+    <address class="footer-address">
+      <a href="mailto:hello@isodesic.com">hello@isodesic.com</a>
+      <span aria-hidden="true">·</span>
+      <span>[PLACEHOLDER: City, State]</span>
+      <span aria-hidden="true">·</span>
+      <a href="https://www.linkedin.com/in/[PLACEHOLDER]" rel="me">LinkedIn</a>
+    </address>
     <span>Product design · Outdoor &amp; technical hardgoods</span>
   </footer>
 

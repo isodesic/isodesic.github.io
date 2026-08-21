@@ -1,0 +1,29 @@
+# Isodesic
+
+> Independent product design practice specializing in technical outdoor gear:
+> ultralight backpacking tents, sleeping pads, camp furniture, luggage, and backpacks.
+
+Designer: [YOUR NAME] — nearly 20 years in the outdoor industry.
+Location: [PLACEHOLDER: City, State]. Works with clients worldwide.
+Contact: hello@isodesic.com
+Availability: taking on new projects for late 2026.
+
+## Services
+- Concept and industrial design (sketching, form development, CAD)
+- Prototyping and field testing
+- Technical packages, specs, BOMs, design for manufacturing
+- Production support and factory liaison
+
+## Categories
+Backpacking tents, sleeping pads and bags, camp furniture, packs, luggage,
+and technical hardgoods inside and outside the outdoor industry.
+
+## Selected work
+- Big Agnes Tiger Wall Tents — the best space-to-weight ratio in an ultralight backpacking tent: /projects/tiger-wall.html
+- Big Agnes Carbon Collection — tents made with Dyneema fabric: /projects/carbon-collection.html
+- Big Agnes Camp Chair Collection — a new line of camp chairs: /projects/camp-chairs.html
+- WrovenDen — a kids travel tent: /projects/wrovenden.html
+
+## Pages
+- Home: https://isodesic.com/
+- Portfolio: https://isodesic.com/work.html

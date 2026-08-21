@@ -190,7 +190,7 @@ h1, h2, h3, h4 { letter-spacing: -0.02em; }
 .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 .grid-3 .ph { height: 200px; }
 .card-body { padding: 20px 22px 24px; }
-.card-body h4 { margin: 0 0 6px; font-size: 19px; font-weight: 700; letter-spacing: -0.01em; }
+.card-body h3 { margin: 0 0 6px; font-size: 19px; font-weight: 700; letter-spacing: -0.01em; }
 .card-body p { margin: 0; font-size: 15px; line-height: 1.5; color: var(--ink-faint); }
 
 /* 6 — services ---------------------------------------------------------- */
@@ -209,7 +209,7 @@ h1, h2, h3, h4 { letter-spacing: -0.02em; }
 }
 .step:last-child { border-bottom: 1px solid var(--rule); }
 .step-num { font-size: 30px; font-weight: 700; color: var(--blue-light); }
-.step h4 { margin: 0 0 6px; font-size: 21px; font-weight: 700; }
+.step h3 { margin: 0 0 6px; font-size: 21px; font-weight: 700; }
 .step p { margin: 0; font-size: 17px; line-height: 1.6; color: var(--ink-soft); }
 
 /* 8 — industries -------------------------------------------------------- */
@@ -227,7 +227,7 @@ h1, h2, h3, h4 { letter-spacing: -0.02em; }
   justify-content: center;
   font-family: var(--mono);
   font-size: 11px;
-  color: #eaf5fc;
+  color: #fff;
 }
 
 /* 9 — about ------------------------------------------------------------- */

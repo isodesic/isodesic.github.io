@@ -42,15 +42,34 @@ function setActive() {
     current = sections[sections.length - 1];
   }
   navLinks.forEach((a) => {
-    a.classList.toggle('is-active', !!current && a.getAttribute('href') === '#' + current.id);
+    const on = !!current && a.getAttribute('href') === '#' + current.id;
+    a.classList.toggle('is-active', on);
+    if (on) { a.setAttribute('aria-current', 'true'); } else { a.removeAttribute('aria-current'); }
   });
 }
 window.addEventListener('scroll', setActive, { passive: true });
 window.addEventListener('resize', setActive);
 setActive();
 
-// close the mobile menu after tapping a link
+// 4 — mobile menu: close after tapping a link, and keep the burger
+//     keyboard-operable and correctly announced to screen readers
 const toggle = document.getElementById('nav-toggle');
+const burger = document.querySelector('.nav-burger');
+
+function syncBurger() {
+  burger.setAttribute('aria-expanded', String(toggle.checked));
+  burger.setAttribute('aria-label', toggle.checked ? 'Close menu' : 'Open menu');
+}
+toggle.addEventListener('change', syncBurger);
+burger.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter' || e.key === ' ') {
+    e.preventDefault();
+    toggle.checked = !toggle.checked;
+    syncBurger();
+  }
+});
+syncBurger();
+
 document.querySelectorAll('.nav-menu a').forEach((a) => {
-  a.addEventListener('click', () => { toggle.checked = false; });
+  a.addEventListener('click', () => { toggle.checked = false; syncBurger(); });
 });
