@@ -20,7 +20,7 @@
     <div class="nav-bar">
       <a class="nav-logo" href="index-v2.html"><img src="isodesic-logo.png" alt="Isodesic"></a>
       <nav class="nav-links" aria-label="Main">
-        <a href="index-v2.html#work">Work</a>
+        <a class="is-active" href="work.html" aria-current="page">Work</a>
         <a href="index-v2.html#services">Services</a>
         <a href="index-v2.html#process">Process</a>
         <a href="index-v2.html#industries">Industries</a>
@@ -33,7 +33,7 @@
     </div>
     <input class="nav-toggle" type="checkbox" id="nav-toggle" tabindex="-1" aria-hidden="true">
     <nav class="nav-menu" id="nav-menu" aria-label="Main, mobile">
-      <a href="index-v2.html#work">Work</a>
+      <a class="is-active" href="work.html" aria-current="page">Work</a>
       <a href="index-v2.html#services">Services</a>
       <a href="index-v2.html#process">Process</a>
       <a href="index-v2.html#industries">Industries</a>
@@ -52,7 +52,6 @@
     <div class="ph pj-bleed-photo" role="img" aria-label="[PLACEHOLDER ALT: hero photo, full bleed]"><span aria-hidden="true">hero photo, full bleed</span></div>
     <div class="pj-hero-scrim"></div>
     <div class="pj-hero-over">
-      <a class="pj-crumb pj-crumb-light" href="index-v2.html#work">← Work</a>
       <h1>[Project Name]</h1>
       <p class="pj-lede">[One sentence on what this product is and why it mattered.]</p>
     </div>
@@ -64,18 +63,21 @@
         <p class="pj-summary">[Three sentences: what the client needed, what you did, what shipped. This is the whole story for someone who reads nothing else.]</p>
         
       <dl class="pj-facts">
-        <div><dt>Client</dt><dd>[Client name]</dd></div>
+        <div class="pj-facts-client"><dt>Client</dt><dd>
+          <span>[Client name]</span>
+          <span class="ph pj-client-logo" role="img" aria-label="[PLACEHOLDER ALT: client logo]"><span aria-hidden="true">logo</span></span>
+        </dd></div>
         <div><dt>Year</dt><dd>[2019–2021]</dd></div>
         <div><dt>Category</dt><dd>[Ultralight shelters]</dd></div>
         <div><dt>Role</dt><dd>[Sole designer, concept to production]</dd></div>
         <div><dt>Delivered</dt><dd>[ID, prototypes, tech pack, factory support]</dd></div>
         <div><dt>Family</dt><dd>[4 sizes / 6 SKUs]</dd></div>
       </dl>
-        <div class="pj-rail-block">
+        <div class="pj-rail-block pj-rail-plain">
           <h2 class="pj-rail-head">Tools</h2>
           <p class="pj-rail-text">Illustrator, Rhino, Grasshopper, SolidWorks, 3D printing, [add or remove]</p>
         </div>
-        <div class="pj-rail-block">
+        <div class="pj-rail-block pj-rail-plain">
           <h2 class="pj-rail-head">Recognition</h2>
           <ul class="pj-recog">
             <li><span>[2021]</span> [Editors' Choice] — [Publication]</li>
@@ -92,7 +94,7 @@
           <figcaption class="pj-cap">[Caption]</figcaption>
         </figure>
         <div class="pj-pair" data-reveal>
-          <figure class="pj-fig" data-lightbox><div class="ph" role="img" aria-label="[PLACEHOLDER ALT: prototype]"><span aria-hidden="true">prototype</span></div><figcaption class="pj-cap">[Caption]</figcaption></figure>
+          <figure class="pj-fig" data-lightbox data-expand><div class="ph" role="img" aria-label="[PLACEHOLDER ALT: prototype]"><span aria-hidden="true">prototype</span></div><figcaption class="pj-cap">[Caption]</figcaption></figure>
           <figure class="pj-fig" data-lightbox><div class="ph" role="img" aria-label="[PLACEHOLDER ALT: prototype]"><span aria-hidden="true">prototype</span></div><figcaption class="pj-cap">[Caption]</figcaption></figure>
         </div>
         <p class="pj-interlude" data-reveal>[An optional short paragraph dropped between images when a stretch of photos needs explaining.]</p>
@@ -114,10 +116,116 @@
     </div>
   </section>
 
+  <!-- every SKU in the family, by season -->
+  <section class="sec pj-tail" id="skus">
+    <div class="cols">
+      <div data-reveal>
+        <div class="sec-num">FULL LIST</div>
+        <h2 class="sec-title">[Project] projects</h2>
+      </div>
+      <div data-reveal>
+        <p class="pj-body">[One line: every SKU in the family I designed or updated, by season.]</p>
+        <table class="pj-skus">
+          <caption class="sr-only">Every [Project] SKU, grouped by season</caption>
+          <thead>
+            <tr><th scope="col">Season</th><th scope="col">Projects</th></tr>
+          </thead>
+          <tbody>
+        <tr>
+          <th scope="row">Spring 2018</th>
+          <td>
+            <ul class="pj-sku-list">
+              <li>Tiger Wall UL2</li>
+              <li>Tiger Wall UL3</li>
+              <li>Tiger Wall UL2 (green)</li>
+              <li>Tiger Wall UL3 (green)</li>
+              <li>Tiger Wall UL2 EX</li>
+              <li>Tiger Wall UL3 EX</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">Spring 2019</th>
+          <td>
+            <ul class="pj-sku-list">
+              <li>Tiger Wall 2 Platinum</li>
+              <li>Tiger Wall 3 Platinum</li>
+              <li>Tiger Wall UL2 mtnGLO</li>
+              <li>Tiger Wall UL3 mtnGLO</li>
+              <li>Tiger Wall 2 Carbon</li>
+              <li>Tiger Wall 3 Carbon</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">Spring 2020</th>
+          <td>
+            <ul class="pj-sku-list">
+              <li>Tiger Wall UL1</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">Spring 2021</th>
+          <td>
+            <ul class="pj-sku-list">
+              <li>Tiger Wall UL1 Solution Dye</li>
+              <li>Tiger Wall UL2 Solution Dye</li>
+              <li>Tiger Wall UL3 Solution Dye</li>
+              <li>Tiger Wall UL2 mtnGLO Solution Dye</li>
+              <li>Tiger Wall UL3 mtnGLO Solution Dye</li>
+              <li>Tiger Wall UL2 Bikepack Solution Dye</li>
+              <li>Tiger Wall UL3 Bikepack Solution Dye</li>
+              <li>Tiger Wall UL1 EX Solution Dye</li>
+              <li>Tiger Wall UL2 EX Solution Dye</li>
+              <li>Tiger Wall UL3 EX Solution Dye</li>
+            </ul>
+          </td>
+        </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- official product videos -->
+  <section class="sec sec-tint pj-tail" id="videos">
+    <div class="cols">
+      <div data-reveal>
+        <div class="sec-num">VIDEO</div>
+        <h2 class="sec-title">Official product videos</h2>
+      </div>
+      <div class="pj-videos" data-reveal>
+        <figure class="pj-video pj-video-lead">
+          <iframe src="https://www.youtube.com/embed/PLACEHOLDER_ID" title="[PLACEHOLDER: video title]" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <figcaption class="pj-cap">[Main video title]</figcaption>
+        </figure>
+        <figure class="pj-video">
+          <iframe src="https://www.youtube.com/embed/PLACEHOLDER_ID" title="[PLACEHOLDER: video title]" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <figcaption class="pj-cap">[Video title]</figcaption>
+        </figure>
+        <figure class="pj-video">
+          <iframe src="https://www.youtube.com/embed/PLACEHOLDER_ID" title="[PLACEHOLDER: video title]" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <figcaption class="pj-cap">[Video title]</figcaption>
+        </figure>
+        <figure class="pj-video">
+          <iframe src="https://www.youtube.com/embed/PLACEHOLDER_ID" title="[PLACEHOLDER: video title]" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <figcaption class="pj-cap">[Video title]</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
   <!-- next project -->
-  <nav class="pj-next" aria-label="Next project">
-    <a href="#">
-      <span class="pj-next-label">Next project</span>
+  <nav class="pj-next" aria-label="More projects">
+    <!-- left: previous project, or work.html + "All projects" on the first project -->
+    <a class="pj-next-prev" href="#">
+      <span class="pj-next-label">← Previous project</span>
+      <span class="pj-next-title">[Previous Project Name]</span>
+    </a>
+    <!-- right: next project, or work.html + "All projects" on the last project -->
+    <a class="pj-next-forward" href="#">
+      <span class="pj-next-label">Next project →</span>
       <span class="pj-next-title">[Next Project Name]</span>
     </a>
   </nav>

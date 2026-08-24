@@ -122,6 +122,8 @@
   transition: opacity 0.25s ease;
 }
 .pj-lb.is-open { opacity: 1; }
+/* the hidden attribute must beat display:flex, or the overlay eats every click */
+.pj-lb[hidden] { display: none; }
 .pj-lb-stage { max-width: 1100px; width: 100%; }
 .pj-lb-stage .ph, .pj-lb-stage img {
   width: 100%;
@@ -341,14 +343,21 @@
 .pj-hs-text p { margin: 0; font-size: 17px; line-height: 1.6; color: var(--ink-soft); }
 
 /* 8 — next project ------------------------------------------------------ */
-.pj-next { border-top: 1px solid var(--rule); }
-.pj-next a {
+/* prev / next: two clickable halves split by a hairline */
+.pj-next {
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.pj-next > a {
   display: block;
-  padding: 44px 56px;
+  padding: 40px 56px;
   color: var(--ink);
   transition: background-color 0.25s ease;
 }
-.pj-next a:hover { background: var(--paper-tint); color: var(--ink); }
+.pj-next > a:hover { background: var(--paper-tint); color: var(--ink); }
+.pj-next-forward { border-left: 1px solid var(--rule); text-align: right; }
 .pj-next-label {
   display: block;
   font-family: var(--mono);
@@ -358,7 +367,7 @@
   color: var(--blue);
   margin-bottom: 8px;
 }
-.pj-next-title { font-size: 34px; font-weight: 700; letter-spacing: -0.02em; }
+.pj-next-title { font-size: 30px; font-weight: 700; letter-spacing: -0.02em; }
 
 /* 9 — option badge + index (delete both once you pick a layout) ---------- */
 .pj-badge {
@@ -442,8 +451,10 @@
   .pj-hs-panel { flex-basis: 82vw; }
   .pj-hs-panel .ph { height: 240px; }
 
-  .pj-next a { padding: 28px 20px; }
-  .pj-next-title { font-size: 24px; }
+  .pj-next { grid-template-columns: 1fr; }
+  .pj-next > a { padding: 24px 20px; }
+  .pj-next-forward { border-left: 0; border-top: 1px solid var(--rule); text-align: left; }
+  .pj-next-title { font-size: 22px; }
   /* badge shrinks to just the letter at phone width, so it stays a corner pill */
   .pj-badge { right: 10px; bottom: 10px; font-size: 10px; padding: 7px 12px; }
   .pj-badge span, .pj-badge a { display: none; }
@@ -526,4 +537,82 @@
   .pj-award { grid-template-columns: 1fr; gap: 14px; }
   .pj-award-mark .ph { height: 110px; }
   .pj-quote-lg p { font-size: 20px; }
+}
+
+/* 12 — layout B follow-ons: client logo, SKU table, videos, back link ----- */
+.pj-rail-plain { border-top: 0; padding-top: 0; margin-top: 22px; }
+
+/* client name and logo share one line, logo pushed right */
+.pj-facts-client dd {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.pj-client-logo {
+  flex: 0 0 auto;
+  width: 56px;
+  height: 34px;
+  border-radius: 6px;
+  font-size: 9px;
+}
+
+/* sections after the photo stream, so they clear the sticky rail */
+.pj-tail { border-top: 1px solid var(--rule); }
+
+/* SKU table: season as a row header, SKUs in a wrapping list */
+.pj-skus { width: 100%; border-collapse: collapse; text-align: left; }
+.pj-skus thead th {
+  padding: 0 0 10px;
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.pj-skus tbody th {
+  width: 130px;
+  padding: 18px 24px 18px 0;
+  border-top: 1px solid var(--rule);
+  vertical-align: top;
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--blue-dark);
+  white-space: nowrap;
+}
+.pj-skus tbody td { padding: 18px 0; border-top: 1px solid var(--rule); }
+.pj-sku-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 6px 28px;
+}
+.pj-sku-list li { font-size: 16px; line-height: 1.5; color: var(--ink); }
+
+/* videos: one lead embed, then a row of three smaller ones */
+.pj-videos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.pj-video-lead { grid-column: 1 / -1; margin-bottom: 8px; }
+.pj-video { margin: 0; }
+.pj-video iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+  border-radius: 12px;
+  background: var(--rule);
+  display: block;
+}
+
+
+@media (max-width: 900px) {
+  .pj-videos { grid-template-columns: 1fr; gap: 20px; }
+  .pj-skus tbody th { width: auto; display: block; padding: 16px 0 8px; }
+  .pj-skus tbody td { display: block; padding: 0 0 16px; border-top: 0; }
+  .pj-skus tbody tr { display: block; border-top: 1px solid var(--rule); }
+  .pj-skus thead { display: none; }
+  .pj-sku-list { grid-template-columns: 1fr; }
 }
