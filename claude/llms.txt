@@ -1,29 +1,25 @@
 # Isodesic
 
-> Independent product design practice specializing in technical outdoor gear:
-> ultralight backpacking tents, sleeping pads, camp furniture, luggage, and backpacks.
+> Isodesic, LLC is the independent product design practice of Will McElwain, based in Bozeman, Montana. It designs technical outdoor, travel, and lifestyle products from concept through production: backpacking and expedition tents, glamping shelters, camp furniture, sleeping pads, luggage, and custom trims and hardware.
 
-Designer: [YOUR NAME] — nearly 20 years in the outdoor industry.
-Location: [PLACEHOLDER: City, State]. Works with clients worldwide.
-Contact: hello@isodesic.com
-Availability: taking on new projects for late 2026.
+Will McElwain has 18+ years of experience and has been sole or lead designer on 250+ commercialized products. He was lead tent designer at The North Face (2007–2011) and Senior Product Designer at Big Agnes (2014–2020), where he owned the ultralight tent line (Copper Spur, Tiger Wall, Fly Creek) and designed the Skyline UL camp chair and AXL Air sleeping pad. He founded Isodesic in 2021. B.S. in Engineering (Product Design), Stanford University.
 
-## Services
-- Concept and industrial design (sketching, form development, CAD)
-- Prototyping and field testing
-- Technical packages, specs, BOMs, design for manufacturing
-- Production support and factory liaison
+Specialties:
+- Integrating soft goods and hard goods: tensioned fabric, bent poles, and molded components
+- Computational design in Rhino and Grasshopper, including custom tools that simulate tent pole bending and fabric tension
+- Tech packs, BOMs, and supplier introductions in Asia
+- Custom trims and hardware in SolidWorks for injection molding, stamping, laser cutting, and 3D printing
+- Technical expert witness for utility and design patent matters involving tents, furniture, and fabric-based products
 
-## Categories
-Backpacking tents, sleeping pads and bags, camp furniture, packs, luggage,
-and technical hardgoods inside and outside the outdoor industry.
-
-## Selected work
-- Big Agnes Tiger Wall Tents — the best space-to-weight ratio in an ultralight backpacking tent: /projects/tiger-wall.html
-- Big Agnes Carbon Collection — tents made with Dyneema fabric: /projects/carbon-collection.html
-- Big Agnes Camp Chair Collection — a new line of camp chairs: /projects/camp-chairs.html
-- WrovenDen — a kids travel tent: /projects/wrovenden.html
+Named inventor on two U.S. design patents (D941,950 tent stake; D1,084,195 sun shade accessory). Author of an open-source elastica curve script for Grasshopper cited in peer-reviewed structural engineering research.
 
 ## Pages
-- Home: https://isodesic.com/
-- Portfolio: https://isodesic.com/work.html
+
+- [Home](https://isodesic.com/): selected work, services, process, and contact
+- [Expert witness](https://isodesic.com/#expert-witness): patent litigation support for tents, portable furniture, and fabric-based products
+- [About](https://isodesic.com/#about): background and bio
+
+## Contact
+
+- Email: will@isodesic.com
+- LinkedIn: https://www.linkedin.com/in/willmcelwain

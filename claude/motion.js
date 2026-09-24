@@ -5,7 +5,7 @@
    3. highlight the nav link for the section you are looking at,
       and close the mobile menu after a link is tapped
    4. mobile menu accessibility
-   5. hero slideshow: dots, autoplay, pause, swipe
+   5. hero slideshow: dots, autoplay, pause, swipe, photo credits
    Delete this file and the page still works — CSS handles the rest. */
 
 document.documentElement.classList.add('reveal-ready');
@@ -80,9 +80,26 @@ document.querySelectorAll('.nav-menu a').forEach((a) => {
 //     Dots jump to a photo, the button pauses, and a sideways swipe works on
 //     phones. It stops on hover, while the tab is hidden, and never starts on
 //     its own if the visitor's system is set to reduce motion.
+//     A photo with data-credit="..." shows that text in the lower right.
 const SLIDE_SECONDS = 6;
 const hero = document.querySelector('.hero');
 const slides = [...document.querySelectorAll('.hero-slide')];
+
+// photo credit: one element, refilled whenever the photo changes
+const credit = document.createElement('div');
+credit.className = 'hero-credit';
+hero.append(credit);
+let creditTimer = null;
+function showCredit(slide) {
+  const text = slide.dataset.credit || '';
+  credit.classList.remove('is-shown');                 // fade the old one out…
+  clearTimeout(creditTimer);
+  creditTimer = setTimeout(() => {                     // …then swap in the new one
+    credit.textContent = text;
+    credit.classList.toggle('is-shown', text !== '');
+  }, 400);
+}
+if (slides.length === 1) showCredit(slides[0]);
 
 if (slides.length > 1) {
   let current = 0;
@@ -111,6 +128,7 @@ if (slides.length > 1) {
     current = (n + slides.length) % slides.length;
     slides.forEach((s, k) => s.classList.toggle('is-current', k === current));
     dots.forEach((d, k) => d.setAttribute('aria-current', String(k === current)));
+    showCredit(slides[current]);
   }
   function play() {
     clearInterval(timer);
