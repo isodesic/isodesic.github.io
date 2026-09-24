@@ -1,11 +1,9 @@
 /* Isodesic — motion.js
-   A few small jobs, no libraries:
+   Three small jobs, no libraries, ~40 lines:
    1. reveal sections as they scroll into view
    2. shadow under the nav once you have scrolled
    3. highlight the nav link for the section you are looking at,
       and close the mobile menu after a link is tapped
-   4. mobile menu accessibility
-   5. hero slideshow: dots, autoplay, pause, swipe
    Delete this file and the page still works — CSS handles the rest. */
 
 document.documentElement.classList.add('reveal-ready');
@@ -75,62 +73,3 @@ syncBurger();
 document.querySelectorAll('.nav-menu a').forEach((a) => {
   a.addEventListener('click', () => { toggle.checked = false; syncBurger(); });
 });
-
-// 5 — hero slideshow: crossfade to the next photo every few seconds.
-//     Dots jump to a photo, the button pauses, and a sideways swipe works on
-//     phones. It stops on hover, while the tab is hidden, and never starts on
-//     its own if the visitor's system is set to reduce motion.
-const SLIDE_SECONDS = 6;
-const hero = document.querySelector('.hero');
-const slides = [...document.querySelectorAll('.hero-slide')];
-
-if (slides.length > 1) {
-  let current = 0;
-  let timer = null;
-  let paused = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  const bar = document.createElement('div');
-  bar.className = 'hero-dots';
-  const dots = slides.map((s, n) => {
-    const dot = document.createElement('button');
-    dot.type = 'button';
-    dot.className = 'hero-dot';
-    dot.setAttribute('aria-label', `Show photo ${n + 1} of ${slides.length}`);
-    dot.addEventListener('click', () => { show(n); play(); });
-    bar.append(dot);
-    return dot;
-  });
-  const pause = document.createElement('button');
-  pause.type = 'button';
-  pause.className = 'hero-pause';
-  pause.addEventListener('click', () => { paused = !paused; play(); });
-  bar.append(pause);
-  hero.append(bar);
-
-  function show(n) {
-    current = (n + slides.length) % slides.length;
-    slides.forEach((s, k) => s.classList.toggle('is-current', k === current));
-    dots.forEach((d, k) => d.setAttribute('aria-current', String(k === current)));
-  }
-  function play() {
-    clearInterval(timer);
-    pause.setAttribute('aria-pressed', String(paused));
-    pause.setAttribute('aria-label', paused ? 'Play slideshow' : 'Pause slideshow');
-    if (!paused) timer = setInterval(() => show(current + 1), SLIDE_SECONDS * 1000);
-  }
-
-  hero.addEventListener('mouseenter', () => clearInterval(timer));
-  hero.addEventListener('mouseleave', play);
-  document.addEventListener('visibilitychange', () => (document.hidden ? clearInterval(timer) : play()));
-
-  let startX = 0, startY = 0;
-  hero.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; startY = e.touches[0].clientY; }, { passive: true });
-  hero.addEventListener('touchend', (e) => {
-    const dx = e.changedTouches[0].clientX - startX;
-    const dy = e.changedTouches[0].clientY - startY;
-    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) { show(current + (dx < 0 ? 1 : -1)); play(); }
-  }, { passive: true });
-
-  show(0);
-  play();
-}
