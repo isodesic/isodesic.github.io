@@ -366,20 +366,24 @@ section[id], [id="top"] { scroll-margin-top: 84px; }
 .nav-bar:has(+ .nav-toggle:checked) .nav-burger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 /* scroll reveal: elements marked data-reveal fade up once, when first seen.
-   The .reveal-ready class is added by motion.js, so with JS off nothing hides. */
+   The .reveal-ready class is added by motion.js, so with JS off nothing hides.
+   The end state is translate3d(0, 0, 0), not "none": while moving, the browser
+   draws the text on its own layer at in-between (sub-pixel) positions, and
+   ending on "none" drops that layer, so the text re-snaps to the pixel grid
+   with a visible 1–2px jump. Ending on translate3d keeps the layer, so no jump. */
 .reveal-ready [data-reveal] {
   opacity: 0;
-  transform: translateY(18px);
+  transform: translate3d(0, 18px, 0);
   transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
-.reveal-ready [data-reveal].is-in { opacity: 1; transform: none; }
+.reveal-ready [data-reveal].is-in { opacity: 1; transform: translate3d(0, 0, 0); }
 
-/* hero text drifts up on load */
+/* hero text drifts up on load (same translate3d ending, same reason) */
 .hero-text > * { animation: rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
 .hero-eyebrow { animation-delay: 0.05s; }
 .hero h1 { animation-delay: 0.15s; }
 .hero p { animation-delay: 0.28s; }
-@keyframes rise { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+@keyframes rise { from { opacity: 0; transform: translate3d(0, 22px, 0); } to { opacity: 1; transform: translate3d(0, 0, 0); } }
 
 /* respect the OS "reduce motion" setting */
 @media (prefers-reduced-motion: reduce) {
