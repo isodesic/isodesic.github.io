@@ -27,8 +27,10 @@ const onScroll = () => nav.classList.toggle('is-scrolled', window.scrollY > 8);
 window.addEventListener('scroll', onScroll, { passive: true });
 onScroll();
 
-// 3 — active nav link: the last section whose top has passed the marker line
-const navLinks = [...document.querySelectorAll('.nav-links a[href^="#"]')];
+// 3 — active nav link: the last section whose top has passed the marker line.
+//     The "Get in touch" button is left out, so at the bottom of the page the
+//     last text link (About) stays lit and the button never changes color.
+const navLinks = [...document.querySelectorAll('.nav-links a[href^="#"]:not(.btn)')];
 const sections = navLinks
   .map((a) => document.querySelector(a.getAttribute('href')))
   .filter(Boolean);
@@ -40,7 +42,7 @@ function setActive() {
     if (s.getBoundingClientRect().top + window.scrollY <= line) current = s;
   });
   // at the very bottom, keep the last section lit
-  if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 2) {
+  if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) {
     current = sections[sections.length - 1];
   }
   navLinks.forEach((a) => {

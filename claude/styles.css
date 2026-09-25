@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Isodesic — styles-v3.css  (v2 + section 15: services intro, service
+   Isodesic — styles.css  (v2 + section 15: services intro, service
    photos, expert witness, real About photo; section 16: hero slideshow)
    Sections:  1 base  2 nav  3 hero  4 section shell  5 work  6 services
               7 process  8 industries  9 about  10 contact  11 footer
@@ -9,9 +9,14 @@
 
 /* 1 — base ---------------------------------------------------------------- */
 :root {
-  --blue:        #1b9ad6;
-  --blue-dark:   #1478a8;
-  --blue-light:  #9bc6e9;
+  /* the six blues of the Isodesic logo, lightest to darkest */
+  --very-light-blue: #c2dbf2;
+  --light-blue:      #9bc6e9;
+  --medium-blue:     #6bb0e1;
+  --blue:            #1a9ad6;   /* main brand blue: buttons, blue band, labels */
+  --dark-blue:       #0883c6;
+  --very-dark-blue:  #016baf;   /* links, hovers, small blue text (passes contrast on white) */
+
   --ink:         #33383d;
   --ink-soft:    #5a6066;
   --ink-faint:   #6f757b;
@@ -34,7 +39,7 @@ body {
 
 .page { max-width: 1440px; margin: 0 auto; }
 
-a { color: var(--blue-dark); text-decoration: none; }
+a { color: var(--very-dark-blue); text-decoration: none; }
 a:hover { color: var(--blue); }
 
 h1, h2, h3, h4 { letter-spacing: -0.02em; }
@@ -79,18 +84,18 @@ h1, h2, h3, h4 { letter-spacing: -0.02em; }
 
 /* LinkedIn icon: an inline SVG that takes the link's text color */
 .nav-links .nav-social { display: flex; color: var(--ink-soft); margin-right: -8px; }
-.nav-links .nav-social:hover { color: var(--blue); }
+.nav-links .nav-social:hover { color: var(--dark-blue); }
 .nav-social svg { width: 22px; height: 22px; fill: currentColor; }
 
 .btn {
-  background: var(--blue);
+  background: var(--dark-blue);
   color: #fff;
   border-radius: 24px;
   padding: 10px 20px;
   font-weight: 600;
 }
-.btn:hover { background: var(--blue-dark); color: #fff; }
-.nav-links .btn { color: #fff; }
+.btn:hover { background: var(--blue); color: #fff; }   /* same blue as the nav link hover */
+.nav-links .btn, .nav-links .btn:hover { color: #fff; }   /* keep white: beats the blue nav-link hover */
 
 /* CSS-only mobile menu: the checkbox is the toggle, no JavaScript needed. */
 .nav-toggle { position: absolute; opacity: 0; pointer-events: none; }
@@ -105,7 +110,7 @@ h1, h2, h3, h4 { letter-spacing: -0.02em; }
   padding: 16px 20px;
   border-bottom: 1px solid #f0f2f4;
 }
-.nav-menu a:last-child { color: var(--blue-dark); font-weight: 600; border-bottom: 0; }
+.nav-menu a:last-child { color: var(--very-dark-blue); font-weight: 600; border-bottom: 0; }
 
 /* 3 — hero --------------------------------------------------------------- */
 .hero {
@@ -129,7 +134,7 @@ h1, h2, h3, h4 { letter-spacing: -0.02em; }
   font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--blue-light);
+  color: var(--light-blue);
   margin-bottom: 20px;
 }
 .hero h1 {
@@ -169,7 +174,7 @@ h1, h2, h3, h4 { letter-spacing: -0.02em; }
   border-radius: 12px;
   overflow: hidden;
 }
-.card:hover { color: inherit; border-color: var(--blue-light); }
+.card:hover { color: inherit; border-color: var(--light-blue); }
 
 .feature { margin-bottom: 32px; }
 .feature .ph { height: 480px; }
@@ -205,27 +210,32 @@ h1, h2, h3, h4 { letter-spacing: -0.02em; }
   border-top: 1px solid var(--rule);
 }
 .step:last-child { border-bottom: 1px solid var(--rule); }
-.step-num { font-size: 30px; font-weight: 700; color: var(--blue-light); }
+.step-num { font-size: 30px; font-weight: 700; color: var(--light-blue); }
 .step h3 { margin: 0 0 6px; font-size: 21px; font-weight: 700; }
 .step p { margin: 0; font-size: 17px; line-height: 1.6; color: var(--ink-soft); }
 
 /* 8 — industries -------------------------------------------------------- */
-.sec-blue { background: var(--blue); color: #fff; padding: 80px 56px; }
-.sec-blue .sec-num { color: #d6ecf8; }
-.chips { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 32px; }
-.chip { background: rgba(255, 255, 255, 0.16); padding: 9px 18px; border-radius: 20px; font-size: 16px; }
-.logos { display: grid; grid-template-columns: repeat(7, 1fr); gap: 16px; }
-@media (max-width: 1200px) { .logos { grid-template-columns: repeat(4, 1fr); } }  /* 4 + 3 instead of a cramped row of 7 */
-.logo-slot {
-  height: 88px;
-  background: rgba(255, 255, 255, 0.14);
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.sec-dark { background: var(--dark-blue); color: #fff; }   /* white text is 4.1:1 here: user's choice over --very-dark-blue (5.6:1) */
+.sec-dark .sec-num { color: var(--very-light-blue); }
+
+/* product categories: numbered, two columns filled top to bottom */
+.ind-list {
+  list-style: none;
+  margin: 0 0 52px;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(5, auto);   /* 5 per column; change if the list grows */
+  column-gap: 48px;
 }
-/* one-color logo files, turned white; height comes from --h in the HTML */
-.logo-slot img { height: var(--h, 44px); width: auto; filter: brightness(0) invert(1); }
+.ind-list li { display: flex; align-items: baseline; gap: 18px; padding: 14px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.18); font-size: 18px; font-weight: 500; }
+.ind-list span { font-family: var(--mono); font-size: 12px; letter-spacing: 0.06em; color: var(--very-light-blue); }
+
+/* brand logos: white cards, 4 across, logos dark grey; --h (in the HTML) sets each size */
+.ind-logos { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.ind-logos li { height: 120px; background: #fff; border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+.ind-logos img { height: calc(var(--h, 44px) * 1.3); width: auto; filter: brightness(0); opacity: 0.63; }  /* 63% black ≈ #5e5e5e, the neutral grey closest to --ink-soft */
 
 /* 9 — about ------------------------------------------------------------- */
 .about { display: grid; grid-template-columns: 380px 1fr; gap: 44px; align-items: start; }
@@ -271,7 +281,7 @@ h1, h2, h3, h4 { letter-spacing: -0.02em; }
   .hero h1 { font-size: 38px; }
   .hero p { font-size: 17px; }
 
-  .sec, .sec-blue { padding: 44px 20px; }
+  .sec { padding: 44px 20px; }
   .cols { display: block; }
   .cols > :first-child { margin-bottom: 20px; }
   .sec-title { font-size: 26px; }
@@ -283,9 +293,11 @@ h1, h2, h3, h4 { letter-spacing: -0.02em; }
 
   .grid-3, .grid-2 { grid-template-columns: 1fr; }
   .grid-3 .ph { height: 150px; }
-  .logos { gap: 10px; }
-  .logo-slot { height: 64px; }
-  .logo-slot img { height: calc(var(--h, 44px) * 0.7); }
+  .ind-list { grid-template-columns: 1fr; grid-auto-flow: row; grid-template-rows: none; margin-bottom: 36px; }
+  .ind-list li { font-size: 17px; padding: 12px 0; }
+  .ind-logos { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .ind-logos li { height: 86px; }
+  .ind-logos img { height: calc(var(--h, 44px) * 0.85); }
 
   .about { display: block; }
   .about-photo { max-width: 360px; margin-bottom: 20px; }
@@ -324,12 +336,10 @@ section[id], [id="top"] { scroll-margin-top: 84px; }
 }
 .nav-links a:not(.btn):hover::after,
 .nav-links a.is-active::after { transform: scaleX(1); }
-.nav-links a.is-active { color: var(--blue-dark); }
+.nav-links a.is-active { color: var(--very-dark-blue); }
 
 /* buttons */
-.btn { transition: background-color 0.2s ease, transform 0.2s ease; }
-.btn:hover { transform: translateY(-1px); }
-.btn:active { transform: translateY(0); }
+.btn { transition: background-color 0.2s ease; }   /* hover: color fade only, no lift */
 
 /* project cards: image zooms slightly, card lifts */
 .card { transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.25s ease; }
@@ -343,8 +353,8 @@ section[id], [id="top"] { scroll-margin-top: 84px; }
 .tile:hover { transform: translateY(-3px); box-shadow: 0 10px 26px rgba(20, 40, 60, 0.08); }
 .step { transition: background-color 0.25s ease; }
 .step:hover { background: rgba(155, 198, 233, 0.10); }
-.chip, .logo-slot { transition: background-color 0.25s ease, transform 0.25s ease; }
-.chip:hover, .logo-slot:hover { background: rgba(255, 255, 255, 0.28); transform: translateY(-2px); }
+.ind-logos li { transition: transform 0.25s ease, box-shadow 0.25s ease; }
+.ind-logos li:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18); }
 .sec-link, .about-photo { transition: transform 0.3s ease; }
 .sec-link:hover { transform: translateX(3px); }
 
@@ -407,11 +417,11 @@ section[id], [id="top"] { scroll-margin-top: 84px; }
 
 /* clear focus ring everywhere, without showing it on mouse clicks */
 a:focus-visible, label:focus-visible, button:focus-visible, input:focus-visible {
-  outline: 3px solid var(--blue-dark);
+  outline: 3px solid var(--very-dark-blue);
   outline-offset: 3px;
   border-radius: 4px;
 }
-.hero a:focus-visible, .sec-blue a:focus-visible { outline-color: #fff; }
+.hero a:focus-visible, .sec-dark a:focus-visible { outline-color: #fff; }
 
 .footer-address {
   display: flex;
@@ -435,7 +445,7 @@ a:focus-visible, label:focus-visible, button:focus-visible, input:focus-visible 
 .tile-photo:hover .tile-img { transform: scale(1.04); }
 
 /* small mono label on service tiles: PRODUCT DESIGN / DEVELOPMENT / ENGINEERING */
-.tile-kicker { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; color: var(--blue-dark); margin-bottom: 10px; }
+.tile-kicker { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; color: var(--very-dark-blue); margin-bottom: 10px; }
 
 /* expert witness */
 .ew-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 28px; }

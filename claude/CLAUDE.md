@@ -22,6 +22,7 @@ Local folder: `C:\Users\Will\Documents\GitHub\isodesic.github.io\claude` (in the
 | `images/landing_heroes/` | Hero slideshow photos (2400×1000) |
 | `images/old/` | Source/unused photos |
 | `favicon/` | `favicon.ico` (16/32/48), 16 + 32 px PNGs, `apple-touch-icon.png` (180), Android 192/512 PNGs, `site.webmanifest`. All linked from `index.html` `<head>`. |
+| `prototypes/` | Industries section mockups A–H plus comparison PNGs. F was built into the site; the folder can be deleted. |
 | `projects/tiger-wall*.html` | Tiger Wall project page drafts. **Work in progress; the user will clean these up** when project pages start. Don't touch until then. |
 | `robots.txt`, `sitemap.xml`, `llms.txt` | Crawler + AI-discovery files, using `https://isodesic.com/` URLs |
 | `media.js`, `support.js` | Older helper scripts, not loaded by `index.html` |
@@ -38,31 +39,40 @@ Local folder: `C:\Users\Will\Documents\GitHub\isodesic.github.io\claude` (in the
 ## Design system
 
 - Palette (CSS custom properties at the top of the stylesheet):
-  `--blue #1b9ad6`, `--blue-dark #1478a8`, `--blue-light #9bc6e9`,
+  the six logo blues, lightest to darkest: `--very-light-blue #c2dbf2`, `--light-blue #9bc6e9`,
+  `--medium-blue #6bb0e1`, `--blue #1a9ad6` (main), `--dark-blue #0883c6`, `--very-dark-blue #016baf`
+  (links, hovers, small blue text; replaced the old non-logo `--blue-dark #1478a8` on 2026-09-25),
   `--ink #33383d`, `--ink-soft #5a6066`, `--ink-faint #6f757b`,
   `--paper #fdfdfc`, `--paper-tint #f4f7f9`, `--rule #e9ebed`
 - Type: **Figtree** (headings + body), **IBM Plex Mono** (small labels, `01 / WORK`).
-- Nav: text links, then a LinkedIn icon (inline SVG, `--ink-soft`, blue on hover), then the "Get in touch" button.
-- Industries logos: white (CSS filter) in tinted tiles; each `<img>` has an inline `--h` height tuned by eye.
-  7 across on desktop, 4 + 3 at ≤1200px (the only extra breakpoint, logos only).
+- Nav: text links, then a LinkedIn icon (inline SVG, `--ink-soft`, `--dark-blue` on hover), then the "Get in touch" button.
+- Buttons (`.btn`: "Get in touch" + contact email): `--dark-blue` background, white text; hover fades to
+  `--blue` (same as nav link hover), text stays white, no lift/movement (user disliked the old hover animation).
+- Industries (option F, chosen 2026-09-25 from prototypes A–H): `.sec-dark` band with `--dark-blue`
+  background and white text. **User's deliberate choice** despite 4.1:1 contrast (fails AA for normal
+  text); don't switch it back. The `04 / INDUSTRIES` label and 01–10 numbers are `--very-light-blue`
+  (2.9:1); user is considering a paler blue for them (#e0edf8, halfway to white = 3.5:1). Not changed yet. Products are a numbered `.ind-list` (01–10, two columns of 5, one column on phones).
+  Brand logos sit on white 12px cards (`.ind-logos`), 4 across, 3 on phones, shown 63% black (≈ #5e5e5e).
+  Each `<img>` has an inline `--h` height tuned by eye; CSS scales it ×1.3 (desktop) / ×0.85 (phones).
+  User also liked prototype A's small blue triangle bullets and may reuse them elsewhere.
 - Layout: 1440px max width; each section is a `220px` label column + content column
   (`.cols`), collapsing to one column at the single breakpoint, **900px**.
 - Rounded 12px cards on tinted backgrounds; alternating white / `--paper-tint` sections.
-- Note: the user chose to keep the paler blue on `.sec-num`, `.step-num`, and the Industries
-  band even though those fall short of WCAG AA contrast. **Don't "fix" them again.**
+- Note: the user chose to keep the paler blue on `.sec-num` and `.step-num`
+  even though those fall short of WCAG AA contrast. **Don't "fix" them again.**
 - Photos are grey striped `.ph` placeholders with a mono caption. Replace with
   `<img>` when real photos arrive. Never hand-draw SVG imagery.
 
 ## Sections (landing page)
 
 Hero (crossfading slideshow in `images/landing_heroes/`; photos 2400×1000, per-photo `--focus` crop point, optional `data-credit="Name"` shown lower right with a camera icon on desktop only, hidden at ≤900px; first photo keeps `is-current`) → 01 Work (featured project + 3-card grid) → 02 Services (intro + 6 tiles, each with a 5:2 photo on top; a photo-on-the-right version was tried and rejected) →
-03 Process (4 steps) → 04 Industries (chips + client names) → 05 Expert witness →
+03 Process (4 steps) → 04 Industries (numbered categories + brand logos) → 05 Expert witness →
 06 About (portrait + bio) → Contact (email link + availability) → footer.
 
 ## Content status
 
 Filled from the master resume (`Will_McElwain_Master_Resume_v7.md`) on 2026-09-23:
-hero, services, process, industries chips, client names, about bio, contact, footer,
+hero, services, process, industries categories, client names, about bio, contact, footer,
 all head metadata, and JSON-LD. Contact email is **will@isodesic.com**.
 
 Real, user-supplied project card text (**keep verbatim**):
@@ -87,6 +97,6 @@ Kathmandu is left out of the client list (pre-launch; confirm before naming).
 - Build the portfolio index (`work.html`) and per-project pages
   (`projects/tiger-wall.html`, `wind-assist.html`, `camp-chairs.html`, `wrovenden.html`) —
   the landing page already links to those paths. Only Tiger Wall drafts exist so far.
-- Known limitation, accepted: the "About" nav item barely highlights on scroll because the
-  page runs out of scroll height before About reaches the marker line. A viewport-coverage
-  approach was tried and felt glitchy; reverted. Leave it unless asked.
+- Active nav link (motion.js §3): the "Get in touch" button is excluded, so it never changes color;
+  at the very bottom of the page the last text link (About) is lit. Fixed 2026-09-25 (About used to
+  never highlight, and the button text turned blue at the bottom).

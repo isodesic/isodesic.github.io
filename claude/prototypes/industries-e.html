@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Isodesic — Freelance tent &amp; outdoor gear design | Will McElwain</title>
+<title>[Prototype E] Isodesic — Freelance tent &amp; outdoor gear design | Will McElwain</title>
 <meta name="description" content="Freelance product design by Will McElwain: 18+ years, 250+ products for The North Face, Big Agnes, and others. Tents, camp chairs, sleeping pads, luggage.">
 <link rel="canonical" href="https://isodesic.com/">
 <meta name="robots" content="index, follow, max-image-preview:large">
@@ -24,17 +24,17 @@
 <meta name="twitter:card" content="summary_large_image">
 
 <!-- Icons and browser chrome -->
-<link rel="icon" href="favicon/favicon.ico" sizes="48x48">
-<link rel="icon" href="favicon/favicon-32x32.png" type="image/png" sizes="32x32">
-<link rel="icon" href="favicon/favicon-16x16.png" type="image/png" sizes="16x16">
-<link rel="apple-touch-icon" href="favicon/apple-touch-icon.png">
-<link rel="manifest" href="favicon/site.webmanifest">
+<link rel="icon" href="../favicon/favicon.ico" sizes="48x48">
+<link rel="icon" href="../favicon/favicon-32x32.png" type="image/png" sizes="32x32">
+<link rel="icon" href="../favicon/favicon-16x16.png" type="image/png" sizes="16x16">
+<link rel="apple-touch-icon" href="../favicon/apple-touch-icon.png">
+<link rel="manifest" href="../favicon/site.webmanifest">
 <meta name="theme-color" content="#1b9ad6">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 
 <!-- Structured data: what search engines and AI assistants read to understand
      who you are, what you do, and what you have worked on.
@@ -135,6 +135,36 @@
   ]
 }
 </script>
+<style>
+/* ===== PROTOTYPE E — Industries section only. Not part of styles.css yet. ===== */
+/* E: graphite (#474d53), lighter than D's charcoal. A's triangle list + labels, A's white cards with grey logos */
+.ind-x { background: #474d53; color: #fff; }
+.ind-x .sec-num { color: var(--light-blue); }
+.ind-label { font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--very-light-blue); margin: 0 0 14px; }
+.ind-list { list-style: none; margin: 0 0 48px; padding: 0; columns: 2; column-gap: 48px; }
+.ind-list li { break-inside: avoid; display: flex; align-items: center; gap: 12px; padding: 13px 0; border-top: 1px solid rgba(255,255,255,.16); font-size: 17px; font-weight: 500; }
+.ind-list li::before { content: ""; flex: none; width: 10px; height: 9px; background: var(--tri, var(--medium-blue)); clip-path: polygon(50% 0, 100% 100%, 0 100%); }
+
+.ind-logos { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.ind-logos li { height: 120px; background: #fff; border-radius: 12px; display: flex; align-items: center; justify-content: center; transition: transform .25s ease, box-shadow .25s ease; }
+.ind-logos li:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(0,0,0,.18); }
+.ind-logos img { height: calc(var(--h) * 1.3); width: auto; filter: brightness(0); opacity: .6; transition: opacity .25s ease; }
+.ind-logos li:hover img { opacity: .9; }
+
+@media (max-width: 900px) {
+  .ind-list { columns: 1; margin-bottom: 36px; }
+  .ind-num { grid-template-columns: 1fr; grid-auto-flow: row; grid-template-rows: none; margin-bottom: 36px; }
+  .ind-logos { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .ind-logos li { height: 86px; }
+  .ind-logos img, .ind-panel img { height: calc(var(--h) * 0.85); }
+  .ind-panel { grid-template-columns: repeat(3, 1fr); }
+  .ind-panel li, .ind-panel li:nth-child(4n), .ind-panel li:nth-child(n+5) { height: 92px; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+  .ind-panel li:nth-child(3n) { border-right: 0; }
+  .ind-panel li:nth-child(n+7) { border-bottom: 0; }
+}
+.proto-tag { position: fixed; left: 12px; bottom: 12px; z-index: 100; background: #111; color: #fff; font: 500 12px/1.3 var(--mono); padding: 8px 12px; border-radius: 6px; opacity: .85; }
+.proto-tag a { color: var(--light-blue); }
+</style>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -143,7 +173,7 @@
   <!-- nav -->
   <header class="nav">
     <div class="nav-bar">
-      <a class="nav-logo" href="#top"><img src="images/logos/isodesic_logo_385x200.png" alt="Isodesic"></a>
+      <a class="nav-logo" href="#top"><img src="../images/logos/isodesic_logo_385x200.png" alt="Isodesic"></a>
       <nav class="nav-links" aria-label="Main">
         <a href="#work">Work</a>
         <a href="#services">Services</a>
@@ -181,13 +211,13 @@
          (and without) JavaScript. Optional photo credit (desktop only, camera icon added
          automatically): data-credit="Name". -->
     <div class="hero-slides" role="region" aria-roledescription="carousel" aria-label="Photos of work in the field">
-      <img class="hero-slide is-current" src="images/landing_heroes/DSC05300_d1000.jpg" alt="Backpacking in the Wind River Range" width="2400" height="1000" style="--focus: 72% 50%" fetchpriority="high">
-      <img class="hero-slide" src="images/landing_heroes/BA_TW2_d1000.jpg" alt="Tiger Wall" data-credit="Big Agnes" width="2400" height="1000" style="--focus: 60% 50%" loading="lazy">
-      <img class="hero-slide" src="images/landing_heroes/DSC01505_d1000.jpg" alt="Backpacking in the San Juans" width="2400" height="1000" style="--focus: 25% 50%" loading="lazy">
-      <img class="hero-slide" src="images/landing_heroes/DSC05103_d1000.jpg" alt="Backpacking in the Flat Tops" width="2400" height="1000" style="--focus: 62% 50%" loading="lazy">
-      <img class="hero-slide" src="images/landing_heroes/DSC05533_d1000.jpg" alt="Backpacking in the Zirkels" width="2400" height="1000" style="--focus: 55% 50%" loading="lazy">
-      <img class="hero-slide" src="images/landing_heroes/DSC05329_d1000.jpg" alt="Selling in Seattle" width="2400" height="1000" style="--focus: 52% 50%" loading="lazy">
-      <img class="hero-slide" src="images/landing_heroes/DSC04836_d1000.jpg" alt="Camping in the San Juans" width="2400" height="1000" style="--focus: 82% 50%" loading="lazy">
+      <img class="hero-slide is-current" src="../images/landing_heroes/DSC05300_d1000.jpg" alt="Backpacking in the Wind River Range" width="2400" height="1000" style="--focus: 72% 50%" fetchpriority="high">
+      <img class="hero-slide" src="../images/landing_heroes/BA_TW2_d1000.jpg" alt="Tiger Wall" data-credit="Big Agnes" width="2400" height="1000" style="--focus: 60% 50%" loading="lazy">
+      <img class="hero-slide" src="../images/landing_heroes/DSC01505_d1000.jpg" alt="Backpacking in the San Juans" width="2400" height="1000" style="--focus: 25% 50%" loading="lazy">
+      <img class="hero-slide" src="../images/landing_heroes/DSC05103_d1000.jpg" alt="Backpacking in the Flat Tops" width="2400" height="1000" style="--focus: 62% 50%" loading="lazy">
+      <img class="hero-slide" src="../images/landing_heroes/DSC05533_d1000.jpg" alt="Backpacking in the Zirkels" width="2400" height="1000" style="--focus: 55% 50%" loading="lazy">
+      <img class="hero-slide" src="../images/landing_heroes/DSC05329_d1000.jpg" alt="Selling in Seattle" width="2400" height="1000" style="--focus: 52% 50%" loading="lazy">
+      <img class="hero-slide" src="../images/landing_heroes/DSC04836_d1000.jpg" alt="Camping in the San Juans" width="2400" height="1000" style="--focus: 82% 50%" loading="lazy">
     </div>
     <div class="hero-scrim"></div>
     <div class="hero-text">
@@ -203,11 +233,11 @@
       <div data-reveal>
         <div class="sec-num">01 / WORK</div>
         <h2 class="sec-title" id="work-title">Selected work</h2>
-        <a class="sec-link" href="work.html">All projects<span class="sr-only"> — full portfolio</span> →</a>
+        <a class="sec-link" href="../work.html">All projects<span class="sr-only"> — full portfolio</span> →</a>
       </div>
       <div>
-        <a class="card feature" href="projects/tiger-wall.html" data-reveal>
-          <!-- swap each .ph block for <img src="..." alt="descriptive alt text" loading="lazy" width="1600" height="900"> -->
+        <a class="card feature" href="../projects/tiger-wall.html" data-reveal>
+          <!-- swap each .ph block for <img src="../..." alt="descriptive alt text" loading="lazy" width="1600" height="900"> -->
           <div class="ph" role="img" aria-label="[PLACEHOLDER ALT: Big Agnes Tiger Wall tent pitched in the field]"><span aria-hidden="true">photo: tiger wall hero 16:9</span></div>
           <div class="feature-body">
             <div class="feature-kicker">FEATURED · BIG AGNES · ULTRALIGHT TENTS</div>
@@ -216,21 +246,21 @@
           </div>
         </a>
         <div class="grid-3" data-reveal>
-          <a class="card" href="projects/wind-assist.html">
+          <a class="card" href="../projects/wind-assist.html">
             <div class="ph" role="img" aria-label="[PLACEHOLDER ALT: Shibumi Shade with Wind Assist staking out the rear corners on a windy beach]"><span aria-hidden="true">photo</span></div>
             <div class="card-body">
               <h3>Shibumi Shade Wind Assist</h3>
               <p>A patented accessory that keeps the shade steady in high wind</p>
             </div>
           </a>
-          <a class="card" href="projects/camp-chairs.html">
+          <a class="card" href="../projects/camp-chairs.html">
             <div class="ph" role="img" aria-label="[PLACEHOLDER ALT: Big Agnes Skyline UL camp chair]"><span aria-hidden="true">photo</span></div>
             <div class="card-body">
               <h3>Big Agnes Camp Chair Collection</h3>
               <p>A new line of camp chairs</p>
             </div>
           </a>
-          <a class="card" href="projects/wrovenden.html">
+          <a class="card" href="../projects/wrovenden.html">
             <div class="ph" role="img" aria-label="[PLACEHOLDER ALT: WrovenDen kids travel tent set up indoors]"><span aria-hidden="true">photo</span></div>
             <div class="card-body">
               <h3>WrovenDen</h3>
@@ -253,7 +283,7 @@
         <p class="sec-intro" data-reveal>Most clients hire me end to end, from an open question about their line to production samples that match the spec. Every contract is scoped to where you're starting: a gap in the market, a half-formed idea, or a finished concept that just needs a tech pack.</p>
         <div class="grid-2" data-reveal>
           <div class="tile tile-photo">
-            <!-- swap for <img class="tile-img" src="..." alt="..." loading="lazy" width="1500" height="600"> -->
+            <!-- swap for <img class="tile-img" src="../..." alt="..." loading="lazy" width="1500" height="600"> -->
             <div class="ph tile-img" role="img" aria-label="[PLACEHOLDER ALT: competitive products laid out side by side for a teardown]"><span aria-hidden="true">photo: competitor teardown</span></div>
             <div class="tile-body">
               <div class="tile-kicker">PRODUCT DESIGN</div>
@@ -262,7 +292,7 @@
             </div>
           </div>
           <div class="tile tile-photo">
-            <!-- swap for <img class="tile-img" src="..." alt="..." loading="lazy" width="1500" height="600"> -->
+            <!-- swap for <img class="tile-img" src="../..." alt="..." loading="lazy" width="1500" height="600"> -->
             <div class="ph tile-img" role="img" aria-label="[PLACEHOLDER ALT: tent concept modeled in Rhino and Grasshopper, poles and fabric shown in 3D]"><span aria-hidden="true">photo: rhino / grasshopper model</span></div>
             <div class="tile-body">
               <div class="tile-kicker">PRODUCT DESIGN</div>
@@ -271,7 +301,7 @@
             </div>
           </div>
           <div class="tile tile-photo">
-            <!-- swap for <img class="tile-img" src="..." alt="..." loading="lazy" width="1500" height="600"> -->
+            <!-- swap for <img class="tile-img" src="../..." alt="..." loading="lazy" width="1500" height="600"> -->
             <div class="ph tile-img" role="img" aria-label="[PLACEHOLDER ALT: pages of a tent tech pack with spec drawings and callouts]"><span aria-hidden="true">photo: tech pack pages</span></div>
             <div class="tile-body">
               <div class="tile-kicker">PRODUCT DESIGN</div>
@@ -280,7 +310,7 @@
             </div>
           </div>
           <div class="tile tile-photo">
-            <!-- swap for <img class="tile-img" src="..." alt="..." loading="lazy" width="1500" height="600"> -->
+            <!-- swap for <img class="tile-img" src="../..." alt="..." loading="lazy" width="1500" height="600"> -->
             <div class="ph tile-img" role="img" aria-label="[PLACEHOLDER ALT: reviewing a tent sample with factory staff]"><span aria-hidden="true">photo: factory sample review</span></div>
             <div class="tile-body">
               <div class="tile-kicker">PRODUCT DEVELOPMENT</div>
@@ -289,7 +319,7 @@
             </div>
           </div>
           <div class="tile tile-photo">
-            <!-- swap for <img class="tile-img" src="..." alt="..." loading="lazy" width="1500" height="600"> -->
+            <!-- swap for <img class="tile-img" src="../..." alt="..." loading="lazy" width="1500" height="600"> -->
             <div class="ph tile-img" role="img" aria-label="[PLACEHOLDER ALT: fabric, webbing, and trim swatches spread on a table]"><span aria-hidden="true">photo: fabric + trim swatches</span></div>
             <div class="tile-body">
               <div class="tile-kicker">PRODUCT DEVELOPMENT</div>
@@ -298,7 +328,7 @@
             </div>
           </div>
           <div class="tile tile-photo">
-            <!-- swap for <img class="tile-img" src="..." alt="..." loading="lazy" width="1500" height="600"> -->
+            <!-- swap for <img class="tile-img" src="../..." alt="..." loading="lazy" width="1500" height="600"> -->
             <div class="ph tile-img" role="img" aria-label="[PLACEHOLDER ALT: close-up of custom molded and laser-cut tent trims]"><span aria-hidden="true">photo: custom trims close-up</span></div>
             <div class="tile-body">
               <div class="tile-kicker">ENGINEERING</div>
@@ -351,38 +381,37 @@
     </div>
   </section>
 
-  <!-- industries -->
-  <section class="sec sec-dark" id="industries" aria-labelledby="industries-title">
+  <!-- industries (PROTOTYPE) -->
+  <section class="sec ind-x" id="industries" aria-labelledby="industries-title">
     <div class="cols cols-top">
       <div data-reveal>
         <div class="sec-num">04 / INDUSTRIES</div>
         <h2 class="sec-title" id="industries-title">Categories &amp; brands</h2>
       </div>
       <div>
-        <!-- Product categories. Numbers are part of the text; renumber if you add or reorder. -->
-        <ol class="ind-list" data-reveal>
-          <li><span aria-hidden="true">01</span>Ultralight backpacking tents</li>
-          <li><span aria-hidden="true">02</span>Expedition tents &amp; geodesic domes</li>
-          <li><span aria-hidden="true">03</span>Shade structures</li>
-          <li><span aria-hidden="true">04</span>Family camping tents</li>
-          <li><span aria-hidden="true">05</span>Glamping &amp; canvas shelters</li>
-          <li><span aria-hidden="true">06</span>Camp chairs &amp; furniture</li>
-          <li><span aria-hidden="true">07</span>Sleeping pads &amp; bags</li>
-          <li><span aria-hidden="true">08</span>Luggage &amp; backpacks</li>
-          <li><span aria-hidden="true">09</span>Kids' travel gear</li>
-          <li><span aria-hidden="true">10</span>Custom trims &amp; hardware</li>
-        </ol>
-        <!-- Brand logos are one-color SVGs (all 108 units tall), shown dark grey in CSS. --h sets each logo's height,
-             tuned by eye so wide and square logos look about the same size (wide ones shorter); CSS scales it. -->
-        <ul class="ind-logos" data-reveal>
-          <li><img src="images/logos/TheNorthFace_logo.svg" alt="The North Face" style="--h: 40px"></li>
-          <li><img src="images/logos/BigAgnes_logo.svg" alt="Big Agnes" style="--h: 54px"></li>
-          <li><img src="images/logos/Shibumi_logo.svg" alt="Shibumi Shade" style="--h: 50px"></li>
-          <li><img src="images/logos/UnderCanvas_logo.svg" alt="Under Canvas" style="--h: 42px"></li>
-          <li><img src="images/logos/WrovenDen_logo.svg" alt="WrovenDen" style="--h: 44px"></li>
-          <li><img src="images/logos/FireflySauna_logo.svg" alt="Firefly Sauna" style="--h: 56px"></li>
-          <li><img src="images/logos/TheGetOut_logo.svg" alt="The Get Out" style="--h: 50px"></li>
-        </ul>
+        <div class="ind-label" data-reveal>Products I've designed</div>
+          <ul class="ind-list" data-reveal>
+            <li>Ultralight backpacking tents</li>
+            <li>Expedition tents</li>
+            <li>Geodesic domes</li>
+            <li>Family camping tents</li>
+            <li>Glamping/canvas shelters</li>
+            <li>Camp chairs &amp; furniture</li>
+            <li>Sleeping pads &amp; bags</li>
+            <li>Luggage &amp; backpacks</li>
+            <li>Kids' travel gear</li>
+            <li>Custom trims &amp; hardware</li>
+          </ul>
+        <div class="ind-label" data-reveal>Brands I've designed for</div>
+          <ul class="ind-logos" data-reveal>
+            <li><img src="../images/logos/TheNorthFace_logo.svg" alt="The North Face" style="--h: 40px"></li>
+            <li><img src="../images/logos/BigAgnes_logo.svg" alt="Big Agnes" style="--h: 54px"></li>
+            <li><img src="../images/logos/Shibumi_logo.svg" alt="Shibumi Shade" style="--h: 50px"></li>
+            <li><img src="../images/logos/UnderCanvas_logo.svg" alt="Under Canvas" style="--h: 42px"></li>
+            <li><img src="../images/logos/WrovenDen_logo.svg" alt="WrovenDen" style="--h: 44px"></li>
+            <li><img src="../images/logos/FireflySauna_logo.svg" alt="Firefly Sauna" style="--h: 56px"></li>
+            <li><img src="../images/logos/TheGetOut_logo.svg" alt="The Get Out" style="--h: 50px"></li>
+          </ul>
       </div>
     </div>
   </section>
@@ -424,7 +453,7 @@
         <h2 class="sec-title" id="about-title">Who you'd be working with</h2>
       </div>
       <div class="about" data-reveal>
-        <img class="about-photo" src="images/will-mcelwain-portrait.jpg" alt="Will McElwain summiting Sacagawea Peak outside of Bozeman, MT on a beautiful fall day while the boy naps in the backpack" width="800" height="1000" loading="lazy">
+        <img class="about-photo" src="../images/will-mcelwain-portrait.jpg" alt="Will McElwain summiting Sacagawea Peak outside of Bozeman, MT on a beautiful fall day while the boy naps in the backpack" width="800" height="1000" loading="lazy">
         <div>
           <p class="about-lead">I design gear because I'm the one out there using it.</p>
           <p>My path here wasn't a straight line. After studying product design at Stanford, a program built on needfinding and hands-on prototyping, I wrote software in Silicon Valley, hand-coded websites, and spent a year building high-end speaker cabinets in a Boulder woodshop. Code and craft both turned out to matter more than I expected.</p>
@@ -457,6 +486,7 @@
   </footer>
 
 </div>
-  <script src="motion.js" defer></script>
+  <script src="../motion.js" defer></script>
+<div class="proto-tag">Prototype E — Graphite · triangle list · white logo cards &nbsp;|&nbsp; <a href="industries-a.html#industries">A</a> · <a href="industries-d.html#industries">D</a> · <a href="industries-f.html#industries">F</a> · <a href="industries-g.html#industries">G</a> · <a href="industries-h.html#industries">H</a></div>
 </body>
 </html>
