@@ -4,24 +4,28 @@ Freelance product design business site for **Isodesic** (solo designer, ~20 year
 outdoor industry: ultralight backpacking tents, sleeping pads, camp furniture, luggage,
 packs, and technical hardgoods beyond outdoor).
 
-Scope so far: **landing page only**. Portfolio index and per-project pages are planned but
+Scope so far: **landing page** (essentially complete apart from photos). Portfolio index and per-project pages are planned but
 not built.
 
 ## Files
 
+Local folder: `C:\Users\Will\Documents\GitHub\isodesic.github.io\claude` (in the GitHub repo).
+
 | File | Role |
 |---|---|
-| `index-v3.html` | **Current version.** Real content from the resume, expert witness section, About photo. Edit this one. |
-| `styles-v3.css` | v2 styles + section 15 (services intro, tile kickers, expert witness, `<img>` About photo) |
-| `images/will-mcelwain-portrait.jpg` | About photo, 800×1000, web-optimized from `about_me_4x5.jpg` |
-| `index-v2.html` / `styles-v2.css` | Previous version, kept for reference |
+| `index.html` | **Current landing page** (was `index-v3.html`). Edit this one. |
+| `styles.css` | **Current stylesheet** (was `styles-v3.css`). Section 15 = services intro, tile kickers, expert witness, `<img>` About photo. |
 | `motion.js` | No libraries: scroll reveal, nav shadow, active nav link, mobile menu a11y, hero slideshow (dots, autoplay, pause, swipe) |
-| `index.html` / `styles.css` | v1, no animation. Retired; no longer kept in sync. |
-| `isodesic-logo.png` | Logo, whitespace cropped (386×200). Used at 44px tall in the nav. |
-| `uploads/isodesic_logo_400x400.png` | Original padded logo |
-| `robots.txt`, `sitemap.xml`, `llms.txt` | Crawler + AI-discovery files, with placeholder URLs |
-| `Isodesic Landing.dc.html` | Early exploration: three look-and-feel options (1a/1b/1c) + mobile view (2a). 1b was chosen. Reference only. |
-| `Isodesic Landing Page.dc.html` | Preview build of the chosen direction, superseded by `index-v2.html` |
+| `images/isodesic-logo.png` | Logo, whitespace cropped (386×200). Used at 44px tall in the nav and as the JSON-LD logo. |
+| `images/isodesic_logo_400x400.png` | Original padded logo. Not used by the site; kept just in case. |
+| `images/will-mcelwain-portrait.jpg` | About photo, 800×1000, web-optimized from `images/old/about_me_4x5.jpg` |
+| `images/landing_heroes/` | Hero slideshow photos (2400×1000) |
+| `images/old/` | Source/unused photos |
+| `favicon/` | `favicon.ico` (16/32/48), 16 + 32 px PNGs, `apple-touch-icon.png` (180), Android 192/512 PNGs, `site.webmanifest`. All linked from `index.html` `<head>`. |
+| `projects/tiger-wall*.html` | Tiger Wall project page drafts. **Work in progress; the user will clean these up** when project pages start. Don't touch until then. |
+| `robots.txt`, `sitemap.xml`, `llms.txt` | Crawler + AI-discovery files, using `https://isodesic.com/` URLs |
+| `media.js`, `support.js` | Older helper scripts, not loaded by `index.html` |
+| `archive (delete)/` | Old versions (v1, v2, v3 variants, early `.dc.html` explorations). Reference only; don't edit. |
 
 ## How the user works
 
@@ -48,7 +52,7 @@ not built.
 
 ## Sections (landing page)
 
-Hero (crossfading slideshow in `images/landing_heroes/`; photos 2400×1000, per-photo `--focus` crop point, optional `data-credit`; first photo keeps `is-current`) → 01 Work (featured project + 3-card grid) → 02 Services (intro + 6 tiles, each with a 5:2 photo on top; a photo-on-the-right version was tried and rejected) →
+Hero (crossfading slideshow in `images/landing_heroes/`; photos 2400×1000, per-photo `--focus` crop point, optional `data-credit="Name"` shown lower right with a camera icon on desktop only, hidden at ≤900px; first photo keeps `is-current`) → 01 Work (featured project + 3-card grid) → 02 Services (intro + 6 tiles, each with a 5:2 photo on top; a photo-on-the-right version was tried and rejected) →
 03 Process (4 steps) → 04 Industries (chips + client names) → 05 Expert witness →
 06 About (portrait + bio) → Contact (email link + availability) → footer.
 
@@ -73,10 +77,14 @@ Kathmandu is left out of the client list (pre-launch; confirm before naming).
 - Real photos + descriptive `alt` text on every image (biggest remaining SEO win). Service tile
   photos: 1500×600 (5:2), swap each `.ph.tile-img` for `<img class="tile-img">`.
 - Remaining `[PLACEHOLDER]`s are photo alt text and `og:image:alt`; they wait on real images.
-- Create `social-preview.jpg` (1200×630), `favicon.ico`, `apple-touch-icon.png` (180×180).
+- Create `images/social-preview.jpg` (1200×630) and fill in `og:image:alt`. (Favicons done 2026-09-24.)
+- **User's own to-dos:** give `favicon/apple-touch-icon.png` a white background (iOS shows
+  transparency as black); make `images/isodesic-logo.png` transparent instead of white so it
+  sits on the translucent nav bar; write more descriptive hero photo alt text ("Selling in
+  Seattle" is correct as written).
 - Build the portfolio index (`work.html`) and per-project pages
   (`projects/tiger-wall.html`, `wind-assist.html`, `camp-chairs.html`, `wrovenden.html`) —
-  the landing page already links to those paths.
+  the landing page already links to those paths. Only Tiger Wall drafts exist so far.
 - Client logos in the Industries section (names show as text in `.logo-slot` for now).
 - Known limitation, accepted: the "About" nav item barely highlights on scroll because the
   page runs out of scroll height before About reaches the marker line. A viewport-coverage

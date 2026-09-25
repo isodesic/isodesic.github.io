@@ -80,7 +80,8 @@ document.querySelectorAll('.nav-menu a').forEach((a) => {
 //     Dots jump to a photo, the button pauses, and a sideways swipe works on
 //     phones. It stops on hover, while the tab is hidden, and never starts on
 //     its own if the visitor's system is set to reduce motion.
-//     A photo with data-credit="..." shows that text in the lower right.
+//     A photo with data-credit="Name" shows that name in the lower right,
+//     after a camera icon (added in CSS). Desktop only.
 const SLIDE_SECONDS = 6;
 const hero = document.querySelector('.hero');
 const slides = [...document.querySelectorAll('.hero-slide')];
@@ -96,6 +97,8 @@ function showCredit(slide) {
   clearTimeout(creditTimer);
   creditTimer = setTimeout(() => {                     // …then swap in the new one
     credit.textContent = text;
+    if (text) credit.prepend(Object.assign(document.createElement('span'),
+      { className: 'sr-only', textContent: 'Photo: ' }));   // screen readers hear "Photo: Name"
     credit.classList.toggle('is-shown', text !== '');
   }, 400);
 }
