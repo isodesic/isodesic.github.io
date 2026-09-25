@@ -77,6 +77,11 @@ h1, h2, h3, h4 { letter-spacing: -0.02em; }
 .nav-links a { color: var(--ink); }
 .nav-links a:hover { color: var(--blue); }
 
+/* LinkedIn icon: an inline SVG that takes the link's text color */
+.nav-links .nav-social { display: flex; color: var(--ink-soft); margin-right: -8px; }
+.nav-links .nav-social:hover { color: var(--blue); }
+.nav-social svg { width: 22px; height: 22px; fill: currentColor; }
+
 .btn {
   background: var(--blue);
   color: #fff;
@@ -209,18 +214,18 @@ h1, h2, h3, h4 { letter-spacing: -0.02em; }
 .sec-blue .sec-num { color: #d6ecf8; }
 .chips { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 32px; }
 .chip { background: rgba(255, 255, 255, 0.16); padding: 9px 18px; border-radius: 20px; font-size: 16px; }
-.logos { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.logos { display: grid; grid-template-columns: repeat(7, 1fr); gap: 16px; }
+@media (max-width: 1200px) { .logos { grid-template-columns: repeat(4, 1fr); } }  /* 4 + 3 instead of a cramped row of 7 */
 .logo-slot {
-  height: 60px;
+  height: 88px;
   background: rgba(255, 255, 255, 0.14);
   border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--mono);
-  font-size: 11px;
-  color: #fff;
 }
+/* one-color logo files, turned white; height comes from --h in the HTML */
+.logo-slot img { height: var(--h, 44px); width: auto; filter: brightness(0) invert(1); }
 
 /* 9 — about ------------------------------------------------------------- */
 .about { display: grid; grid-template-columns: 380px 1fr; gap: 44px; align-items: start; }
@@ -278,7 +283,9 @@ h1, h2, h3, h4 { letter-spacing: -0.02em; }
 
   .grid-3, .grid-2 { grid-template-columns: 1fr; }
   .grid-3 .ph { height: 150px; }
-  .logos { grid-template-columns: 1fr 1fr; }
+  .logos { gap: 10px; }
+  .logo-slot { height: 64px; }
+  .logo-slot img { height: calc(var(--h, 44px) * 0.7); }
 
   .about { display: block; }
   .about-photo { max-width: 360px; margin-bottom: 20px; }
@@ -302,6 +309,7 @@ section[id], [id="top"] { scroll-margin-top: 84px; }
 
 /* nav links: underline that grows from the left */
 .nav-links a:not(.btn) { position: relative; }
+.nav-links a.nav-social:not(.btn)::after { display: none; }   /* no underline under the icon */
 .nav-links a:not(.btn)::after {
   content: "";
   position: absolute;

@@ -16,8 +16,8 @@ Local folder: `C:\Users\Will\Documents\GitHub\isodesic.github.io\claude` (in the
 | `index.html` | **Current landing page** (was `index-v3.html`). Edit this one. |
 | `styles.css` | **Current stylesheet** (was `styles-v3.css`). Section 15 = services intro, tile kickers, expert witness, `<img>` About photo. |
 | `motion.js` | No libraries: scroll reveal, nav shadow, active nav link, mobile menu a11y, hero slideshow (dots, autoplay, pause, swipe) |
-| `images/isodesic-logo.png` | Logo, whitespace cropped (386×200). Used at 44px tall in the nav and as the JSON-LD logo. |
-| `images/isodesic_logo_400x400.png` | Original padded logo. Not used by the site; kept just in case. |
+| `images/logos/isodesic_logo_385x200.png` | **Current logo**, transparent background. Used at 44px tall in the nav and as the JSON-LD logo. |
+| `images/logos/*.svg` | One-color (#231f20) brand logos, all 108 units tall. Used in Industries: The North Face, Big Agnes, Shibumi, Under Canvas, WrovenDen, Firefly Sauna, The Get Out. Not used yet: Kathmandu (pre-launch), Stanford, Isodesic blues/greys SVGs. `LinkedIn_logo.svg` is inlined in the nav. `isodesic-logo.png` there is the old white-background logo, unused. |
 | `images/will-mcelwain-portrait.jpg` | About photo, 800×1000, web-optimized from `images/old/about_me_4x5.jpg` |
 | `images/landing_heroes/` | Hero slideshow photos (2400×1000) |
 | `images/old/` | Source/unused photos |
@@ -42,6 +42,9 @@ Local folder: `C:\Users\Will\Documents\GitHub\isodesic.github.io\claude` (in the
   `--ink #33383d`, `--ink-soft #5a6066`, `--ink-faint #6f757b`,
   `--paper #fdfdfc`, `--paper-tint #f4f7f9`, `--rule #e9ebed`
 - Type: **Figtree** (headings + body), **IBM Plex Mono** (small labels, `01 / WORK`).
+- Nav: text links, then a LinkedIn icon (inline SVG, `--ink-soft`, blue on hover), then the "Get in touch" button.
+- Industries logos: white (CSS filter) in tinted tiles; each `<img>` has an inline `--h` height tuned by eye.
+  7 across on desktop, 4 + 3 at ≤1200px (the only extra breakpoint, logos only).
 - Layout: 1440px max width; each section is a `220px` label column + content column
   (`.cols`), collapsing to one column at the single breakpoint, **900px**.
 - Rounded 12px cards on tinted backgrounds; alternating white / `--paper-tint` sections.
@@ -79,13 +82,11 @@ Kathmandu is left out of the client list (pre-launch; confirm before naming).
 - Remaining `[PLACEHOLDER]`s are photo alt text and `og:image:alt`; they wait on real images.
 - Create `images/social-preview.jpg` (1200×630) and fill in `og:image:alt`. (Favicons done 2026-09-24.)
 - **User's own to-dos:** give `favicon/apple-touch-icon.png` a white background (iOS shows
-  transparency as black); make `images/isodesic-logo.png` transparent instead of white so it
-  sits on the translucent nav bar; write more descriptive hero photo alt text ("Selling in
+  transparency as black); write more descriptive hero photo alt text ("Selling in
   Seattle" is correct as written).
 - Build the portfolio index (`work.html`) and per-project pages
   (`projects/tiger-wall.html`, `wind-assist.html`, `camp-chairs.html`, `wrovenden.html`) —
   the landing page already links to those paths. Only Tiger Wall drafts exist so far.
-- Client logos in the Industries section (names show as text in `.logo-slot` for now).
 - Known limitation, accepted: the "About" nav item barely highlights on scroll because the
   page runs out of scroll height before About reaches the marker line. A viewport-coverage
   approach was tried and felt glitchy; reverted. Leave it unless asked.
