@@ -176,8 +176,14 @@ h1, h2, h3, h4 { letter-spacing: -0.02em; }
 }
 .card:hover { color: inherit; border-color: var(--light-blue); }
 
+/* Work photos (featured + 3 cards) are 16:9 at every screen size.
+   Export the featured photo at 2400 × 1350 and card photos at 1280 × 720.
+   If a photo isn't 16:9, add style="--focus: 50% 30%" to its <img> to pick
+   which part stays in frame (same as the hero photos). */
+.work-img { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; object-position: var(--focus, 50% 50%); display: block; }
+.ph.work-img { display: flex; } /* keep the placeholder caption centered */
+
 .feature { margin-bottom: 32px; }
-.feature .ph { height: 480px; }
 .feature-body { padding: 32px 36px 36px; }
 .feature-kicker {
   font-family: var(--mono);
@@ -190,7 +196,6 @@ h1, h2, h3, h4 { letter-spacing: -0.02em; }
 .feature-body p { margin: 0; max-width: 620px; font-size: 19px; line-height: 1.55; color: var(--ink-soft); }
 
 .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-.grid-3 .ph { height: 200px; }
 .card-body { padding: 20px 22px 24px; }
 .card-body h3 { margin: 0 0 6px; font-size: 19px; font-weight: 700; letter-spacing: -0.01em; }
 .card-body p { margin: 0; font-size: 15px; line-height: 1.5; color: var(--ink-faint); }
@@ -286,13 +291,11 @@ h1, h2, h3, h4 { letter-spacing: -0.02em; }
   .cols > :first-child { margin-bottom: 20px; }
   .sec-title { font-size: 26px; }
 
-  .feature .ph { height: 200px; }
   .feature-body { padding: 20px; }
   .feature-body h3 { font-size: 23px; }
   .feature-body p { font-size: 16px; }
 
   .grid-3, .grid-2 { grid-template-columns: 1fr; }
-  .grid-3 .ph { height: 150px; }
   .ind-list { grid-template-columns: 1fr; grid-auto-flow: row; grid-template-rows: none; margin-bottom: 36px; }
   .ind-list li { font-size: 17px; padding: 12px 0; }
   .ind-logos { grid-template-columns: repeat(3, 1fr); gap: 10px; }
