@@ -28,6 +28,28 @@ Local folder: `C:\Users\Will\Documents\GitHub\isodesic.github.io\claude` (in the
 | `media.js`, `support.js` | Older helper scripts, not loaded by `index.html` |
 | `archive (delete)/` | Old versions (v1, v2, v3 variants, early `.dc.html` explorations). Reference only; don't edit. |
 
+## Image sizes (quick reference)
+
+Export JPGs at these sizes (about 2× the largest on-screen size, for sharp retina screens).
+Where a box crops, add `style="--focus: X% Y%"` to the `<img>` to choose what stays in frame.
+
+| Image | Export size | Ratio | Shown on screen | Status |
+|---|---|---|---|---|
+| Hero slideshow (`images/landing_heroes/`) | 2400 × 1000 | 12:5 | up to 1440 × 600 desktop, full width × 460 phones (sides crop; `--focus`) | Done (7 photos) |
+| Work: featured project (Tiger Wall) | 2400 × 1350 | 16:9 | up to ~1050 × 590 desktop, ~335 × 190 phones | Test photo in (`featured-project-Tiger-Wall-b.jpg`) |
+| Work: 3 project cards | 1280 × 850 (`_1280x850` in file name) | 3:2 | ~335 × 225 desktop and phones; up to ~860 wide on tablets | Wind Assist, WrovenDen in; camp chairs is a stand-in `(garbage)` |
+| Services tiles (6) | 1500 × 600 | 5:2 | up to ~515 × 205 | **Needed** |
+| About portrait | 800 × 1000 | 4:5 | 380 wide desktop, max 360 phones | Done |
+| Social preview (`images/social-preview.jpg`) | 1200 × 630 | ~1.91:1 | link previews (LinkedIn, iMessage, etc.) | **Needed** |
+| Nav logo (`isodesic_logo_385x200.png`) | 385 × 200 | — | 44px tall | Done |
+| Brand logos (`images/logos/*.svg`) | SVG, 108 units tall, one color #231f20 | — | height set per logo with `--h` | Done |
+| Favicons (`favicon/`) | 16, 32, 48 (.ico), 180, 192, 512 | 1:1 | browser tabs, home screens | Done (apple-touch-icon needs white bg) |
+| Project pages (`projects/*.html`) | TBD | — | — | Not designed yet |
+
+Work photos use `.work-img` (fixed `aspect-ratio`, set 2026-09-25; previously fixed 480px / 200px heights).
+Featured is 16:9; `.grid-3 .work-img` overrides the cards to 3:2 (changed from 16:9 on 2026-09-26 after testing real photos).
+1280 × 850 is a hair wider than exact 3:2 (1275 × 850); the box trims ~1px per side, not visible.
+
 ## How the user works
 
 - Plain static HTML + CSS, hand-edited by the user. **Keep the HTML readable**: semantic

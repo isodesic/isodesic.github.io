@@ -176,12 +176,13 @@ h1, h2, h3, h4 { letter-spacing: -0.02em; }
 }
 .card:hover { color: inherit; border-color: var(--light-blue); }
 
-/* Work photos (featured + 3 cards) are 16:9 at every screen size.
-   Export the featured photo at 2400 × 1350 and card photos at 1280 × 720.
-   If a photo isn't 16:9, add style="--focus: 50% 30%" to its <img> to pick
+/* Work photos keep a fixed shape at every screen size:
+   featured photo 16:9 (export 2400 × 1350), card photos 3:2 (export 1280 × 850).
+   If a photo doesn't match, add style="--focus: 50% 30%" to its <img> to pick
    which part stays in frame (same as the hero photos). */
 .work-img { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; object-position: var(--focus, 50% 50%); display: block; }
 .ph.work-img { display: flex; } /* keep the placeholder caption centered */
+.grid-3 .work-img { aspect-ratio: 3 / 2; }
 
 .feature { margin-bottom: 32px; }
 .feature-body { padding: 32px 36px 36px; }
