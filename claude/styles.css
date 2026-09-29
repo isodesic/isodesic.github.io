@@ -286,7 +286,7 @@ h1, h2, h3, h4 { letter-spacing: -0.02em; }
 
   .hero { height: 570px; padding: 0 20px; }   /* previously 460px; 620px cut off the dots on an iPhone 13 mini */
   .hero h1 { font-size: 38px; }
-  .hero p { font-size: 17px; }
+  .hero p { font-size: 16px; }   /* was 17px; 16px keeps the paragraph to 5 lines on phones */
 
   .sec { padding: 44px 20px; }
   .cols { display: block; }
