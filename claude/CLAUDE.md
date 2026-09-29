@@ -19,7 +19,7 @@ Local folder: `C:\Users\Will\Documents\GitHub\isodesic.github.io\claude` (in the
 | `images/logos/isodesic_logo_385x200.png` | **Current logo**, transparent background. Used at 44px tall in the nav and as the JSON-LD logo. |
 | `images/logos/*.svg` | One-color (#231f20) brand logos, all 108 units tall. Used in Industries: The North Face, Big Agnes, Shibumi, Under Canvas, WrovenDen, Firefly Sauna, The Get Out. Not used yet: Kathmandu (pre-launch), Stanford, Isodesic blues/greys SVGs. `LinkedIn_logo.svg` is inlined in the nav. `isodesic-logo.png` there is the old white-background logo, unused. |
 | `images/will-mcelwain-portrait.jpg` | About photo, 800×1000, web-optimized from `images/old/about_me_4x5.jpg` |
-| `images/landing_heroes/` | Hero slideshow photos (2400×1000) |
+| `images/landing_heroes/` | Hero slideshow photos (current files 2400×1000; new spec 2400×1350) |
 | `images/old/` | Source/unused photos |
 | `favicon/` | `favicon.ico` (16/32/48), 16 + 32 px PNGs, `apple-touch-icon.png` (180), Android 192/512 PNGs, `site.webmanifest`. All linked from `index.html` `<head>`. |
 | `prototypes/` | Industries section mockups A–H plus comparison PNGs. F was built into the site; the folder can be deleted. |
@@ -35,8 +35,8 @@ Where a box crops, add `style="--focus: X% Y%"` to the `<img>` to choose what st
 
 | Image | Export size | Ratio | Shown on screen | Status |
 |---|---|---|---|---|
-| Hero slideshow (`images/landing_heroes/`) | 2400 × 1000 | 12:5 | up to 1440 × 600 desktop, full width × 460 phones (sides crop; `--focus`) | Done (7 photos) |
-| Work: featured project (Tiger Wall) | 2400 × 1350 | 16:9 | up to ~1050 × 590 desktop, ~335 × 190 phones | Test photo in (`featured-project-Tiger-Wall-b.jpg`) |
+| Hero slideshow (`images/landing_heroes/`) | 2400 × 1350 | 16:9 | up to 1440 × 810 desktop, full width × 620 phones (sides crop; `--focus`) | **Re-export** (7 photos are still 2400 × 1000; update `width`/`height` in the HTML too) |
+| Work: featured project (Tiger Wall) | 2400 × 1350 | 16:9 | up to ~1050 × 590 desktop; 3:2 on phones (~335 × 225, sides crop) | Test photo in (`featured-project-Tiger-Wall-b.jpg`) |
 | Work: 3 project cards | 1280 × 850 (`_1280x850` in file name) | 3:2 | ~335 × 225 desktop and phones; up to ~860 wide on tablets | Wind Assist, WrovenDen in; camp chairs is a stand-in `(garbage)` |
 | Services tiles (6) | 1500 × 600 | 5:2 | up to ~515 × 205 | **Needed** |
 | About portrait | 800 × 1000 | 4:5 | 380 wide desktop, max 360 phones | Done |
@@ -47,7 +47,7 @@ Where a box crops, add `style="--focus: X% Y%"` to the `<img>` to choose what st
 | Project pages (`projects/*.html`) | TBD | — | — | Not designed yet |
 
 Work photos use `.work-img` (fixed `aspect-ratio`, set 2026-09-25; previously fixed 480px / 200px heights).
-Featured is 16:9; `.grid-3 .work-img` overrides the cards to 3:2 (changed from 16:9 on 2026-09-26 after testing real photos).
+Featured is 16:9 on desktop and 3:2 on phones (≤900px) so all four match; `.grid-3 .work-img` overrides the cards to 3:2 (changed from 16:9 on 2026-09-26 after testing real photos).
 1280 × 850 is a hair wider than exact 3:2 (1275 × 850); the box trims ~1px per side, not visible.
 
 ## How the user works
@@ -87,7 +87,7 @@ Featured is 16:9; `.grid-3 .work-img` overrides the cards to 3:2 (changed from 1
 
 ## Sections (landing page)
 
-Hero (crossfading slideshow in `images/landing_heroes/`; photos 2400×1000, per-photo `--focus` crop point, optional `data-credit="Name"` shown lower right with a camera icon on desktop only, hidden at ≤900px; first photo keeps `is-current`) → 01 Work (featured project + 3-card grid) → 02 Services (intro + 6 tiles, each with a 5:2 photo on top; a photo-on-the-right version was tried and rejected) →
+Hero (crossfading slideshow in `images/landing_heroes/`; box 16:9 at 1440 × 810 desktop / 620 tall phones (changed from 600 / 460 on 2026-09-29), photos 2400×1350, per-photo `--focus` crop point, optional `data-credit="Name"` shown lower right with a camera icon on desktop only, hidden at ≤900px; first photo keeps `is-current`) → 01 Work (featured project + 3-card grid) → 02 Services (intro + 6 tiles, each with a 5:2 photo on top; a photo-on-the-right version was tried and rejected) →
 03 Process (4 steps) → 04 Industries (numbered categories + brand logos) → 05 Expert witness →
 06 About (portrait + bio) → Contact (email link + availability) → footer.
 

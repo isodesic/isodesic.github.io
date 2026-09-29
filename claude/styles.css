@@ -115,7 +115,7 @@ h1, h2, h3, h4 { letter-spacing: -0.02em; }
 /* 3 — hero --------------------------------------------------------------- */
 .hero {
   position: relative;
-  height: 600px;
+  height: 810px;   /* 16:9 at the full 1440px width */
   padding: 0 56px;
   display: flex;
   align-items: center;
@@ -178,6 +178,7 @@ h1, h2, h3, h4 { letter-spacing: -0.02em; }
 
 /* Work photos keep a fixed shape at every screen size:
    featured photo 16:9 (export 2400 × 1350), card photos 3:2 (export 1280 × 850).
+   On phones the featured photo is also 3:2 (sides crop), so all four match.
    If a photo doesn't match, add style="--focus: 50% 30%" to its <img> to pick
    which part stays in frame (same as the hero photos). */
 .work-img { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; object-position: var(--focus, 50% 50%); display: block; }
@@ -283,7 +284,7 @@ h1, h2, h3, h4 { letter-spacing: -0.02em; }
   .nav-burger { display: flex; }
   .nav-toggle:checked ~ .nav-menu { display: flex; }
 
-  .hero { height: 460px; padding: 0 20px; }
+  .hero { height: 620px; padding: 0 20px; }
   .hero h1 { font-size: 38px; }
   .hero p { font-size: 17px; }
 
@@ -292,6 +293,7 @@ h1, h2, h3, h4 { letter-spacing: -0.02em; }
   .cols > :first-child { margin-bottom: 20px; }
   .sec-title { font-size: 26px; }
 
+  .feature .work-img { aspect-ratio: 3 / 2; }   /* match the card photos on phones */
   .feature-body { padding: 20px; }
   .feature-body h3 { font-size: 23px; }
   .feature-body p { font-size: 16px; }
@@ -475,8 +477,8 @@ a:focus-visible, label:focus-visible, button:focus-visible, input:focus-visible 
 /* 16 — hero slideshow --------------------------------------------------- */
 /* Photos stack on top of each other; only .is-current is visible and the
    others crossfade in. motion.js moves .is-current and builds the dots.
-   Hero box: up to 1440 × 600 on desktop, full width × 460 on phones.
-   Export photos at 2400 × 1000. Narrower screens crop the sides, keeping
+   Hero box: up to 1440 × 810 (16:9) on desktop, full width × 620 on phones.
+   Export photos at 2400 × 1350. Narrower screens crop the sides, keeping
    the --focus point of each photo in frame. */
 .hero-slides { position: absolute; inset: 0; }
 .hero-slide {
