@@ -35,7 +35,7 @@ Where a box crops, add `style="--focus: X% Y%"` to the `<img>` to choose what st
 
 | Image | Export size | Ratio | Shown on screen | Status |
 |---|---|---|---|---|
-| Hero slideshow (`images/landing_heroes/`) | 2400 × 1350 | 16:9 | up to 1440 × 810 desktop, full width × 620 phones (sides crop; `--focus`) | **Re-export** (7 photos are still 2400 × 1000; update `width`/`height` in the HTML too) |
+| Hero slideshow (`images/landing_heroes/`) | 2400 × 1350 | 16:9 | up to 1440 × 810 desktop, full width × 570 phones (sides crop; `--focus`) | **Re-export** (7 photos are still 2400 × 1000; update `width`/`height` in the HTML too) |
 | Work: featured project (Tiger Wall) | 2400 × 1350 | 16:9 | up to ~1050 × 590 desktop; 3:2 on phones (~335 × 225, sides crop) | Test photo in (`featured-project-Tiger-Wall-b.jpg`) |
 | Work: 3 project cards | 1280 × 850 (`_1280x850` in file name) | 3:2 | ~335 × 225 desktop and phones; up to ~860 wide on tablets | Wind Assist, WrovenDen in; camp chairs is a stand-in `(garbage)` |
 | Services tiles (6) | 1500 × 600 | 5:2 | up to ~515 × 205 | **Needed** |
@@ -87,7 +87,7 @@ Featured is 16:9 on desktop and 3:2 on phones (≤900px) so all four match; `.gr
 
 ## Sections (landing page)
 
-Hero (crossfading slideshow in `images/landing_heroes/`; box 16:9 at 1440 × 810 desktop / 620 tall phones (changed from 600 / 460 on 2026-09-29), photos 2400×1350, per-photo `--focus` crop point, optional `data-credit="Name"` shown lower right with a camera icon on desktop only, hidden at ≤900px; first photo keeps `is-current`) → 01 Work (featured project + 3-card grid) → 02 Services (intro + 6 tiles, each with a 5:2 photo on top; a photo-on-the-right version was tried and rejected) →
+Hero (crossfading slideshow in `images/landing_heroes/`; box 16:9 at 1440 × 810 desktop / 570 tall phones (changed from 600 / 460 on 2026-09-29; to revert, set `.hero` height back to 600px and 460px in the 900px media query; 620px on phones was tried and cut off the dots on an iPhone 13 mini), photos 2400×1350, per-photo `--focus` crop point, optional `data-credit="Name"` shown lower right with a camera icon on desktop only, hidden at ≤900px; first photo keeps `is-current`) → 01 Work (featured project + 3-card grid) → 02 Services (intro + 6 tiles, each with a 5:2 photo on top; a photo-on-the-right version was tried and rejected) →
 03 Process (4 steps) → 04 Industries (numbered categories + brand logos) → 05 Expert witness →
 06 About (portrait + bio) → Contact (email link + availability) → footer.
 

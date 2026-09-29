@@ -115,7 +115,7 @@ h1, h2, h3, h4 { letter-spacing: -0.02em; }
 /* 3 — hero --------------------------------------------------------------- */
 .hero {
   position: relative;
-  height: 810px;   /* 16:9 at the full 1440px width */
+  height: 810px;   /* 16:9 at the full 1440px width. Previously 600px (phones 460px) until 2026-09-29 */
   padding: 0 56px;
   display: flex;
   align-items: center;
@@ -284,7 +284,7 @@ h1, h2, h3, h4 { letter-spacing: -0.02em; }
   .nav-burger { display: flex; }
   .nav-toggle:checked ~ .nav-menu { display: flex; }
 
-  .hero { height: 620px; padding: 0 20px; }
+  .hero { height: 570px; padding: 0 20px; }   /* previously 460px; 620px cut off the dots on an iPhone 13 mini */
   .hero h1 { font-size: 38px; }
   .hero p { font-size: 17px; }
 
@@ -477,7 +477,7 @@ a:focus-visible, label:focus-visible, button:focus-visible, input:focus-visible 
 /* 16 — hero slideshow --------------------------------------------------- */
 /* Photos stack on top of each other; only .is-current is visible and the
    others crossfade in. motion.js moves .is-current and builds the dots.
-   Hero box: up to 1440 × 810 (16:9) on desktop, full width × 620 on phones.
+   Hero box: up to 1440 × 810 (16:9) on desktop, full width × 570 on phones.
    Export photos at 2400 × 1350. Narrower screens crop the sides, keeping
    the --focus point of each photo in frame. */
 .hero-slides { position: absolute; inset: 0; }
