@@ -1,6 +1,7 @@
 /* ==========================================================================
    Isodesic — styles.css  (v2 + section 15: services intro, service
-   photos, expert witness, real About photo; section 16: hero slideshow)
+   photos, expert witness, real About photo; section 16: hero slideshow;
+   section 17: photo credits on Work/Services photos)
    Sections:  1 base  2 nav  3 hero  4 section shell  5 work  6 services
               7 process  8 industries  9 about  10 contact  11 footer
               12 responsive (single breakpoint at 900px)  13 motion
@@ -122,12 +123,13 @@ h1, h2, h3, h4 { letter-spacing: -0.02em; }
   justify-content: center;
   text-align: center;
   /* drop for now: background: repeating-linear-gradient(135deg, #dfe6ec 0 10px, #d6dee6 10px 20px); */
+  background: var(--ink);   /* dark fallback so the white text reads before the first photo loads */
 }
 .hero-scrim {
   position: absolute;
   inset: 0;
   /* old: background: linear-gradient(180deg, rgba(24, 36, 46, 0.42) 0%, rgba(24, 36, 46, 0.58) 100%); (scrim simplified 9.30.26) */
-  background: rgba(0, 0, 0, 0.25);
+  background: rgba(0, 0, 0, 0.2);   /* was 0.25 until 2026-09-30; lighter photos, text shadows below do the work */
 }
 .hero-text { position: relative; max-width: 900px; }
 .hero-eyebrow {
@@ -145,6 +147,7 @@ h1, h2, h3, h4 { letter-spacing: -0.02em; }
   font-weight: 700;
   color: #fff;
   text-wrap: balance;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
 }
 .hero p {
   margin: 0 auto;
@@ -153,6 +156,7 @@ h1, h2, h3, h4 { letter-spacing: -0.02em; }
   line-height: 1.55;
   color: #e9eff4;
   text-wrap: pretty;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.55), 0 0 12px rgba(0, 0, 0, 0.35);   /* readable over busy rock and trees */
 }
 
 /* 4 — section shell ------------------------------------------------------ */
@@ -287,7 +291,7 @@ h1, h2, h3, h4 { letter-spacing: -0.02em; }
 
   .hero { height: 570px; padding: 0 20px; }   /* previously 460px; 620px cut off the dots on an iPhone 13 mini */
   .hero h1 { font-size: 38px; }
-  .hero p { font-size: 17px; }   /* was 17px; 16px keeps the paragraph to 5 lines on phones */
+  .hero p { font-size: 17px; }   /* 17px should keep the paragraph to 5 lines on phones */
 
   .sec { padding: 44px 20px; }
   .cols { display: block; }
@@ -541,7 +545,8 @@ a:focus-visible, label:focus-visible, button:focus-visible, input:focus-visible 
 /* photo credit, lower right. motion.js fills it from the current photo's
    data-credit and fades it in; photos without a credit show nothing.
    Desktop only: hidden at the 900px breakpoint so the dots keep their spot. */
-.hero-credit {
+.hero-credit,
+.photo-credit {
   position: absolute;
   right: 18px;
   bottom: 14px;
@@ -561,7 +566,8 @@ a:focus-visible, label:focus-visible, button:focus-visible, input:focus-visible 
 
 /* camera icon before the credit: Bootstrap Icons "camera" (MIT license).
    Used as a mask so it takes the text color. */
-.hero-credit::before {
+.hero-credit::before,
+.photo-credit::before {
   --camera-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M15 12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h1.172a3 3 0 0 0 2.12-.879l.83-.828A1 1 0 0 1 6.827 3h2.344a1 1 0 0 1 .707.293l.828.828A3 3 0 0 0 12.828 5H14a1 1 0 0 1 1 1zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4z'/%3E%3Cpath d='M8 11a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5m0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7M3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0'/%3E%3C/svg%3E");
   content: "";
   flex: none;
@@ -574,4 +580,26 @@ a:focus-visible, label:focus-visible, button:focus-visible, input:focus-visible 
 
 @media (max-width: 900px) {
   .hero-credit { display: none; }  /* no credit on phones; dots stay at 18px */
+}
+
+/* 17 — photo credits on Work and Services photos ------------------------ */
+/* Any <img data-credit="Name"> outside the hero gets the same camera-icon
+   credit, sized down for the smaller photos. motion.js §6 wraps the photo
+   in a .photo-frame and adds the .photo-credit. Shown on phones too.
+   A tight dark text shadow (plus a drop shadow on the icon) keeps it
+   readable on any photo, including white product shots. */
+.photo-frame { position: relative; display: block; }
+.photo-credit {
+  right: 10px;
+  bottom: 8px;
+  gap: 5px;
+  font-size: 10px;
+  color: #fff;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.7), 0 1px 4px rgba(0, 0, 0, 0.6);
+  opacity: 1;
+}
+.photo-credit::before {
+  width: 11px;
+  height: 11px;
+  filter: drop-shadow(0 0 1.5px rgba(0, 0, 0, 0.7)) drop-shadow(0 1px 3px rgba(0, 0, 0, 0.5));
 }

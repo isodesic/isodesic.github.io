@@ -6,6 +6,7 @@
       and close the mobile menu after a link is tapped
    4. mobile menu accessibility
    5. hero slideshow: dots, autoplay, pause, swipe, photo credits
+   6. photo credits on the Work and Services photos
    Delete this file and the page still works — CSS handles the rest. */
 
 document.documentElement.classList.add('reveal-ready');
@@ -157,3 +158,18 @@ if (slides.length > 1) {
   show(0);
   play();
 }
+
+// 6 — photo credits on other photos (Work, Services, anywhere but the hero).
+//     An <img data-credit="Name"> gets the same camera-icon credit in its
+//     lower right. CSS can't read data-credit from an <img>, so the photo is
+//     wrapped in a <span class="photo-frame"> and the credit added beside it.
+document.querySelectorAll('img[data-credit]:not(.hero-slide)').forEach((img) => {
+  const frame = document.createElement('span');
+  frame.className = 'photo-frame';
+  img.replaceWith(frame);
+  const credit = document.createElement('span');
+  credit.className = 'photo-credit';
+  credit.append(Object.assign(document.createElement('span'),
+    { className: 'sr-only', textContent: 'Photo: ' }), img.dataset.credit);  // screen readers hear "Photo: Name"
+  frame.append(img, credit);
+});
