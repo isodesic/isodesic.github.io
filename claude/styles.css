@@ -121,12 +121,13 @@ h1, h2, h3, h4 { letter-spacing: -0.02em; }
   align-items: center;
   justify-content: center;
   text-align: center;
-  background: repeating-linear-gradient(135deg, #dfe6ec 0 10px, #d6dee6 10px 20px);
+  /* drop for now: background: repeating-linear-gradient(135deg, #dfe6ec 0 10px, #d6dee6 10px 20px); */
 }
 .hero-scrim {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(24, 36, 46, 0.42) 0%, rgba(24, 36, 46, 0.58) 100%);
+  /* old: background: linear-gradient(180deg, rgba(24, 36, 46, 0.42) 0%, rgba(24, 36, 46, 0.58) 100%); (scrim simplified 9.30.26) */
+  background: rgba(0, 0, 0, 0.25);
 }
 .hero-text { position: relative; max-width: 900px; }
 .hero-eyebrow {
