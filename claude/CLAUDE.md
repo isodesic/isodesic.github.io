@@ -88,7 +88,7 @@ Featured is 16:9 on desktop and 3:2 on phones (≤900px) so all four match; `.gr
 ## Sections (landing page)
 
 Hero (crossfading slideshow in `images/landing_heroes/`; box 16:9 at 1440 × 810 desktop / 570 tall phones (changed from 600 / 460 on 2026-09-29; to revert, set `.hero` height back to 600px and 460px in the 900px media query; 620px on phones was tried and cut off the dots on an iPhone 13 mini), photos 2400×1350, per-photo `--focus` crop point, flat 20% black scrim plus text shadows on the headline and paragraph (scrim was 25% until 2026-09-30), optional `data-credit="Name"` shown lower right with a camera icon on desktop only, hidden at ≤900px; first photo keeps `is-current`) → 01 Work (featured project + 3-card grid) → 02 Services (intro + 6 tiles, each with a 5:2 photo on top; a photo-on-the-right version was tried and rejected) →
-03 Process (4 steps) → 04 Industries (numbered categories + brand logos) → 05 Expert witness →
+03 Process (5 steps; step 01 "Scope the work" added 2026-09-30: phased proposal, fixed fee per phase) → 04 Industries (numbered categories + brand logos) → 05 Expert witness →
 06 About (portrait + bio) → Contact (email link + availability) → footer.
 
 ## Content status
@@ -111,6 +111,14 @@ reads on any photo incl. white product shots; shown on phones too. A dark pill b
 About bio is a draft; the user plans to write his own.
 Helius is intentionally left out of the client list.
 Kathmandu is left out of the client list (pre-launch; confirm before naming).
+
+## Service names = project tags
+
+The six Services tile headings (`<h3>` in 02 Services) are the **canonical service names**. Each project
+page in the portfolio will list the services provided on that project as tags/pills, using these names
+word for word. Current names: Research & strategy · Concept design · Tech packs · Development to production ·
+Sourcing & costing · Custom trims & hardware. If a heading is renamed, rename the matching tags on every
+project page too (and keep the names short enough to work as pills).
 
 ## Open to-dos
 
