@@ -83,6 +83,8 @@ Featured is 16:9 on desktop and 3:2 on phones (≤900px) so all four match; `.gr
   `--paper #fdfdfc`, `--paper-tint #f4f7f9`, `--rule #e9ebed`
 - Type: **Figtree** (headings + body), **IBM Plex Mono** (small labels, `01 / WORK`).
 - Nav: text links, then a LinkedIn icon (inline SVG, `--ink-soft`, `--dark-blue` on hover), then the "Get in touch" button.
+  Text links and the icon fade to their hover/active blue over 0.2s (`transition: color` on
+  `.nav-links a:not(.btn)`, added 2026-10-07; the user liked it), matching the button's 0.2s background fade.
 - Buttons (`.btn`: "Get in touch" + contact email): `--dark-blue` background, white text; hover fades to
   `--blue` (same as nav link hover), text stays white, no lift/movement (user disliked the old hover animation).
 - Industries (option F, chosen 2026-09-25 from prototypes A–H): `.sec-dark` band with `--dark-blue`
@@ -100,6 +102,8 @@ Featured is 16:9 on desktop and 3:2 on phones (≤900px) so all four match; `.gr
   in one at a time and on desktop each row fades in together. Their hover lift uses the CSS `translate`
   property (not `transform`, which the reveal owns), and styles.css §13 adds the hover transitions back for
   `.card[data-reveal]` / `.tile[data-reveal]`. This also fixed the featured Tiger Wall card not lifting on hover.
+  The same §13 overrides keep the hover color fades on the Process `.step`s and the Contact `.btn-lg`
+  (both have `data-reveal` on themselves).
 - Note: the user chose to keep the paler blue on `.sec-num` and `.step-num`
   even though those fall short of WCAG AA contrast. **Don't "fix" them again.**
 - Missing photos use grey striped `.ph` placeholders with a mono caption (none left on the landing
