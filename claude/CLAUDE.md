@@ -4,7 +4,8 @@ Freelance product design business site for **Isodesic** (solo designer, ~20 year
 outdoor industry: ultralight backpacking tents, sleeping pads, camp furniture, luggage,
 packs, and technical hardgoods beyond outdoor).
 
-Scope so far: **landing page** (essentially complete apart from photos). Portfolio index and per-project pages are planned but
+Scope so far: **landing page** (essentially complete; all photos in as of 2026-10-06. Next up: the
+05 Expert witness section, then alt text and the social preview image). Portfolio index and per-project pages are planned but
 not built.
 
 ## Files
@@ -15,11 +16,12 @@ Local folder: `C:\Users\Will\Documents\GitHub\isodesic.github.io\claude` (in the
 |---|---|
 | `index.html` | **Current landing page** (was `index-v3.html`). Edit this one. |
 | `styles.css` | **Current stylesheet** (was `styles-v3.css`). Section 15 = services intro, tile kickers, expert witness, `<img>` About photo. |
-| `motion.js` | No libraries: scroll reveal, nav shadow, active nav link, mobile menu a11y, hero slideshow (dots, autoplay, pause, swipe), photo credits on other images (§6) |
+| `motion.js` | No libraries: scroll reveal, nav shadow, active nav link, mobile menu a11y, hero slideshow (dots, autoplay, pause, swipe), photo credits on other images (§6). Scroll reveal (§1) fires when an element's top passes 12% up from the bottom of the screen (`threshold: 0`; was `0.08` until 2026-10-06, which made tall blocks like the stacked Services tiles on phones wait until 8% of their full height was showing). |
 | `images/logos/isodesic_logo_385x200.png` | **Current logo**, transparent background. Used at 44px tall in the nav and as the JSON-LD logo. |
 | `images/logos/*.svg` | One-color (#231f20) brand logos, all 108 units tall. Used in Industries: The North Face, Big Agnes, Shibumi, Under Canvas, WrovenDen, Firefly Sauna, The Get Out. Not used yet: Kathmandu (pre-launch), Stanford, Isodesic blues/greys SVGs. `LinkedIn_logo.svg` is inlined in the nav. `isodesic-logo.png` there is the old white-background logo, unused. |
 | `images/will-mcelwain-portrait.jpg` | About photo, 800×1000, web-optimized from `images/old/about_me_4x5.jpg` |
-| `images/landing_heroes/` | Hero slideshow photos (current files 2400×1000; new spec 2400×1350) |
+| `images/landing_heroes/` | Hero slideshow photos, all 2400×1350 WebP (`_h1350.webp`; `rc`/`rc2` = re-crops). Matching `_q98.jpg` files are high-quality masters, not used by the page. |
+| `images/services/` | Services tile photos, 1500×600 WebP (`_h600.webp`). Numbered/lettered files (`3b`, `4c`, `7`…) are alternates; only the six referenced in `index.html` are live. |
 | `images/old/` | Source/unused photos |
 | `favicon/` | `favicon.ico` (16/32/48), 16 + 32 px PNGs, `apple-touch-icon.png` (180), Android 192/512 PNGs, `site.webmanifest`. All linked from `index.html` `<head>`. |
 | `prototypes/` | Industries section mockups A–H plus comparison PNGs. F was built into the site; the folder can be deleted. |
@@ -30,15 +32,16 @@ Local folder: `C:\Users\Will\Documents\GitHub\isodesic.github.io\claude` (in the
 
 ## Image sizes (quick reference)
 
-Export JPGs at these sizes (about 2× the largest on-screen size, for sharp retina screens).
-Where a box crops, add `style="--focus: X% Y%"` to the `<img>` to choose what stays in frame.
+Export at these sizes (about 2× the largest on-screen size, for sharp retina screens). The page now
+uses **WebP** files named `_h<height>.webp` (e.g. `_h1350`, `_h850`, `_h600`), with a `_q98.jpg` master
+kept alongside some of them. Where a box crops, add `style="--focus: X% Y%"` to the `<img>` to choose what stays in frame.
 
 | Image | Export size | Ratio | Shown on screen | Status |
 |---|---|---|---|---|
-| Hero slideshow (`images/landing_heroes/`) | 2400 × 1350 | 16:9 | up to 1440 × 810 desktop, full width × 570 phones (sides crop; `--focus`) | **Re-export** (7 photos are still 2400 × 1000; update `width`/`height` in the HTML too) |
-| Work: featured project (Tiger Wall) | 2400 × 1350 | 16:9 | up to ~1050 × 590 desktop; 3:2 on phones (~335 × 225, sides crop) | Test photo in (`featured-project-Tiger-Wall-b.jpg`) |
-| Work: 3 project cards | 1280 × 850 (`_1280x850` in file name) | 3:2 | ~335 × 225 desktop and phones; up to ~860 wide on tablets | Wind Assist, WrovenDen in; camp chairs is a stand-in `(garbage)` |
-| Services tiles (6) | 1500 × 600 | 5:2 | up to ~515 × 205 | **Needed** |
+| Hero slideshow (`images/landing_heroes/`) | 2400 × 1350 | 16:9 | up to 1440 × 810 desktop, full width × 570 phones (sides crop; `--focus`) | Done (7 photos, all 2400 × 1350 WebP) |
+| Work: featured project (Tiger Wall) | 2400 × 1350 | 16:9 | up to ~1050 × 590 desktop; 3:2 on phones (~335 × 225, sides crop) | Done (`featured-project-Tiger-Wall_h1350.webp`) |
+| Work: 3 project cards | 1280 × 850 | 3:2 | ~335 × 225 desktop and phones; up to ~860 wide on tablets | Done: Wind Assist (`_1280x850.jpg`), camp chairs (`Camp-Chairs3_h850.webp`), WrovenDen (`_h850.webp`) |
+| Services tiles (6) | 1500 × 600 | 5:2 | up to ~515 × 205 | Done (tech packs is 516 × 206 on purpose; see to-dos) |
 | About portrait | 800 × 1000 | 4:5 | 380 wide desktop, max 360 phones | Done |
 | Social preview (`images/social-preview.jpg`) | 1200 × 630 | ~1.91:1 | link previews (LinkedIn, iMessage, etc.) | **Needed** |
 | Nav logo (`isodesic_logo_385x200.png`) | 385 × 200 | — | 44px tall | Done |
@@ -57,6 +60,18 @@ Featured is 16:9 on desktop and 3:2 on phones (≤900px) so all four match; `.gr
 - Minimal JavaScript, no frameworks or libraries. Prefer CSS for motion; JS only for what
   CSS can't do. The page must still work with `motion.js` deleted.
 - Small, targeted changes. Don't redesign or "improve" anything not asked for.
+- **For Claude (cloud sessions): verify every file written back to this folder.** Committing a file right
+  after editing it has written an *older* copy of it to the user's computer (seen 2026-10-06, several times,
+  on CLAUDE.md), silently undoing recent edits, the user's included. After each commit, re-stage the file
+  and diff it against the intended version; if they differ, wait ~20 s, commit again, and re-check. Always
+  re-stage before editing too, so the user's latest changes are the starting point.
+- **Visible copy is the source of truth.** The text people see on the page wins; everything not shown on
+  the page (JSON-LD, `<meta>` descriptions, `og:` tags, `llms.txt`, `sitemap.xml`) follows it wherever
+  possible: same names, same order, same claims. Small wording changes are fine; significantly different
+  wording or anything that contradicts the page is not. Those files **may add** true facts the page doesn't
+  show (awards, dates, software, extra specialties); put such additions after the copy-based items (at the
+  bottom of the list, or in their own list) so it's clear what comes from the page. Whenever visible copy
+  changes, check those files and update them to match.
 
 ## Design system
 
@@ -80,14 +95,19 @@ Featured is 16:9 on desktop and 3:2 on phones (≤900px) so all four match; `.gr
 - Layout: 1440px max width; each section is a `220px` label column + content column
   (`.cols`), collapsing to one column at the single breakpoint, **900px**.
 - Rounded 12px cards on tinted backgrounds; alternating white / `--paper-tint` sections.
+- Scroll reveal (`data-reveal`): each Work card (featured + 3) and each Services tile has its own
+  `data-reveal` (since 2026-10-06; it used to be on the whole `.grid-3` / `.grid-2`), so on phones they fade
+  in one at a time and on desktop each row fades in together. Their hover lift uses the CSS `translate`
+  property (not `transform`, which the reveal owns), and styles.css §13 adds the hover transitions back for
+  `.card[data-reveal]` / `.tile[data-reveal]`. This also fixed the featured Tiger Wall card not lifting on hover.
 - Note: the user chose to keep the paler blue on `.sec-num` and `.step-num`
   even though those fall short of WCAG AA contrast. **Don't "fix" them again.**
-- Photos are grey striped `.ph` placeholders with a mono caption. Replace with
-  `<img>` when real photos arrive. Never hand-draw SVG imagery.
+- Missing photos use grey striped `.ph` placeholders with a mono caption (none left on the landing
+  page; use them on new pages until real photos arrive). Never hand-draw SVG imagery.
 
 ## Sections (landing page)
 
-Hero (crossfading slideshow in `images/landing_heroes/`; box 16:9 at 1440 × 810 desktop / 570 tall phones (changed from 600 / 460 on 2026-09-29; to revert, set `.hero` height back to 600px and 460px in the 900px media query; 620px on phones was tried and cut off the dots on an iPhone 13 mini), photos 2400×1350, per-photo `--focus` crop point, flat 20% black scrim plus text shadows on the headline and paragraph (scrim was 25% until 2026-09-30), optional `data-credit="Name"` shown lower right with a camera icon on desktop only, hidden at ≤900px; first photo keeps `is-current`) → 01 Work (featured project + 3-card grid) → 02 Services (intro + 6 tiles, each with a 5:2 photo on top; a photo-on-the-right version was tried and rejected) →
+Hero (crossfading slideshow in `images/landing_heroes/`; box 16:9 at 1440 × 810 desktop / 570 tall phones (changed from 600 / 460 on 2026-09-29; to revert, set `.hero` height back to 600px and 460px in the 900px media query; 620px on phones was tried and cut off the dots on an iPhone 13 mini), photos 2400×1350, per-photo `--focus` crop point, flat 20% black scrim plus text shadows on the headline and paragraph (scrim was 25% until 2026-09-30), optional `data-credit="Name"` shown lower right with a camera icon on desktop only, hidden at ≤900px; first photo keeps `is-current`) → 01 Work (featured project + 3-card grid) → 02 Services (intro + 6 tiles in a 2-column grid, each with a 5:2 photo on top, a mono `.tile-kicker`, heading, and paragraph; a photo-on-the-right version was tried and rejected) →
 03 Process (5 steps; step 01 "Scope the work" added 2026-09-30: phased proposal, fixed fee per phase) → 04 Industries (numbered categories + brand logos) → 05 Expert witness →
 06 About (portrait + bio) → Contact (email link + availability) → footer.
 
@@ -95,12 +115,12 @@ Hero (crossfading slideshow in `images/landing_heroes/`; box 16:9 at 1440 × 810
 
 Filled from the master resume (`Will_McElwain_Master_Resume_v7.md`) on 2026-09-23:
 hero, services, process, industries categories, client names, about bio, contact, footer,
-all head metadata, and JSON-LD. Contact email is **ideas@isodesic.com** (changed from will@ on 2026-09-30, everywhere incl. JSON-LD and `llms.txt`).
+all head metadata, and JSON-LD. Website contact email is **ideas@isodesic.com** (changed from will@, from master resume, on 2026-09-30, everywhere incl. JSON-LD and `llms.txt`).
 
 Project card text is the user's own (rewritten 2026-09-30); **keep verbatim** unless asked:
 - Big Agnes Tiger Wall Tents — "The best space-to-weight ratio in a semi-freestanding ultralight tent."
 - Shibumi Wind Assist Accessory — "Patented accessory that anchors the Shibumi Shade on wind-free days."
-- Big Agnes Camp Chair Collection — "A unique hubless architecture enabled supremely comfortable camp chairs."
+- Big Agnes Camp Chair Collection — "A unique hubless architecture enables supremely comfortable camp chairs."
 - WrovenDen Kids' Tent — "A travel crib alternative for sleep and play."
 
 Photo credits: `data-credit="Name"` on any `<img>` shows a camera-icon credit in its lower right.
@@ -112,21 +132,62 @@ About bio is a draft; the user plans to write his own.
 Helius is intentionally left out of the client list.
 Kathmandu is left out of the client list (pre-launch; confirm before naming).
 
+## Services section (text and photos finalized by the user, 2026-10-06)
+
+Intro and all six tile paragraphs are the user's own; **keep verbatim** unless asked. The intro's verb list
+("research, design, spec, source, develop, and customize") mirrors the six tiles in order, so change both
+together. HTML comments in the section hold wording alternatives the user is still weighing (intro ending,
+Development first sentence, "tier-one" vs "proven"); leave them.
+
+Tile order follows the project sequence (2026-10-06: Sourcing moved ahead of Development, because the
+supplier is chosen before samples are made, matching Process step 04). In the 2-column grid that reads
+row 1 Research | Concept, row 2 Specs | Sourcing, row 3 Development | Custom trims.
+
+| # | Kicker | Heading (canonical name) | Photo | Was |
+|---|---|---|---|---|
+| 1 | STRATEGY | Research & direction | `services-research_h600.webp` | Research & strategy (renamed: no pricing/business strategy). Kicker was PRODUCT DESIGN until 2026-10-06. |
+| 2 | PRODUCT DESIGN | Concept design | `services-concept-design3b_h600.webp` | — |
+| 3 | PRODUCT DESIGN | Detailed specifications | `services-tech-packs_h206.webp` | Tech packs |
+| 4 | PRODUCT DEVELOPMENT | Sourcing | `services-factory-sourcing3b_h600.webp` | Sourcing & costing (now supplier introductions only; no quote or BOM reviews) |
+| 5 | PRODUCT DEVELOPMENT | Development to production | `services-sample-review7_h600.webp` | — |
+| 6 | ENGINEERING | Custom trims & hardware | `services-custom-trims3_h600.webp` (`data-credit="Shibumi"`) | — |
+
+Kickers are `.tile-kicker` (styles.css §15, `--very-dark-blue` mono).
+
+Reviewed 2026-10-06 and **left as-is on purpose** (don't flag again):
+- Research tile sets targets for "size, weight, cost, and features"; Process step 02 says "weight, cost, and end use".
+- Hero says "nearly two decades"; Sourcing tile says "nearly twenty years".
+
 ## Service names = project tags
 
 The six Services tile headings (`<h3>` in 02 Services) are the **canonical service names**. Each project
 page in the portfolio will list the services provided on that project as tags/pills, using these names
-word for word. Current names: Research & strategy · Concept design · Tech packs · Development to production ·
-Sourcing & costing · Custom trims & hardware. If a heading is renamed, rename the matching tags on every
-project page too (and keep the names short enough to work as pills).
+word for word. Current names, in page order: Research & direction · Concept design · Detailed specifications ·
+Sourcing · Development to production · Custom trims & hardware. If a heading is renamed, rename the
+matching tags on every project page too (and keep the names short enough to work as pills).
+The same names, in the same order, are used in the JSON-LD `hasOfferCatalog` in `index.html` (each with
+`"url": "https://isodesic.com/#services"`) and the Services list in `llms.txt` (one-line summaries of each
+tile paragraph). Synced 2026-10-06; update both whenever a heading, the order, or a tile paragraph changes.
+`llms.txt` also has an "Additional specialties" list right after Services, for things the user wants AI
+tools to know that the page copy doesn't say (soft/hard goods integration, Rhino + Grasshopper pole/fabric
+simulation tools, BOMs and supplier introductions in Asia, SolidWorks trims). Keep those out of the
+Services bullets. The user will review `llms.txt` as a final step.
+The JSON-LD business `description` and the `llms.txt` summary paraphrase the hero + Services intro, and
+their category lists match 04 Industries.
 
 ## Open to-dos
 
-- Real photos + descriptive `alt` text on every image (biggest remaining SEO win). Service tile
-  photos: 1500×600 (5:2), swap each `.ph.tile-img` for `<img class="tile-img">`.
-- **Alt text (user is writing these):** descriptive alt text for every photo. The Services photo alts are
-  short labels that repeat the tile headings ("Sample review", "Computational design"); describe what's in
-  each photo instead. Also Work photos and hero slides. `og:image:alt` is still a `[PLACEHOLDER]`.
+- All landing-page photos are now real (no `.ph` placeholders left in `index.html`; the `.ph` CSS stays
+  for future pages).
+- **Alt text (user is writing these; planned as one of the last tasks):** descriptive alt text for every
+  photo. Most Services photo alts are still short labels ("Research and competitive surveying",
+  "Computational design", "Technical packages (specifications)", "Sample review", "Custom trim design and
+  development"); describe what's in each photo instead. Also Work photos and hero slides.
+  `og:image:alt` is still a `[PLACEHOLDER]`.
+- **Expert witness sync (after the user's 05 Expert witness edits):** the JSON-LD offer is still named
+  "Technical expert witness for patent litigation", and `llms.txt` (Services list + Pages link) says
+  "patent ... tents, furniture, and fabric-based products". The visible copy also covers product liability
+  cases. Bring all of them in line with the final visible copy.
 - `images/services/services-tech-packs_h206.webp` is 516 × 206 **on purpose** (blurry for confidentiality). Don't flag it.
 - Create `images/social-preview.jpg` (1200×630) and fill in `og:image:alt`. (Favicons done 2026-09-24.)
 - **User's own to-dos:** give `favicon/apple-touch-icon.png` a white background (iOS shows

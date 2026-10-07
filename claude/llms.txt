@@ -1,15 +1,25 @@
 # Isodesic
 
-> Isodesic, LLC is the independent product design practice of Will McElwain, based in Bozeman, Montana. It designs technical outdoor, travel, and lifestyle products from concept through production: backpacking and expedition tents, glamping shelters, camp furniture, sleeping pads, luggage, and custom trims and hardware.
+> Isodesic, LLC is the independent product design and development practice of Will McElwain, based in Bozeman, Montana. It works with established brands and entrepreneurs alike to research, design, spec, source, develop, and customize technical outdoor hardgoods, including tents, chairs, and travel gear, taking ideas from zero to production.
 
 Will McElwain has 18+ years of experience and has been sole or lead designer on 250+ commercialized products. He was lead tent designer at The North Face (2007–2011) and Senior Product Designer at Big Agnes (2014–2020), where he owned the ultralight tent line (Copper Spur, Tiger Wall, Fly Creek) and designed the Skyline UL camp chair and AXL Air sleeping pad. He founded Isodesic in 2021. B.S. in Engineering (Product Design), Stanford University.
 
-Specialties:
+Services:
+- Research & direction: competitive analysis, insight from core users, and targets for size, weight, cost, and features, captured in a brief that guides the design
+- Concept design: sketching and rapid prototyping, then accurate modeling of the most promising concepts with custom computational design tools
+- Detailed specifications: tech packs that call out dimensions, materials, features, and construction details, so suppliers deliver accurate samples in fewer rounds
+- Sourcing: introductions to tier-one manufacturers and material suppliers worldwide, from a network built over nearly twenty years
+- Development to production: guiding each round of sample revisions, balancing design intent with cost and manufacturability, and keeping the spec current until production
+- Custom trims & hardware: purpose-built hardware that improves usability, stands up to the elements, and reinforces brand identity
+- Technical expert witness for utility and design patent matters involving tents, furniture, and fabric-based products
+
+Additional specialties:
 - Integrating soft goods and hard goods: tensioned fabric, bent poles, and molded components
 - Computational design in Rhino and Grasshopper, including custom tools that simulate tent pole bending and fabric tension
 - Tech packs, BOMs, and supplier introductions in Asia
 - Custom trims and hardware in SolidWorks for injection molding, stamping, laser cutting, and 3D printing
-- Technical expert witness for utility and design patent matters involving tents, furniture, and fabric-based products
+
+Product categories: ultralight backpacking tents, expedition tents and geodesic domes, shade structures, family camping tents, glamping and canvas shelters, camp chairs and furniture, sleeping pads and bags, luggage and backpacks, kids' travel gear, and custom trims and hardware.
 
 Named inventor on two U.S. design patents (D941,950 tent stake; D1,084,195 sun shade accessory). Author of an open-source elastica curve script for Grasshopper cited in peer-reviewed structural engineering research.
 

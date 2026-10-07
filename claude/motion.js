@@ -11,7 +11,10 @@
 
 document.documentElement.classList.add('reveal-ready');
 
-// 1 — reveal on scroll
+// 1 — reveal on scroll: each element fades in as soon as its top edge rises
+//     past a line 12% up from the bottom of the screen. threshold is 0 (not a
+//     percentage of the element) so tall blocks, like the six Services tiles
+//     stacked on a phone, start at the same point as short ones.
 const reveals = document.querySelectorAll('[data-reveal]');
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
@@ -19,7 +22,7 @@ const revealObserver = new IntersectionObserver((entries) => {
     entry.target.classList.add('is-in');
     revealObserver.unobserve(entry.target);
   });
-}, { rootMargin: '0px 0px -12% 0px', threshold: 0.08 });
+}, { rootMargin: '0px 0px -12% 0px', threshold: 0 });
 reveals.forEach((el) => revealObserver.observe(el));
 
 // 2 — nav shadow
