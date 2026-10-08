@@ -166,14 +166,24 @@ Reviewed 2026-10-06 and **left as-is on purpose** (don't flag again):
 ## Expert witness section (restyled in Claude Design, tightened 2026-10-07)
 
 Order: `.ew-lead` (what I offer; the user's wording, **keep verbatim**: "...fabric-based hardgoods such as tents,
-portable furniture, and other similar consumer products") → `.ew-text` (latest case: federal patent case over
-portable camp chairs, three expert reports and a deposition) → `.ew-body`: `.ew-stats` column (18+ years,
-250+ products, then a plain `.ew-stats-note` line with the two design patent links) beside the "Subject matter"
-list (4 groups: Portable shelters, Portable furniture, Sleep systems incl. hammocks, Packs & travel goods)
-→ `.ew-foot` with only the "Request CV and fee schedule →" mailto link. On phones the two stats sit side by
-side with the patents line below. Changed 2026-10-07 from: a "Designing gear for The North Face, Big Agnes…"
-sentence (repeated the Industries logos; kept in an HTML comment), the case sentence at the bottom, a big "2"
-patents stat, and a one-item "Other fabric-based hardgoods: Hammocks" group.
+portable furniture, backpacks, luggage, and other related consumer products") → `.ew-body`: `.ew-stats` column
+(18+ years, 250+ products, 2 U.S. design patents with links) beside the "Subject matter" list (4 groups:
+Portable shelters, Portable furniture, Sleep systems incl. hammocks, Packs & travel goods) → `.ew-foot`: the
+latest case (`.ew-text`: federal patent case over portable camp chairs, three expert reports and a deposition)
+then the "Request CV and fee schedule →" mailto link. (2026-10-08: the case sentence moved from right under the
+lead to the foot at the user's request.) `.ew-foot` and its top line are capped to the `.ew-body` width
+(`calc(220px + 48px + 425px)`); change both together. On phones the three stats become a row of three.
+Changed 2026-10-07 from: a "Designing gear for The North Face, Big Agnes…" sentence (repeated the Industries
+logos; kept in an HTML comment), the case sentence at the bottom, and a one-item "Other fabric-based hardgoods:
+Hammocks" group. The big "2" patents stat was briefly replaced by a plain text line, then **brought back at
+the user's request** (it looked odd without it); keep it.
+Subject matter column width (user's request, 2026-10-08): capped at 425px (`.ew-body` grid `220px minmax(0, 425px)`)
+so the row lines are shorter and each row wraps to two lines, ending about level with the stats column on
+desktop (410–440px all do this). The items are plain text separated by " · " (2026-10-08: the user removed the
+per-item `<span>`s, which kept lines breaking only between items, because they made the HTML hard to read; without
+them some rows break mid-item at 1440px, e.g. "bed / frames", "kids' travel / gear". `text-wrap: pretty`/`balance`
+don't fix it. **User is fine with the mid-item breaks; don't flag them again.**) If an
+item is added or renamed, re-check that each row is still two lines at 1440px.
 The Subject matter list overlaps 04 Industries on purpose (attorneys may jump straight here; its extra
 items are search terms). JSON-LD offer "Technical expert witness for patent and product liability cases" and
 both `llms.txt` lines (Services + Pages) match the visible copy as of 2026-10-07; `llms.txt` leaves out which
