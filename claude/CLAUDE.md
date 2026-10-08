@@ -4,8 +4,8 @@ Freelance product design business site for **Isodesic** (solo designer, ~20 year
 outdoor industry: ultralight backpacking tents, sleeping pads, camp furniture, luggage,
 packs, and technical hardgoods beyond outdoor).
 
-Scope so far: **landing page** (essentially complete; all photos in as of 2026-10-06. Next up: the
-05 Expert witness section, then alt text and the social preview image). Portfolio index and per-project pages are planned but
+Scope so far: **landing page** (essentially complete; all photos in as of 2026-10-06; 05 Expert witness
+restyled and tightened 2026-10-07. Next up: alt text and the social preview image). Portfolio index and per-project pages are planned but
 not built.
 
 ## Files
@@ -85,6 +85,7 @@ Featured is 16:9 on desktop and 3:2 on phones (≤900px) so all four match; `.gr
 - Nav: text links, then a LinkedIn icon (inline SVG, `--ink-soft`, `--dark-blue` on hover), then the "Get in touch" button.
   Text links and the icon fade to their hover/active blue over 0.2s (`transition: color` on
   `.nav-links a:not(.btn)`, added 2026-10-07; the user liked it), matching the button's 0.2s background fade.
+  Nav labels use sentence case like the rest of the page ("Expert witness", "Get in touch"; was "Expert Witness" until 2026-10-07).
 - Buttons (`.btn`: "Get in touch" + contact email): `--dark-blue` background, white text; hover fades to
   `--blue` (same as nav link hover), text stays white, no lift/movement (user disliked the old hover animation).
 - Industries (option F, chosen 2026-09-25 from prototypes A–H): `.sec-dark` band with `--dark-blue`
@@ -112,7 +113,7 @@ Featured is 16:9 on desktop and 3:2 on phones (≤900px) so all four match; `.gr
 ## Sections (landing page)
 
 Hero (crossfading slideshow in `images/landing_heroes/`; box 16:9 at 1440 × 810 desktop / 570 tall phones (changed from 600 / 460 on 2026-09-29; to revert, set `.hero` height back to 600px and 460px in the 900px media query; 620px on phones was tried and cut off the dots on an iPhone 13 mini), photos 2400×1350, per-photo `--focus` crop point, flat 20% black scrim plus text shadows on the headline and paragraph (scrim was 25% until 2026-09-30), optional `data-credit="Name"` shown lower right with a camera icon on desktop only, hidden at ≤900px; first photo keeps `is-current`) → 01 Work (featured project + 3-card grid) → 02 Services (intro + 6 tiles in a 2-column grid, each with a 5:2 photo on top, a mono `.tile-kicker`, heading, and paragraph; a photo-on-the-right version was tried and rejected) →
-03 Process (5 steps; step 01 "Scope the work" added 2026-09-30: phased proposal, fixed fee per phase) → 04 Industries (numbered categories + brand logos) → 05 Expert witness →
+03 Process (5 steps; step 01 "Scope the work" added 2026-09-30: phased proposal, fixed fee per phase) → 04 Industries (numbered categories + brand logos) → 05 Expert witness (see below) →
 06 About (portrait + bio) → Contact (email link + availability) → footer.
 
 ## Content status
@@ -162,6 +163,22 @@ Reviewed 2026-10-06 and **left as-is on purpose** (don't flag again):
 - Research tile sets targets for "size, weight, cost, and features"; Process step 02 says "weight, cost, and end use".
 - Hero says "nearly two decades"; Sourcing tile says "nearly twenty years".
 
+## Expert witness section (restyled in Claude Design, tightened 2026-10-07)
+
+Order: `.ew-lead` (what I offer; the user's wording, **keep verbatim**: "...fabric-based hardgoods such as tents,
+portable furniture, and other similar consumer products") → `.ew-text` (latest case: federal patent case over
+portable camp chairs, three expert reports and a deposition) → `.ew-body`: `.ew-stats` column (18+ years,
+250+ products, then a plain `.ew-stats-note` line with the two design patent links) beside the "Subject matter"
+list (4 groups: Portable shelters, Portable furniture, Sleep systems incl. hammocks, Packs & travel goods)
+→ `.ew-foot` with only the "Request CV and fee schedule →" mailto link. On phones the two stats sit side by
+side with the patents line below. Changed 2026-10-07 from: a "Designing gear for The North Face, Big Agnes…"
+sentence (repeated the Industries logos; kept in an HTML comment), the case sentence at the bottom, a big "2"
+patents stat, and a one-item "Other fabric-based hardgoods: Hammocks" group.
+The Subject matter list overlaps 04 Industries on purpose (attorneys may jump straight here; its extra
+items are search terms). JSON-LD offer "Technical expert witness for patent and product liability cases" and
+both `llms.txt` lines (Services + Pages) match the visible copy as of 2026-10-07; `llms.txt` leaves out which
+side retained him (see to-dos).
+
 ## Service names = project tags
 
 The six Services tile headings (`<h3>` in 02 Services) are the **canonical service names**. Each project
@@ -188,10 +205,10 @@ their category lists match 04 Industries.
   "Computational design", "Technical packages (specifications)", "Sample review", "Custom trim design and
   development"); describe what's in each photo instead. Also Work photos and hero slides.
   `og:image:alt` is still a `[PLACEHOLDER]`.
-- **Expert witness sync (after the user's 05 Expert witness edits):** the JSON-LD offer is still named
-  "Technical expert witness for patent litigation", and `llms.txt` (Services list + Pages link) says
-  "patent ... tents, furniture, and fabric-based products". The visible copy also covers product liability
-  cases. Bring all of them in line with the final visible copy.
+- **User to revisit: "for the plaintiff"** in the 05 Expert witness case sentence (kept as-is for now,
+  2026-10-07). Some experts leave out which side retained them so defense firms don't see them as a
+  "plaintiff's expert". The HTML comment under that sentence has a neutral version. Bring it up when the
+  user returns to this section; don't change it on your own.
 - `images/services/services-tech-packs_h206.webp` is 516 × 206 **on purpose** (blurry for confidentiality). Don't flag it.
 - Create `images/social-preview.jpg` (1200×630) and fill in `og:image:alt`. (Favicons done 2026-09-24.)
 - **User's own to-dos:** give `favicon/apple-touch-icon.png` a white background (iOS shows

@@ -486,8 +486,8 @@ a:focus-visible, label:focus-visible, button:focus-visible, input:focus-visible 
 /* small mono label on service tiles: STRATEGY / PRODUCT DESIGN / DEVELOPMENT / ENGINEERING */
 .tile-kicker { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; color: var(--very-dark-blue); margin-bottom: 10px; }
 
-/* expert witness (05): short lead + one paragraph, then a stats column beside
-   the subject list, then the latest case and the CV link along the bottom */
+/* expert witness (05): short lead + the latest case, then a stats column beside
+   the subject list, then the CV link along the bottom */
 .ew-lead { margin: 0 0 14px; max-width: 720px; font-size: 23px; line-height: 1.45; letter-spacing: -0.01em; text-wrap: pretty; }
 .ew-text { margin: 0 0 40px; max-width: 720px; font-size: 17px; line-height: 1.65; color: var(--ink-soft); text-wrap: pretty; }
 .ew-body { display: grid; grid-template-columns: 220px 1fr; gap: 48px; margin-bottom: 36px; }
@@ -509,8 +509,7 @@ a:focus-visible, label:focus-visible, button:focus-visible, input:focus-visible 
 .ew-list-numbered li > * { grid-column: 2; }
 .ew-list-numbered .ew-num { grid-column: 1; grid-row: 1 / span 2; padding-top: 4px; font-family: var(--mono); font-size: 12px; letter-spacing: 0.06em; color: var(--blue); }
 
-.ew-foot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 12px 32px; padding-top: 22px; border-top: 1px solid var(--rule); }
-.ew-foot p { margin: 0; max-width: 560px; font-size: 17px; line-height: 1.6; color: var(--ink-soft); }
+.ew-foot { padding-top: 22px; border-top: 1px solid var(--rule); }
 .ew-foot .sec-link { margin-top: 0; }
 
 @media (max-width: 900px) {
@@ -519,9 +518,9 @@ a:focus-visible, label:focus-visible, button:focus-visible, input:focus-visible 
   .ew-lead { font-size: 20px; margin-bottom: 12px; }
   .ew-text { font-size: 16px; margin-bottom: 28px; }
   .ew-body { display: block; margin-bottom: 24px; }
-  .ew-stats {   /* column becomes a row of three */
+  .ew-stats {   /* column becomes a row of two stats, patents line below */
     display: grid;
-    grid-template-columns: 0.8fr 1fr 1.25fr;
+    grid-template-columns: 1fr 1fr;
     gap: 16px;
     padding: 20px 0;
     margin-bottom: 24px;
@@ -530,10 +529,10 @@ a:focus-visible, label:focus-visible, button:focus-visible, input:focus-visible 
     border-bottom: 1px solid var(--rule);
   }
   .ew-stats li, .ew-stats li:last-child { padding: 0; margin: 0; border: 0; font-size: 14px; line-height: 1.4; }
+  .ew-stats li.ew-stats-note { grid-column: 1 / -1; padding-top: 16px; border-top: 1px solid var(--rule); }
   .ew-stat-num { font-size: 30px; margin-bottom: 6px; }
   .ew-list h4 { font-size: 16px; }
-  .ew-foot { flex-direction: column; align-items: flex-start; gap: 12px; padding-top: 20px; }
-  .ew-foot p { font-size: 16px; }
+  .ew-foot { padding-top: 20px; }
 }
 
 /* 16 — hero slideshow --------------------------------------------------- */
