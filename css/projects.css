@@ -1,0 +1,214 @@
+/* ==========================================================================
+   Isodesic — projects.css
+   Project pages only. Loads after styles.css, which already covers everything
+   the pages share: colors, type, nav, hero, section layout, labels, intro text,
+   contact, footer, photo credits and motion.
+   One breakpoint, 900px: each section ends with its own phone rules.
+   Sections:  1 settings  2 layout  3 facts rail  4 photo stream
+              5 family table  6 videos  7 next project
+   ========================================================================== */
+
+/* 1 — settings ----------------------------------------------------------- */
+:root {
+  --stream-captions: 1;   /* captions under the photo stream photos: 1 = show, 0 = hide (the lightbox always
+                             shows them). For one page only: style="--stream-captions: 0" on its .pj-stream. */
+}
+
+/* 2 — layout ------------------------------------------------------------- */
+/* facts rail on the left, pinned while you scroll; photo stream on the right */
+.pj-sticky-wrap { display: grid; grid-template-columns: 300px 1fr; gap: 72px; align-items: start; }
+.pj-rail { position: sticky; top: 90px; }
+@media (max-height: 780px) {
+  .pj-rail { position: static; }   /* windows too short to show the whole rail: it scrolls with the page */
+}
+
+.pj-tail { border-top: 1px solid var(--rule); }   /* sections after the photo stream */
+
+@media (max-width: 900px) {
+  .pj-sticky-wrap { display: block; }
+  .pj-rail { position: static; margin-bottom: 40px; }
+}
+
+/* 3 — facts rail --------------------------------------------------------- */
+.pj-facts { display: grid; gap: 16px; }
+.pj-facts div { min-width: 0; }
+.pj-facts dt { margin-bottom: 6px; }
+.pj-facts dd { font-size: var(--text-md); line-height: 1.45; color: var(--ink); }
+
+/* Brand: label and name on the left, the logo on the right in a white card as tall
+   as both lines: 46px = label line (16px) + its 6px gap + name line (24px); change together.
+   The card has the shape of the landing page's Expertise logo cards (251 × 120).
+   Logo size: copy the logo's --h from index.html; × 0.63 matches its Expertise size. */
+.pj-facts-client { display: grid; grid-template-columns: 1fr auto; column-gap: 16px; }
+.pj-facts-client dt { grid-column: 1; line-height: 16px; }
+.pj-facts-client dd { grid-column: 1; line-height: 24px; }
+.pj-facts-client .pj-client-logo {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  height: 46px;
+  aspect-ratio: 251 / 120;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--white);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+}
+.pj-client-logo img {
+  height: calc(var(--h, 54px) * 0.63);
+  max-width: 88%;
+  width: auto;
+  filter: brightness(0);   /* the same grey as the Expertise logos */
+  opacity: 0.63;
+}
+
+/* Services: one pill per service (short versions of the landing page Services headings) */
+.pj-tags { margin-top: 2px; display: flex; flex-wrap: wrap; gap: 6px; }
+.pj-tags li {
+  padding: 4px 11px;
+  border-radius: 999px;
+  background: rgba(194, 219, 242, 0.5);   /* --very-light-blue at 50% */
+  font-size: var(--text-sm);
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--ink);
+}
+
+/* Recognition: the awards as text, then their images */
+.pj-recog { display: grid; gap: 8px; }
+.pj-recog li { font-size: var(--text-sm); line-height: 1.45; color: var(--ink); }
+.pj-recog span { margin-right: 6px; font-family: var(--mono); font-size: var(--text-xs); color: var(--ink-faint); }
+
+/* Award images: one row, 100px tall. space-around gives each image equal space on both
+   sides (x at the rail edges, 2x between images); a wide logo is capped at a third of the row. */
+.pj-award-imgs { margin-top: 14px; display: flex; justify-content: space-around; align-items: center; }
+.pj-award-imgs li { min-width: 0; max-width: calc(100% / 3); padding: 0 6px; }
+.pj-award-imgs img { height: 100px; width: auto; max-width: 100%; object-fit: contain; }
+
+/* 4 — photo stream ------------------------------------------------------- */
+/* --cap-line is one line of caption text: .pj-cap's size × its line height (keep them in step).
+   Captions shown: each caption keeps room for 3 lines and the gap below adds 1 more, so the
+   photos are evenly spaced (4 caption lines, about 109px) for captions of 1 to 3 lines.
+   Captions hidden (--stream-captions: 0): photos are 2 caption lines (about 49px) apart.
+   Each calc() multiplies by --stream-captions (1 or 0) to switch between the two. */
+.pj-stream {
+  --cap-line: calc(var(--text-md) * 1.45);
+  --stream-gap: calc(var(--cap-line) * (2 - var(--stream-captions)));
+  display: grid;
+  gap: var(--stream-gap);
+}
+.pj-pair { display: grid; grid-template-columns: 1fr 1fr; gap: var(--stream-gap) 24px; }
+
+/* Each photo is a link to the full-size file, opened in the lightbox by lightbox.js
+   (or in a new tab without it). The thin outline keeps white product shots off the page. */
+.pj-zoom { display: block; overflow: hidden; border-radius: 12px; cursor: zoom-in; box-shadow: 0 0 0 1px var(--rule); }
+.pj-photo {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;   /* most photos are 3:2 and show uncropped */
+  object-fit: cover;
+  object-position: var(--focus, 50% 50%);   /* crop point: style="--focus: X% Y%" on the <img> */
+  border-radius: 12px;
+  background: var(--paper-tint);
+  transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.pj-zoom:hover .pj-photo { transform: scale(1.02); }
+
+.pj-cap {   /* the lightbox caption uses the same size (photoswipe-dynamic-caption-plugin css) */
+  min-height: calc(var(--cap-line) * 3 * var(--stream-captions));    /* room for 3 lines, or 0 */
+  max-height: calc(var(--cap-line) * 20 * var(--stream-captions));   /* no real limit, or 0 = hidden */
+  margin-top: calc(10px * var(--stream-captions));
+  overflow: hidden;
+  font-size: var(--text-md);
+  line-height: 1.45;
+  color: var(--ink-faint);
+}
+
+/* text blocks in the stream: as wide as the quote, plus a line's worth of room
+   below when captions are shown (the photos get theirs from the caption space) */
+.pj-stream .intro { max-width: 700px; }
+.pj-stream .intro, .pj-quote { margin-bottom: calc(var(--cap-line) * var(--stream-captions)); }
+
+.pj-quote { max-width: 700px; padding-left: 26px; border-left: 2px solid var(--blue); }
+.pj-quote p { font-size: var(--text-xl); line-height: 1.4; letter-spacing: -0.015em; color: var(--ink); text-wrap: pretty; }
+.pj-quote p::before { content: "\201C"; }
+.pj-quote p::after { content: "\201D"; }
+.pj-quote cite { display: block; margin-top: 12px; }
+
+@media (max-width: 900px) {
+  .pj-pair { grid-template-columns: 1fr; }
+}
+
+/* 5 — family table ------------------------------------------------------- */
+/* Season as a row heading, models in a wrapping list. Each row is a 2-column grid
+   with one dotted line on top, so the line is drawn in one piece (in a normal table
+   row the dots restart at each cell). The first row's line underlines the headings. */
+.pj-skus { width: 100%; border-collapse: collapse; text-align: left; }
+.pj-skus tr { display: grid; grid-template-columns: 130px 1fr; }
+.pj-skus tbody tr { border-top: 1px dotted var(--ink-soft); }
+.pj-skus thead th { padding: 0 0 10px; }
+.pj-skus tbody th { padding: 18px 24px 18px 0; white-space: nowrap; }
+.pj-skus td { padding: 18px 0; }
+.pj-sku-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 6px 28px; }
+.pj-sku-list li { font-size: var(--text-sm); line-height: 1.5; color: var(--ink); }
+
+@media (max-width: 900px) {
+  .pj-skus thead { display: none; }
+  .pj-skus tbody tr, .pj-skus tbody th, .pj-skus td { display: block; }
+  .pj-skus tbody th { padding: 16px 0 8px; }
+  .pj-skus td { padding: 0 0 16px; }
+  .pj-sku-list { grid-template-columns: 1fr; }
+}
+
+/* 6 — videos ------------------------------------------------------------- */
+/* One lead video, then a row of three. Each starts as a YouTube thumbnail with a play
+   button (a plain link to the video); motion.js swaps in the player when it's clicked. */
+.pj-videos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.pj-video-lead { grid-column: 1 / -1; margin-bottom: 8px; }
+.pj-video iframe, .pj-yt {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--ink);
+}
+.pj-yt { position: relative; }
+.pj-yt img {   /* "cover" also trims the black bars off YouTube's smaller 4:3 thumbnails */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.pj-yt:hover img { transform: scale(1.02); }
+/* play button: a dark rounded box (::before) with a white triangle (::after) */
+.pj-yt::before, .pj-yt::after { content: ""; position: absolute; left: 50%; top: 50%; translate: -50% -50%; }
+.pj-yt::before { width: 68px; height: 48px; border-radius: 12px; background: rgba(0, 0, 0, 0.6); transition: background-color 0.2s ease; }
+.pj-yt::after { margin-left: 3px; border-style: solid; border-width: 11px 0 11px 19px; border-color: transparent transparent transparent var(--white); }
+.pj-yt:hover::before, .pj-yt:focus-visible::before { background: var(--blue); }
+
+@media (max-width: 900px) {
+  .pj-videos { grid-template-columns: 1fr; gap: 20px; }
+}
+
+/* 7 — next project ------------------------------------------------------- */
+/* previous / next: two clickable halves split by a hairline */
+.pj-next {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.pj-next > a { display: block; padding: 40px 56px; color: var(--ink); transition: background-color 0.25s ease; }
+.pj-next > a:hover { background: var(--paper-tint); color: var(--ink); }
+.pj-next-forward { border-left: 1px solid var(--rule); text-align: right; }
+.pj-next .label { display: block; margin-bottom: 8px; }
+.pj-next-title { font-size: var(--text-2xl); font-weight: 700; letter-spacing: -0.02em; }
+
+@media (max-width: 900px) {
+  .pj-next { grid-template-columns: 1fr; }
+  .pj-next > a { padding: 24px 20px; }
+  .pj-next-forward { border-left: 0; border-top: 1px solid var(--rule); text-align: left; }
+  .pj-next-title { font-size: var(--text-xl); }
+}
