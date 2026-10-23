@@ -18,8 +18,8 @@
   --very-light-blue: #c2dbf2;
   --light-blue:      #9bc6e9;
   --medium-blue:     #6bb0e1;
-  --blue:            #1a9ad6;   /* main brand blue (also the theme-color in each page's <head>) */
-  --dark-blue:       #0883c6;
+  --blue:            #1a9ad6;   /* previous main brand blue (was the theme-color in each page's <head>) */
+  --dark-blue:       #0883c6;   /* main brand blue (also the theme-color in each page's <head>) */
   --very-dark-blue:  #016baf;   /* links and small blue text */
 
   --ink:         #33383d;
@@ -286,9 +286,11 @@ a:focus-visible, label:focus-visible, button:focus-visible, input:focus-visible 
 
 /* 4 — hero --------------------------------------------------------------- */
 /* Photo box: 1440 × 810 (16:9) on desktop, shorter to fit laptop windows below
-   the 68px nav, and full width × 570 on phones. Export photos at 2400 × 1350;
+   the 68px nav, and full width × 580 on phones. Export landing photos at 2400 × 1350;
    narrower screens crop the sides, keeping each photo's --focus point in frame.
-   The landing page has a slideshow; project pages use the same markup with one photo. */
+   The landing page has a slideshow; project pages use the same markup with one photo:
+   the project's 3:2 Work card photo (2400 × 1600), which also crops top and bottom on
+   desktop. E.g. --focus: 38% 100% keeps its bottom edge; phones crop the sides around 38%. */
 .hero {
   position: relative;
   height: 810px;   /* fallback for older browsers */
@@ -393,7 +395,7 @@ a:focus-visible, label:focus-visible, button:focus-visible, input:focus-visible 
 .hero-pause[aria-pressed="true"]::after { display: none; }
 
 @media (max-width: 900px) {
-  .hero { height: 570px; padding: 0 20px; }
+  .hero { height: 580px; padding: 0 20px; }
 }
 
 /* 5 — photo credits ------------------------------------------------------ */
@@ -452,7 +454,7 @@ a:focus-visible, label:focus-visible, button:focus-visible, input:focus-visible 
 /* 6 — section layout ----------------------------------------------------- */
 .sec { padding: 96px 56px; }
 .sec-tint { background: var(--paper-tint); }
-.sec-dark { background: var(--dark-blue); color: var(--white); }   /* white text on --dark-blue: the user's choice */
+.sec-dark { background: var(--dark-blue); color: var(--white); }
 .sec-dark .label { color: var(--very-light-blue); }
 
 /* label column on the left, content on the right */
@@ -486,9 +488,10 @@ a:focus-visible, label:focus-visible, button:focus-visible, input:focus-visible 
 .card img { transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1); }
 .card:hover img { transform: scale(1.04); }
 
-/* Photos keep their shape at every screen size: featured 16:9 (export 2400 × 1350),
-   cards 3:2 (2400 × 1600; the featured photo is 3:2 on phones too).
-   Crop point: style="--focus: X% Y%" on the <img>. */
+/* Photos keep their shape at every screen size: featured 16:9, cards 3:2. Export all at
+   2400 × 1600 (3:2): the featured photo crops top and bottom on desktop and shows whole
+   on phones, where its box is 3:2 too.
+   Crop point: style="--focus: X% Y%" on the <img> (e.g. "38% 100%" keeps the bottom edge). */
 .work-img { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; object-position: var(--focus, 50% 50%); }
 .grid-3 .work-img { aspect-ratio: 3 / 2; }
 
