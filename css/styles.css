@@ -303,7 +303,7 @@ a:focus-visible, label:focus-visible, button:focus-visible, input:focus-visible 
 .hero-scrim {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, var(--scrim, 0.15));   /* darkens the photo: 15% black, or use style="--scrim: 0.1" in the HTML */
+  background: rgba(0, 0, 0, var(--scrim, 0.2));   /* darkens the photo: 20% black, or use style="--scrim: 0.1" in the HTML */
 }
 .hero-text { position: relative; max-width: 900px; }
 .hero h1 {
