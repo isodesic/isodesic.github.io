@@ -395,7 +395,7 @@ a:focus-visible, label:focus-visible, button:focus-visible, input:focus-visible 
 .hero-pause[aria-pressed="true"]::after { display: none; }
 
 @media (max-width: 900px) {
-  .hero { height: 580px; padding: 0 20px; }
+  .hero { height: 580px; padding: 0 40px; }
 }
 
 /* 5 — photo credits ------------------------------------------------------ */
