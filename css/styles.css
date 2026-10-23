@@ -256,8 +256,8 @@ a:focus-visible, label:focus-visible, button:focus-visible, input:focus-visible 
 
 @media (max-width: 900px) {
   .nav { padding: 0 20px; }
-  .nav-logo { height: 54px; }
-  .nav-logo img { height: 36px; }
+  .nav-logo { height: 60px; }
+  .nav-logo img { height: 40px; }
   .nav-burger { display: flex; }
 
   /* the menu: one link per row across the full width; "Get in touch" and LinkedIn share the last row */
