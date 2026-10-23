@@ -56,8 +56,8 @@ if (sections.length) {
 }
 
 // 4 — phone menu: CSS opens and closes it (the checkbox). This closes it after
-//     a link is tapped, makes the burger work from the keyboard, and tells
-//     screen readers whether the menu is open.
+//     a link or the email icon is tapped, makes the burger work from the
+//     keyboard, and tells screen readers whether the menu is open.
 const toggle = document.getElementById('nav-toggle');
 const burger = document.querySelector('.nav-burger');
 
@@ -73,7 +73,7 @@ burger.addEventListener('keydown', (e) => {
     syncBurger();
   }
 });
-document.querySelectorAll('.nav-links a').forEach((a) => {
+document.querySelectorAll('.nav-links a, .nav-email').forEach((a) => {
   a.addEventListener('click', () => { toggle.checked = false; syncBurger(); });
 });
 syncBurger();

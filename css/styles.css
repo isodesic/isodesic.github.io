@@ -49,6 +49,9 @@
 
   /* LinkedIn "in" logo for the nav (34 × 34), filled with the link color like the camera icon */
   --linkedin-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 34'%3E%3Cpath d='M34,2.5v29c0,1.38-1.12,2.5-2.5,2.5H2.5c-1.38,0-2.5-1.12-2.5-2.5V2.5C0,1.12,1.12,0,2.5,0h29c1.38,0,2.5,1.12,2.5,2.5M10,13h-5v16h5V13ZM10.45,7.5c.01-1.59-1.27-2.89-2.86-2.9,0,0,0,0,0,0h-.09c-1.6,0-2.9,1.3-2.9,2.9,0,1.6,1.3,2.9,2.9,2.9,1.59.04,2.91-1.22,2.95-2.81,0,0,0,0,0,0v-.09ZM29,19.28c0-4.81-3.06-6.68-6.1-6.68-2.03-.1-3.95.88-5.06,2.58h-.14v-2.18h-4.7v16h5v-8.51c-.15-1.81,1.19-3.41,3-3.58h.19c1.59,0,2.77,1,2.77,3.52v8.57h5l.04-9.72Z'/%3E%3C/svg%3E");
+
+  /* email icon for the phone nav: Bootstrap Icons "envelope" (MIT license) */
+  --envelope-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z'/%3E%3C/svg%3E");
 }
 @media (max-width: 900px) {
   :root {
@@ -246,9 +249,16 @@ a:focus-visible, label:focus-visible, button:focus-visible, input:focus-visible 
   -webkit-mask: var(--linkedin-icon) center / contain no-repeat;
           mask: var(--linkedin-icon) center / contain no-repeat;
 }
-/* Windows high-contrast mode: draw the icon in the system link color, like the other links */
-@media (forced-colors: active) {
-  .nav-social::before { forced-color-adjust: none; background: LinkText; }
+/* Email icon, phones only (shown in the phone rules below): a shortcut to the contact section, left of the burger */
+.nav-email { display: none; margin: 0 6px 0 auto; padding: 10px; color: var(--dark-blue); transition: color 0.2s ease; }   /* 44px tap target, 6px from the burger's */
+.nav-email:hover { color: var(--blue); }
+.nav-email::before {
+  content: "";
+  width: 24px;
+  height: 24px;
+  background: currentColor;
+  -webkit-mask: var(--envelope-icon) center / contain no-repeat;
+          mask: var(--envelope-icon) center / contain no-repeat;
 }
 
 .nav-links .btn, .nav-links .btn:hover { color: var(--white); }
@@ -269,10 +279,18 @@ a:focus-visible, label:focus-visible, button:focus-visible, input:focus-visible 
 .nav-toggle:checked ~ .nav-burger span:nth-child(2) { opacity: 0; }
 .nav-toggle:checked ~ .nav-burger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
+/* Windows high-contrast mode blanks backgrounds, which would hide the icons and burger lines (all drawn with
+   background): icons in the system link color, like the other links; the burger in the system text color */
+@media (forced-colors: active) {
+  .nav-social::before, .nav-email::before { forced-color-adjust: none; background: LinkText; }
+  .nav-burger span { forced-color-adjust: none; background: CanvasText; }
+}
+
 @media (max-width: 900px) {
   .nav { padding: 0 20px; }
   .nav-logo { height: 60px; }
   .nav-logo img { height: 40px; }
+  .nav-email { display: flex; }
   .nav-burger { display: flex; }
 
   /* the menu: one link per row across the full width; "Get in touch" and LinkedIn share the last row */
