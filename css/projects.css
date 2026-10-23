@@ -5,7 +5,7 @@
    contact, footer, photo credits and motion.
    One breakpoint, 900px: each section ends with its own phone rules.
    Sections:  1 settings  2 layout  3 facts rail  4 photo stream
-              5 family table  6 videos  7 next project
+              5 family table  6 videos  7 next project  8 coming soon
    ========================================================================== */
 
 /* 1 — settings ----------------------------------------------------------- */
@@ -161,11 +161,12 @@
 }
 
 /* 6 — videos ------------------------------------------------------------- */
-/* One lead video, then a row of three. Each starts as a YouTube thumbnail with a play
-   button (a plain link to the video); motion.js swaps in the player when it's clicked. */
+/* One lead video, then a row of three. Each starts as a thumbnail with a play button: a plain
+   link to the video on YouTube (.pj-yt) or to a video file (.pj-mp4, e.g. a brand's own site).
+   motion.js swaps in the player when it's clicked. */
 .pj-videos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 .pj-video-lead { grid-column: 1 / -1; margin-bottom: 8px; }
-.pj-video iframe, .pj-yt {
+.pj-video iframe, .pj-video video, .pj-yt, .pj-mp4 {
   display: block;
   width: 100%;
   aspect-ratio: 16 / 9;
@@ -174,19 +175,19 @@
   overflow: hidden;
   background: var(--ink);
 }
-.pj-yt { position: relative; }
-.pj-yt img {   /* "cover" also trims the black bars off YouTube's smaller 4:3 thumbnails */
+.pj-yt, .pj-mp4 { position: relative; }
+.pj-yt img, .pj-mp4 img {   /* "cover" also trims the black bars off YouTube's smaller 4:3 thumbnails */
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
-.pj-yt:hover img { transform: scale(1.02); }
+.pj-yt:hover img, .pj-mp4:hover img { transform: scale(1.02); }
 /* play button: a dark rounded box (::before) with a white triangle (::after) */
-.pj-yt::before, .pj-yt::after { content: ""; position: absolute; left: 50%; top: 50%; translate: -50% -50%; }
-.pj-yt::before { width: 68px; height: 48px; border-radius: 12px; background: rgba(0, 0, 0, 0.6); transition: background-color 0.2s ease; }
-.pj-yt::after { margin-left: 3px; border-style: solid; border-width: 11px 0 11px 19px; border-color: transparent transparent transparent var(--white); }
-.pj-yt:hover::before, .pj-yt:focus-visible::before { background: var(--blue); }
+.pj-yt::before, .pj-yt::after, .pj-mp4::before, .pj-mp4::after { content: ""; position: absolute; left: 50%; top: 50%; translate: -50% -50%; }
+.pj-yt::before, .pj-mp4::before { width: 68px; height: 48px; border-radius: 12px; background: rgba(0, 0, 0, 0.6); transition: background-color 0.2s ease; }
+.pj-yt::after, .pj-mp4::after { margin-left: 3px; border-style: solid; border-width: 11px 0 11px 19px; border-color: transparent transparent transparent var(--white); }
+.pj-yt:hover::before, .pj-yt:focus-visible::before, .pj-mp4:hover::before, .pj-mp4:focus-visible::before { background: var(--blue); }
 
 @media (max-width: 900px) {
   .pj-videos { grid-template-columns: 1fr; gap: 20px; }
@@ -211,4 +212,27 @@
   .pj-next > a { padding: 24px 20px; }
   .pj-next-forward { border-left: 0; border-top: 1px solid var(--rule); text-align: left; }
   .pj-next-title { font-size: var(--text-xl); }
+}
+
+/* 8 — coming soon -------------------------------------------------------- */
+/* Stands in for the photo stream on a project page that isn't finished yet: a tinted
+   panel in the stream column, with room for an optional .intro blurb above it.
+   Once a page has its photos, delete its panel (and this section when none are left). */
+.pj-soon {
+  min-height: 340px;
+  padding: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 12px;
+  border-radius: 12px;
+  background: var(--paper-tint);
+  box-shadow: 0 0 0 1px var(--rule);   /* the same outline as the stream photos */
+}
+.pj-soon h3 { max-width: 520px; font-size: var(--text-xl); line-height: 1.3; color: var(--ink); text-wrap: balance; }
+.pj-soon .sec-link { margin-top: 4px; }
+
+@media (max-width: 900px) {
+  .pj-soon { min-height: 0; padding: 32px 24px; }
 }

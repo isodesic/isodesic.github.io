@@ -227,3 +227,23 @@ document.querySelectorAll('a.pj-yt[data-yt]').forEach((link) => {
     player.focus();
   });
 });
+
+// A video that isn't on YouTube: <a class="pj-mp4" href="video.mp4"> with its
+// thumbnail inside works the same way, swapping in the browser's own player.
+document.querySelectorAll('a.pj-mp4').forEach((link) => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    const img = link.querySelector('img');
+    const player = document.createElement('video');
+    player.src = link.href;
+    if (img) {
+      player.poster = img.src;
+      player.setAttribute('aria-label', img.alt.replace(/^Play video:\s*/, ''));
+    }
+    player.controls = true;
+    player.playsInline = true;   // iPhone: play in the page, not straight to full screen
+    link.replaceWith(player);
+    player.focus();
+    player.play().catch(() => {});   // if the browser won't autoplay, the play button is there
+  });
+});
