@@ -5,7 +5,7 @@
    simply link to YouTube.
    Sections:  1 scroll fade-in   2 nav shadow   3 active nav link
               4 phone menu       5 hero slideshow and credit
-              6 photo credits    7 project videos
+              6 photo credits    7 project videos   8 footer year
    ========================================================================== */
 
 document.documentElement.classList.add('reveal-ready');
@@ -246,4 +246,10 @@ document.querySelectorAll('a.pj-mp4').forEach((link) => {
     player.focus();
     player.play().catch(() => {});   // if the browser won't autoplay, the play button is there
   });
+});
+
+// 8 — footer year: the © year in the footer (<span class="footer-year">) is
+//     typed in the HTML as a fallback; this keeps it current every January.
+document.querySelectorAll('.footer-year').forEach((el) => {
+  el.textContent = new Date().getFullYear();
 });

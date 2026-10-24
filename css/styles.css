@@ -714,20 +714,39 @@ a:focus-visible, label:focus-visible, button:focus-visible, input:focus-visible 
 .contact p { margin: 0 auto 30px; max-width: 560px; font-size: var(--text-lg); text-wrap: pretty; }
 
 /* 14 — footer ------------------------------------------------------------ */
+/* Three groups: left-aligned, centered, right-aligned. The two side columns are always
+   equal (1fr each), so the middle group sits at the page center, under the contact button.
+   Phones: one centered column. */
 .footer {
   padding: 32px 56px;
   border-top: 1px solid var(--rule);
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: baseline;
   gap: 8px 24px;
-  justify-content: space-between;
   font-size: var(--text-sm);
   color: var(--ink-faint);
 }
-.footer-address { display: flex; flex-wrap: wrap; gap: 6px 10px; font-style: normal; }
+.footer > :last-child { text-align: right; text-wrap: balance; }   /* wraps to two even lines in narrow windows */
+
+/* the middle group: a small triangle between items (CSS, so screen readers skip it) */
+.footer-info { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 10px; }
+.footer-info > :not(:last-child)::after {
+  content: "\25B4";        /* ▴ */
+  content: "\25B4" / "";   /* the same, with empty alt text for screen readers (ignored by older browsers) */
+  margin-left: 10px;
+}
 
 @media (max-width: 900px) {
-  .footer { padding: 24px 20px; }
+  .footer {
+    padding: 24px 20px;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 6px;
+    text-align: center;
+    font-size: calc(var(--text-sm) - 1px);
+  }
+  .footer > :last-child { text-align: center; }
 }
 
 /* 15 — motion ------------------------------------------------------------ */
