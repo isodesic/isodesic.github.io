@@ -691,14 +691,18 @@ a:focus-visible, label:focus-visible, button:focus-visible, input:focus-visible 
 }
 
 /* 12 — about ------------------------------------------------------------- */
-.about { display: grid; grid-template-columns: 380px 1fr; gap: 44px; align-items: start; }
-.about-photo { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 12px; }
+/* Desktop: the photo stretches to the height of the bio text beside it (never shorter
+   than its own 4:5), cropping the sides as needed; max-height stops it at 1:2 in narrow
+   windows, where the text gets very tall. Crop point: style="--focus: X% Y%" on the <img>.
+   Phones show the full 4:5 photo. */
+.about { display: grid; grid-template-columns: 380px 1fr; gap: 44px; align-items: stretch; }
+.about-photo { width: 100%; height: 100%; max-height: 760px; object-fit: cover; object-position: var(--focus, 50% 50%); border-radius: 12px; }
 .about p { margin-bottom: 18px; }
 .about p:last-child { margin-bottom: 0; }
 
 @media (max-width: 900px) {
   .about { display: block; }
-  .about-photo { max-width: 360px; margin-bottom: 20px; }
+  .about-photo { max-width: 360px; height: auto; aspect-ratio: 4 / 5; margin-bottom: 20px; }
 }
 
 /* 13 — contact ----------------------------------------------------------- */
